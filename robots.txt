@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /404.html
+
+# Erlaubt alle Crawler — auch AI-Crawler (GPTBot, Google-Extended, ClaudeBot, PerplexityBot)
+# für maximale Sichtbarkeit in klassischer und generativer Suche.
+
+Sitemap: https://violetta-schroeer.de/sitemap.xml

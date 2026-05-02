@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+  Titel:   404 – Seite nicht gefunden
+  Version: 1.0.0  (2026-05-02)
+  Autor:   Andreas Grundke – Grundke IT-Service
+-->
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>404 – Seite nicht gefunden | Violetta Schröer</title>
+<meta name="robots" content="noindex, follow"/>
+<link rel="icon" type="image/png" href="assets/img/cropped-Schröer-blau.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,300&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{ --navy-dk:#122f40; --navy:#1d4e6b; --gold:#c49a45; --gold-lt:#dfc27a; --text:#111827; --text-md:#374151; }
+*,*::before,*::after{ box-sizing:border-box; }
+body{
+  margin:0; min-height:100vh;
+  font-family:"Inter",system-ui,sans-serif;
+  background:var(--navy-dk); color:#e9f1f6;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:48px 24px; text-align:center;
+  position:relative; overflow:hidden;
+}
+body::before{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 88% 20%, rgba(196,154,69,.18) 0%, transparent 48%),
+    radial-gradient(circle at 8% 90%, rgba(46,120,152,.28) 0%, transparent 50%);
+  pointer-events:none;
+}
+.code{
+  font-family:"Cormorant Garamond",serif;
+  font-style:italic; font-weight:300;
+  font-size:clamp(6rem, 22vw, 12rem);
+  color:var(--gold-lt); line-height:1; margin:0;
+  letter-spacing:-.04em;
+  position:relative;
+}
+h1{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:500;
+  font-size:clamp(1.6rem, 4vw, 2.4rem);
+  margin:8px 0 16px;
+  position:relative;
+}
+p{
+  max-width:48ch; color:#bcd0dc; line-height:1.7;
+  margin:0 0 32px; font-size:16px;
+  position:relative;
+}
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:14px 28px;
+  background:var(--gold); color:var(--navy-dk);
+  font-weight:600; letter-spacing:.04em;
+  border-radius:8px; text-decoration:none;
+  transition:all .25s;
+  position:relative;
+}
+.btn:hover{ background:var(--gold-lt); transform:translateY(-1px); box-shadow:0 12px 30px rgba(196,154,69,.32); }
+</style>
+</head>
+<body>
+  <div class="code">404</div>
+  <h1>Diese Seite gibt es nicht.</h1>
+  <p>Die angeforderte Adresse existiert nicht (mehr) oder wurde verschoben. Kein Grund zur Sorge – zurück zur Startseite und es geht weiter.</p>
+  <a href="/" class="btn">← Zur Startseite</a>
+</body>
+</html>
