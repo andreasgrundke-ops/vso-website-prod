@@ -3,7 +3,7 @@
 Statischer OnePager mit i18n DE/EN/PL/HR. Vanilla HTML/CSS/JS, kein Build-Tool.
 Deployed auf **GitHub Pages**, Custom Domain `violetta-schroeer.de` via IONOS-DNS.
 
-CI 2026.01 · Navy + Gold · Cormorant Garamond + Inter
+CI 2026.01 · Grün (Cloud-Design v3) · Cormorant Garamond + Inter
 
 ## Dateien
 
@@ -12,7 +12,7 @@ CI 2026.01 · Navy + Gold · Cormorant Garamond + Inter
 | `index.html` | OnePager – alles inline (CSS, JS, i18n-Translations). |
 | `impressum.html` | Pflichtangaben § 5 TMG. |
 | `datenschutz.html` | DSGVO-Datenschutzerklärung (GitHub-Pages-Hosting + Google Fonts + Maps berücksichtigt). |
-| `404.html` | Fehlerseite im Navy-Hero-Look. |
+| `404.html` | Fehlerseite im Hero-Look. |
 | `robots.txt` | Erlaubt alle Crawler inkl. AI (GPTBot, Google-Extended, ClaudeBot, PerplexityBot). |
 | `sitemap.xml` | URL-Karte für Search Engines, mit hreflang. |
 | `.nojekyll` | Schaltet Jekyll auf GitHub Pages aus (verhindert Probleme mit `_`-Verzeichnissen). |
@@ -43,7 +43,7 @@ http://localhost:8000/?lang=hr
 
 **Texte (alle Sprachen):** im `<script>`-Block am Ende der `index.html`. Suche das `translations`-Objekt. Jede Sprache hat den gleichen Schlüssel-Satz.
 
-**Layout/Farben:** im `<style>`-Block. Custom Properties am Anfang (`:root { --navy:#1d4e6b; --gold:#c49a45; ... }`).
+**Layout/Farben:** im `<style>`-Block. Custom Properties am Anfang (`:root { --accent:#4a7a55; --accent-dk:#2f5638; ... }`).
 
 **Bilder:** `assets/img/`. Formate ohne Bedacht ändern – `<img>` hat `width`/`height` für CLS.
 
