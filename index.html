@@ -1583,7 +1583,7 @@ html, body{ -webkit-overflow-scrolling: touch; }
 
 <!-- Sticky Floating CTAs + Scroll-to-Top (erscheinen wenn Hero verlassen wurde) -->
 <div class="floating-cta" id="floatingCta" aria-hidden="true">
-  <button type="button" class="float-btn float-top" onclick="scrollTop()" aria-label="Zum Seitenanfang">
+  <button type="button" class="float-btn float-top" onclick="scrollToTop()" aria-label="Zum Seitenanfang">
     <i data-lucide="arrow-up" aria-hidden="true"></i>
     <span class="tooltip" data-i18n="float_top_tip">Nach oben</span>
   </button>
@@ -2152,9 +2152,10 @@ function openRoute(e){
 }
 
 /* ============================================================
-   Scroll-to-Top
+   Scroll-to-Top (NICHT 'scrollTop' nennen — kollidiert mit
+   Element.scrollTop-Property im inline-onclick-Scope)
    ============================================================ */
-function scrollTop(){
+function scrollToTop(){
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
