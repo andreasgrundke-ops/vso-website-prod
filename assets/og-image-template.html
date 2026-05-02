@@ -1,160 +1,191 @@
 <!DOCTYPE html>
 <!--
-  og-image-Template (1200×630 px)
-  Quelle für: assets/img/og-image.jpg
+  og-image-Template v2 (1200×630 px) – brand-first, ohne Portrait
   Generieren via build-og-image.ps1 (Headless Chrome)
 -->
 <html lang="de">
 <head>
 <meta charset="UTF-8"/>
-<title>OG Image Template</title>
+<title>OG Image Template v2</title>
 <style>
 @page { size: 1200px 630px; margin: 0; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { width: 1200px; height: 630px; overflow: hidden; }
 body {
   font-family: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
-  background: #0f1922;
+  background: #f6f4ef;
   position: relative;
-  color: #fff;
-  display: grid;
-  grid-template-columns: 460px 1fr;
-  align-items: stretch;
+  color: #14202a;
+  display: flex; flex-direction: column;
+  padding: 56px 72px 48px;
 }
-/* dezente Texturen wie auf der Hauptseite */
+
+/* dezente Texturen aus dem Grün */
 body::before {
-  content: ""; position: absolute; inset: 0;
-  background:
-    radial-gradient(circle at 88% 20%, rgba(74,122,85,.32) 0%, transparent 48%),
-    radial-gradient(circle at 8% 90%, rgba(46,86,56,.42) 0%, transparent 50%);
-  z-index: 0;
+  content: ""; position: absolute;
+  top: -160px; right: -160px;
+  width: 520px; height: 520px;
+  background: radial-gradient(circle, #4a7a55 0%, transparent 65%);
+  opacity: .12; pointer-events: none;
+}
+body::after {
+  content: ""; position: absolute;
+  bottom: -140px; left: -120px;
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, #2f5638 0%, transparent 65%);
+  opacity: .14; pointer-events: none;
 }
 
-.left {
-  position: relative; z-index: 1;
-  background: url('img/Frau-Schröer.png') center top / cover no-repeat #2f5638;
+/* ===== Top: Logo + URL ===== */
+.top {
+  display: flex; align-items: center; justify-content: space-between;
+  position: relative; z-index: 2;
+  padding-bottom: 28px; border-bottom: 1px solid rgba(20,32,42,.12);
 }
-.left::after {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(90deg, transparent 60%, #0f1922 100%);
+.brand-row {
+  display: flex; align-items: center; gap: 18px;
 }
-
-.right {
-  position: relative; z-index: 1;
-  padding: 70px 80px 70px 60px;
-  display: flex; flex-direction: column; justify-content: center;
-}
-.logo-row {
-  display: flex; align-items: center; gap: 14px;
-  margin-bottom: 38px;
-}
-.logo-row svg { width: 56px; height: 56px; }
-.logo-row .word {
-  font-family: 'Inter', sans-serif;
-}
-.logo-row .word .name {
+.brand-row svg { width: 64px; height: 64px; }
+.brand-row .name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 28px; font-weight: 600;
-  color: #fff; line-height: 1; letter-spacing: -.01em;
+  font-size: 30px; font-weight: 600;
+  color: #14202a; line-height: 1; letter-spacing: -.01em;
 }
-.logo-row .word .sub {
+.brand-row .sub {
   font-family: 'Inter', sans-serif;
-  font-size: 11px; font-weight: 500;
-  letter-spacing: .2em; text-transform: uppercase;
-  color: #b6cdb8; margin-top: 5px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: .26em; text-transform: uppercase;
+  color: #2f5638; margin-top: 6px;
+}
+.tag-pill {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: #2f5638;
+  padding: 8px 18px;
+  background: #fff;
+  border: 1px solid #4a7a55;
+  border-radius: 999px;
+}
+
+/* ===== Center: Headline ===== */
+.center {
+  flex: 1;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; z-index: 2;
+  padding-top: 18px;
 }
 
 .eyebrow {
   font-family: 'Inter', sans-serif;
   font-size: 13px; font-weight: 600; letter-spacing: .26em;
-  text-transform: uppercase; color: #8db092;
-  margin-bottom: 18px;
+  text-transform: uppercase; color: #2f5638;
   display: inline-flex; align-items: center; gap: 14px;
+  margin-bottom: 18px;
 }
 .eyebrow::before {
-  content: ""; width: 36px; height: 1px; background: #8db092;
+  content: ""; width: 32px; height: 2px; background: #4a7a55;
 }
 
 h1 {
-  font-size: 56px; font-weight: 500;
-  line-height: 1.08; letter-spacing: -.015em;
-  margin: 0 0 18px;
-  color: #fff;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 78px; font-weight: 500;
+  line-height: 1.06; letter-spacing: -.02em;
+  margin: 0 0 14px;
+  color: #14202a;
+  max-width: 18ch;
 }
-h1 em {
-  display: block;
-  font-style: italic; font-weight: 300;
-  color: #e9d8a6;
+h1 .accent {
+  color: #2f5638;
+  font-style: italic;
+  font-weight: 400;
 }
 
 .tagline {
-  font-family: 'Inter', sans-serif;
-  font-size: 18px; font-weight: 400;
-  color: #cfe1ec; line-height: 1.5;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-weight: 300;
+  font-size: 28px; line-height: 1.3;
+  color: #3a4854;
   max-width: 30ch;
-  margin-bottom: 32px;
+  margin-top: 4px;
 }
 
-.meta-row {
-  display: flex; flex-wrap: wrap; gap: 14px 22px;
-  font-family: 'Inter', sans-serif;
-  margin-bottom: 26px;
+/* ===== Bottom: Services + URL ===== */
+.bottom {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  position: relative; z-index: 2;
+  padding-top: 26px; border-top: 1px solid rgba(20,32,42,.12);
+  gap: 30px;
 }
-.meta-pill {
-  font-size: 13px; font-weight: 500;
-  letter-spacing: .14em;
-  padding: 6px 14px;
-  border: 1px solid rgba(255,255,255,.25);
-  border-radius: 999px;
-  color: #cfe1ec;
-}
-
-.url {
+.services {
+  display: flex; gap: 22px; flex-wrap: wrap;
   font-family: 'Inter', sans-serif;
-  font-size: 16px; font-weight: 600;
-  letter-spacing: .1em;
-  color: #b6cdb8;
-  border-top: 1px solid rgba(255,255,255,.16);
-  padding-top: 18px;
-  margin-top: auto;
+  font-size: 14px; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: #14202a;
+}
+.services .dot {
+  display: inline-block; width: 5px; height: 5px;
+  background: #4a7a55; border-radius: 50%;
+  vertical-align: middle; margin: 0 4px;
+}
+.url-block {
+  text-align: right;
+}
+.url-block .url {
+  font-family: 'Inter', sans-serif;
+  font-size: 22px; font-weight: 700;
+  color: #2f5638;
+  letter-spacing: -.005em;
+}
+.url-block .meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: #6c7884;
+  margin-top: 4px;
 }
 </style>
 <link rel="stylesheet" href="fonts/fonts.css"/>
 </head>
 <body>
 
-<div class="left"></div>
-
-<div class="right">
-  <div class="logo-row">
+<!-- TOP: Logo + Sprachen-Pill -->
+<div class="top">
+  <div class="brand-row">
     <svg viewBox="0 0 100 100" aria-hidden="true">
       <circle cx="50" cy="50" r="46" fill="#4a7a55"/>
       <rect x="6" y="40" width="62" height="3.2" fill="#fff"/>
       <rect x="6" y="50" width="62" height="3.2" fill="#fff"/>
       <rect x="6" y="60" width="62" height="3.2" fill="#fff"/>
     </svg>
-    <div class="word">
-      <div class="name">Schröer</div>
+    <div>
+      <div class="name">Violetta Schröer</div>
       <div class="sub">Office Dienstleistungen</div>
     </div>
   </div>
+  <div class="tag-pill">DE · EN · PL · HR</div>
+</div>
 
-  <span class="eyebrow">Steuerfachwirtin · IHK</span>
-
+<!-- CENTER: Headline -->
+<div class="center">
+  <span class="eyebrow">Steuerfachwirtin (IHK) · Grasbrunn b. München</span>
   <h1>
-    Grasbrunn b. München.
-    <em>Buchhaltung. Lohn. Baulöhne.</em>
+    Buchhaltung,<br/>
+    <span class="accent">die Sie verstehen.</span>
   </h1>
-
   <p class="tagline">Persönlich. Diskret. Mehrsprachig. Seit über 20 Jahren für Handwerk und Mittelstand.</p>
+</div>
 
-  <div class="meta-row">
-    <span class="meta-pill">DE · EN · PL · HR</span>
-    <span class="meta-pill">DATEV-zertifiziert</span>
-    <span class="meta-pill">SOKA-BAU</span>
+<!-- BOTTOM: Services + URL -->
+<div class="bottom">
+  <div class="services">
+    Finanzbuchhaltung<span class="dot"></span>Lohn<span class="dot"></span>Baulöhne<span class="dot"></span>Büroservice
   </div>
-
-  <div class="url">violetta-schroeer.de</div>
+  <div class="url-block">
+    <div class="url">violetta-schroeer.de</div>
+    <div class="meta">DATEV · SOKA-BAU · IHK</div>
+  </div>
 </div>
 
 </body>
