@@ -158,9 +158,8 @@
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<!-- Lokale Schriftarten (DSGVO-konform, kein Google CDN) -->
+<link rel="stylesheet" href="assets/fonts/fonts.css"/>
 
 <style>
 /* ============================================================================
@@ -346,7 +345,7 @@ header.site .wrap{
 }
 
 nav.main{ display:flex; align-items:center; gap:36px; }
-nav.main a{
+nav.main a:not(.btn){
   font-size:14px; font-weight:500;
   color:var(--ink-md);
   position:relative; transition:color .2s;
@@ -374,20 +373,20 @@ nav.main a:not(.btn):hover::after{ transform:scaleX(1); }
   text-decoration:none;
 }
 .btn i{ width:15px; height:15px; }
-.btn-primary{ background:var(--accent-dk); color:#fff; border-color:var(--accent-dk); }
-.btn-primary:hover{ background:var(--ink); border-color:var(--ink); transform:translateY(-1px); }
+.btn-primary{ background:var(--accent-dk); color:#fff !important; border-color:var(--accent-dk); }
+.btn-primary:hover{ background:var(--accent); color:#fff !important; border-color:var(--accent); transform:translateY(-1px); box-shadow:0 8px 20px rgba(74,122,85,.32); }
 .btn-outline{ background:transparent; color:var(--ink); border-color:var(--line-md); }
 .btn-outline:hover{ border-color:var(--accent); color:var(--accent); }
 .btn-outline-light{ background:transparent; color:#fff; border-color:rgba(255,255,255,.5); }
 .btn-outline-light:hover{ background:rgba(255,255,255,.12); border-color:#fff; }
-.btn-gold{ background:var(--gold); color:#fff; border-color:var(--gold); }
-.btn-gold:hover{ background:var(--ink); border-color:var(--ink); transform:translateY(-1px); }
+.btn-gold{ background:var(--accent-dk); color:#fff; border-color:var(--accent-dk); }
+.btn-gold:hover{ background:#fff; color:var(--accent-dk); border-color:#fff; transform:translateY(-1px); }
 
 .menu-toggle{ display:none; background:none; border:0; padding:8px; cursor:pointer; color:var(--ink); }
 .menu-toggle i{ width:24px; height:24px; }
 
 /* ============ HERO – Slider + Sticky CTA ============ */
-.hero{ position:relative; background:#0f1922; overflow:hidden; }
+.hero{ position:relative; background:#0f1922; overflow:hidden; padding:0 !important; }
 .hero-grid{ display:grid; grid-template-columns:1fr 360px; min-height:680px; }
 .hero-slider{ position:relative; overflow:hidden; background:#0f1922; }
 .hero-slide{
@@ -837,6 +836,95 @@ footer.site{
 .foot-bottom a:hover{ color:var(--gold-lt); }
 .foot-bottom .ci-note{ font-size:11px; letter-spacing:.06em; opacity:.55; }
 
+/* ============ Floating CTA – Sticky Tel + Mail rechts unten ============ */
+.floating-cta{
+  position:fixed;
+  right:20px; bottom:20px;
+  display:flex; flex-direction:column; gap:12px;
+  z-index:90;
+  opacity:0; pointer-events:none;
+  transform:translateY(10px);
+  transition:opacity .35s ease, transform .35s ease;
+}
+.floating-cta.show{ opacity:1; pointer-events:auto; transform:none; }
+.float-btn{
+  width:54px; height:54px;
+  border-radius:50%;
+  background:var(--accent-dk); color:#fff;
+  display:grid; place-items:center;
+  text-decoration:none;
+  box-shadow:0 8px 24px rgba(20,32,42,.25), 0 2px 6px rgba(20,32,42,.15);
+  transition:all .25s;
+  position:relative;
+}
+.float-btn:hover, .float-btn:focus-visible{
+  background:var(--accent); transform:translateY(-2px);
+  box-shadow:0 12px 28px rgba(74,122,85,.42);
+  color:#fff;
+}
+/* Scroll-to-Top: optisch leicht anders (heller, kein primary-Action) */
+.float-top{
+  background:#fff; color:var(--accent-dk);
+  border:1px solid var(--accent);
+  cursor:pointer;
+  font:inherit;
+  padding:0;
+}
+.float-top:hover, .float-top:focus-visible{
+  background:var(--accent-dk); color:#fff;
+  border-color:var(--accent-dk);
+}
+.float-btn i{ width:22px; height:22px; }
+.float-btn .tooltip{
+  position:absolute; right:calc(100% + 12px); top:50%; transform:translateY(-50%);
+  background:var(--ink); color:#fff;
+  padding:7px 12px; border-radius:6px;
+  font-size:12px; white-space:nowrap;
+  opacity:0; pointer-events:none;
+  transition:opacity .2s;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+}
+.float-btn .tooltip::after{
+  content:""; position:absolute;
+  left:100%; top:50%; transform:translateY(-50%);
+  border:5px solid transparent;
+  border-left-color:var(--ink);
+}
+.float-btn:hover .tooltip,
+.float-btn:focus-visible .tooltip{ opacity:1; }
+
+/* ============ Map-Consent (DSGVO Zwei-Klick) ============ */
+.map-consent{
+  position:absolute; inset:0;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  gap:12px;
+  background:var(--bg-soft);
+  text-align:center;
+  padding:40px 28px;
+}
+.map-consent .map-icon{
+  width:48px; height:48px;
+  color:var(--accent-dk);
+  margin-bottom:6px;
+}
+.map-consent h3{
+  font-family:var(--serif);
+  font-size:1.4rem; font-weight:500;
+  color:var(--ink);
+  margin:0 0 6px;
+}
+.map-consent p{
+  font-size:13.5px; color:var(--ink-md);
+  line-height:1.65; max-width:48ch;
+  margin:0;
+}
+.map-consent p a{ color:var(--accent-dk); text-decoration:underline; }
+.map-consent .btn{ margin-top:8px; }
+.map-consent-hint{ font-size:12px !important; margin-top:14px !important; }
+.map-consent-hint a{ color:var(--accent-dk); }
+.map-wrap iframe{ display:block; width:100%; height:100%; min-height:480px; border:0; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1100px){
   .hero-grid{ grid-template-columns:1fr 320px; }
@@ -876,11 +964,44 @@ footer.site{
   .usp-grid{ grid-template-columns:1fr; gap:36px; }
   .foot-grid{ grid-template-columns:1fr; }
   .about-features{ grid-template-columns:1fr; }
-  .hero-slide .copy{ padding:0 24px 110px; }
-  .hero-slide h1{ font-size:2.2rem; }
+  .hero-slide .copy{ padding:0 22px 100px; }
+  .hero-slide h1{ font-size:clamp(1.9rem, 6.5vw, 2.4rem); }
+  .hero-slide p.sub{ font-size:14.5px; line-height:1.6; }
+  .hero-slide .cta-row{ gap:10px; }
+  .hello-chip{ font-size:13.5px; padding:5px 12px; }
+  .lang-hint{ font-size:12px; padding:7px 12px; }
+  .hero-dots{ left:22px; bottom:30px; }
+  .hero-arrows{ right:14px; bottom:28px; }
+  .hero-arrows button{ width:40px; height:40px; }
+  .hero-cta{ padding:36px 22px; }
+  .cta-block .val{ font-size:20px; }
+  .map-consent{ padding:32px 20px; }
+  .map-consent h3{ font-size:1.2rem; }
+  .map-consent p{ font-size:13px; }
   .quote-inner blockquote{ font-size:1.4rem; }
   .faq summary{ font-size:1.05rem; padding:18px 22px; }
   .faq .answer{ padding:0 22px 20px; font-size:14.5px; }
+  .topbar .wrap{ flex-wrap:wrap; min-height:0; padding:8px 16px; }
+  .lang-wrap{ width:100%; justify-content:flex-end; padding-top:6px; }
+  header.site .wrap{ padding:0 18px; min-height:72px; }
+  .logo .name{ font-size:20px; }
+}
+
+/* ============ Touch + Smooth Scroll Optimierungen (Mobile-First) ============ */
+html, body{ -webkit-overflow-scrolling: touch; }
+@supports (overscroll-behavior:contain){
+  html{ overscroll-behavior-y: contain; }
+}
+/* Touch-Targets min 44 px (WCAG 2.5.5 / Apple HIG) */
+.btn{ min-height:44px; }
+.lang-sw a{ min-height:32px; display:inline-flex; align-items:center; }
+@media (max-width:980px){
+  .floating-cta{ right:14px; bottom:14px; gap:10px; }
+  .float-btn{ width:50px; height:50px; }
+  .float-btn i{ width:20px; height:20px; }
+  .float-btn .tooltip{ display:none; }
+  .topbar .meta a{ min-height:34px; padding:4px 0; }
+  .menu-toggle{ width:44px; height:44px; display:inline-flex; align-items:center; justify-content:center; }
 }
 </style>
 </head>
@@ -1435,24 +1556,41 @@ footer.site{
         </div>
       </div>
 
-      <div class="map-wrap">
-        <iframe
-          src="https://www.openstreetmap.org/export/embed.html?bbox=11.7233%2C48.0783%2C11.7433%2C48.0883&amp;layer=mapnik&amp;marker=48.0833%2C11.7333"
-          width="100%" height="100%"
-          style="border:0;"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Standort Violetta Schröer auf OpenStreetMap"></iframe>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=Bretonischer+Ring+18,+85630+Grasbrunn" target="_blank" rel="noopener" onclick="return openRoute(event)" class="map-overlay-cta">
-          <i data-lucide="navigation" aria-hidden="true"></i>
-          <span data-i18n="map_link_hint">Route berechnen →</span>
-        </a>
+      <div class="map-wrap" id="mapWrap" aria-label="Standort auf Karte">
+        <div class="map-consent" id="mapConsent">
+          <svg class="map-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-7.5-7-12a7 7 0 1 1 14 0c0 4.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <h3 data-i18n="map_consent_title">Karte anzeigen</h3>
+          <p data-i18n="map_consent_text">Mit Klick auf „Karte laden" wird Google Maps geladen. Dabei werden Daten – insbesondere Ihre IP-Adresse – an Google übertragen. Mehr in unserer <a href="datenschutz.html#google-maps">Datenschutzerklärung</a>.</p>
+          <button type="button" class="btn btn-primary" onclick="loadMap()">
+            <i data-lucide="map-pin" aria-hidden="true"></i>
+            <span data-i18n="map_consent_btn">Karte laden</span>
+          </button>
+          <p class="map-consent-hint">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Bretonischer+Ring+18,+85630+Grasbrunn" target="_blank" rel="noopener" data-i18n="map_consent_alt">Oder Route in neuem Tab öffnen →</a>
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 </main>
+
+<!-- Sticky Floating CTAs + Scroll-to-Top (erscheinen wenn Hero verlassen wurde) -->
+<div class="floating-cta" id="floatingCta" aria-hidden="true">
+  <button type="button" class="float-btn float-top" onclick="scrollTop()" aria-label="Zum Seitenanfang">
+    <i data-lucide="arrow-up" aria-hidden="true"></i>
+    <span class="tooltip" data-i18n="float_top_tip">Nach oben</span>
+  </button>
+  <a href="tel:+498966682201" class="float-btn" aria-label="Anrufen +49 89 666 822 01">
+    <i data-lucide="phone" aria-hidden="true"></i>
+    <span class="tooltip" data-i18n="float_phone_tip">Anrufen</span>
+  </a>
+  <a href="mailto:info@violetta-schroeer.de" class="float-btn" aria-label="E-Mail an info@violetta-schroeer.de">
+    <i data-lucide="mail" aria-hidden="true"></i>
+    <span class="tooltip" data-i18n="float_mail_tip">E-Mail schreiben</span>
+  </a>
+</div>
 
 <!-- ============ FOOTER ============ -->
 <footer class="site" role="contentinfo">
@@ -1496,7 +1634,7 @@ footer.site{
         <a href="impressum.html" data-i18n="foot_imprint">Impressum</a>
         <a href="datenschutz.html" data-i18n="foot_privacy">Datenschutz</a>
       </div>
-      <div class="ci-note">CI 2026.01 · Grundke IT-Service</div>
+      <div class="ci-note">CI 2026.01 · Grundke IT-Service · <span id="siteVer">v2.1.0</span></div>
     </div>
   </div>
 </footer>
@@ -1600,7 +1738,13 @@ const translations = {
     map_link_hint:"Route berechnen →",
     foot_about:"Steuerfachwirtin (IHK) in Grasbrunn bei München. Buchhaltung, Lohn, Baulöhne & Büroservice – persönlich und diskret.",
     foot_nav:"Navigation", foot_contact:"Kontakt", foot_legal:"Rechtliches",
-    foot_imprint:"Impressum", foot_privacy:"Datenschutz"
+    foot_imprint:"Impressum", foot_privacy:"Datenschutz",
+    map_consent_title:"Karte anzeigen",
+    map_consent_text:"Mit Klick auf „Karte laden\" wird Google Maps geladen. Dabei werden Daten – insbesondere Ihre IP-Adresse – an Google übertragen.",
+    map_consent_btn:"Karte laden",
+    map_consent_alt:"Oder Route in neuem Tab öffnen →",
+    float_phone_tip:"Anrufen", float_mail_tip:"E-Mail schreiben",
+    float_top_tip:"Nach oben"
   },
   en: {
     skip_link:"Skip to main content",
@@ -1695,7 +1839,13 @@ const translations = {
     map_link_hint:"Get directions →",
     foot_about:"Certified Tax Specialist (IHK) in Grasbrunn near Munich. Accounting, payroll, construction wages & office services – personal and discreet.",
     foot_nav:"Navigation", foot_contact:"Contact", foot_legal:"Legal",
-    foot_imprint:"Imprint", foot_privacy:"Privacy"
+    foot_imprint:"Imprint", foot_privacy:"Privacy",
+    map_consent_title:"Show map",
+    map_consent_text:"Clicking \"Load map\" will load Google Maps. Data – including your IP address – will be transmitted to Google.",
+    map_consent_btn:"Load map",
+    map_consent_alt:"Or open directions in a new tab →",
+    float_phone_tip:"Call now", float_mail_tip:"Send e-mail",
+    float_top_tip:"To top"
   },
   pl: {
     skip_link:"Przejdź do treści głównej",
@@ -1790,7 +1940,13 @@ const translations = {
     map_link_hint:"Wyznacz trasę →",
     foot_about:"Certyfikowana specjalistka podatkowa (IHK) w Grasbrunn k. Monachium.",
     foot_nav:"Nawigacja", foot_contact:"Kontakt", foot_legal:"Informacje prawne",
-    foot_imprint:"Impressum", foot_privacy:"Polityka prywatności"
+    foot_imprint:"Impressum", foot_privacy:"Polityka prywatności",
+    map_consent_title:"Pokaż mapę",
+    map_consent_text:"Klikając „Załaduj mapę\" załadujesz Google Maps. Dane – w szczególności Twój adres IP – zostaną przesłane do Google.",
+    map_consent_btn:"Załaduj mapę",
+    map_consent_alt:"Lub otwórz trasę w nowej karcie →",
+    float_phone_tip:"Zadzwoń", float_mail_tip:"Wyślij e-mail",
+    float_top_tip:"Do góry"
   },
   hr: {
     skip_link:"Preskoči na glavni sadržaj",
@@ -1885,7 +2041,13 @@ const translations = {
     map_link_hint:"Izračunaj rutu →",
     foot_about:"Ovlaštena porezna stručnjakinja (IHK) u Grasbrunnu kraj Münchena.",
     foot_nav:"Navigacija", foot_contact:"Kontakt", foot_legal:"Pravne napomene",
-    foot_imprint:"Impressum", foot_privacy:"Zaštita podataka"
+    foot_imprint:"Impressum", foot_privacy:"Zaštita podataka",
+    map_consent_title:"Prikaži kartu",
+    map_consent_text:"Klikom na „Učitaj kartu\" učitava se Google Maps. Pritom se podaci – posebno vaša IP adresa – prenose Googleu.",
+    map_consent_btn:"Učitaj kartu",
+    map_consent_alt:"Ili otvorite rutu u novoj kartici →",
+    float_phone_tip:"Nazovi", float_mail_tip:"Pošalji e-mail",
+    float_top_tip:"Na vrh"
   }
 };
 
@@ -1966,7 +2128,7 @@ if(!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').
 window.addEventListener('load', ()=>{ if(window.lucide) lucide.createIcons(); });
 
 /* ============================================================
-   Universal Route-Link (App auf iOS/Android, OpenStreetMap auf Desktop)
+   Universal Route-Link (App auf iOS/Android, Google Maps Desktop)
    ============================================================ */
 function openRoute(e){
   if(e) e.preventDefault();
@@ -1978,11 +2140,53 @@ function openRoute(e){
   } else if(/Android/i.test(ua)){
     url = 'geo:0,0?q=' + dest;
   } else {
-    url = 'https://www.openstreetmap.org/directions?to=' + dest;
+    url = 'https://www.google.com/maps/dir/?api=1&destination=' + dest;
   }
   window.open(url, '_blank', 'noopener');
   return false;
 }
+
+/* ============================================================
+   Scroll-to-Top
+   ============================================================ */
+function scrollTop(){
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ============================================================
+   Map-Consent: Google Maps wird erst nach Klick geladen (DSGVO)
+   ============================================================ */
+function loadMap(){
+  var wrap = document.getElementById('mapWrap');
+  if (!wrap) return;
+  var url = 'https://maps.google.com/maps?q=Bretonischer+Ring+18,+85630+Grasbrunn&t=&z=16&ie=UTF8&iwloc=&output=embed';
+  wrap.innerHTML = '<iframe src="' + url + '" width="100%" height="100%" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Standort: Bretonischer Ring 18, 85630 Grasbrunn"></iframe>';
+  try { localStorage.setItem('vso-maps-consent', '1'); } catch(e) {}
+}
+// Wiederkehrende Besucher: Karte direkt laden, wenn schon zugestimmt
+try {
+  if (localStorage.getItem('vso-maps-consent') === '1') {
+    setTimeout(loadMap, 200);
+  }
+} catch(e) {}
+
+/* ============================================================
+   Sticky Floating-CTAs: erscheinen wenn Hero-CTA-Sidebar aus
+   dem Sichtbereich gescrollt ist (IntersectionObserver)
+   ============================================================ */
+(function(){
+  var heroCta = document.querySelector('.hero-cta');
+  var floating = document.getElementById('floatingCta');
+  if (!heroCta || !floating || !('IntersectionObserver' in window)) return;
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var visible = e.isIntersecting && e.intersectionRatio > 0.05;
+      floating.classList.toggle('show', !visible);
+      floating.setAttribute('aria-hidden', visible ? 'true' : 'false');
+    });
+  }, { threshold: [0, 0.05, 0.5] });
+  observer.observe(heroCta);
+})();
 </script>
 
 </body>

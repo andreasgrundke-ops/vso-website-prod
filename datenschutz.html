@@ -15,9 +15,7 @@
 <meta name="robots" content="noindex, follow"/>
 <link rel="canonical" href="https://violetta-schroeer.de/datenschutz.html"/>
 <link rel="icon" type="image/png" href="assets/img/cropped-Schröer-blau.png"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/fonts/fonts.css"/>
 <style>
 :root{
   --navy-dk:#122f40; --navy:#1d4e6b; --gold:#c49a45; --gold-lt:#dfc27a; --gold-xlt:#f5ecd6;
@@ -83,6 +81,28 @@ footer.bar a:hover{ color:var(--gold-lt); }
   <p>E-Mail: <a href="mailto:info@violetta-schroeer.de">info@violetta-schroeer.de</a></p>
   <p>Telefon: <a href="tel:+498966682201">+49 (0) 89 666 822 01</a></p>
 
+  <h2>1a. Datenschutzbeauftragter</h2>
+  <p>
+    Aufgrund der Unternehmensgröße ist die Bestellung eines Datenschutzbeauftragten gemäß
+    Art. 37 DSGVO i. V. m. § 38 BDSG nicht erforderlich. Bei datenschutzrechtlichen Fragen
+    wenden Sie sich bitte direkt an die unter Punkt 1 genannte verantwortliche Stelle.
+  </p>
+
+  <h2>1b. SSL/TLS-Verschlüsselung</h2>
+  <p>
+    Diese Website nutzt aus Sicherheitsgründen und zum Schutz der Übertragung sensibler
+    Inhalte eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie
+    am Schloss-Symbol in Ihrer Browser-Zeile sowie am „https://" am Anfang der Adresse.
+  </p>
+
+  <h2>1c. Speicherdauer</h2>
+  <p>
+    Personenbezogene Daten werden nur solange gespeichert, wie es für die jeweiligen Zwecke
+    erforderlich ist. Server-Logfiles werden nach maximal 14 Tagen automatisch gelöscht.
+    E-Mail-Korrespondenz wird gelöscht, sobald die Bearbeitung abgeschlossen und keine
+    gesetzlichen Aufbewahrungspflichten (etwa nach AO oder HGB) mehr bestehen.
+  </p>
+
   <h2>2. Allgemeines zur Datenverarbeitung</h2>
   <p>
     Wir verarbeiten personenbezogene Daten unserer Nutzer grundsätzlich nur, soweit dies zur
@@ -125,6 +145,15 @@ footer.bar a:hover{ color:var(--gold-lt); }
     lit. f DSGVO (berechtigtes Interesse an effizienter Geschäftskommunikation).
   </p>
 
+  <h2>4a. Telefonische Kontaktaufnahme</h2>
+  <p>
+    Bei einem Anruf unter <a href="tel:+498966682201">+49 (0) 89 666 822 01</a> bzw.
+    <a href="tel:+4917910442092">+49 (0) 179 104 42 92</a> entstehen verbindungsbedingt
+    keine personenbezogenen Daten auf unserer Website. Eine etwaige Übermittlung Ihrer
+    Rufnummer durch Ihren Telefonanbieter wird zur Bearbeitung Ihres Anliegens genutzt
+    (Rechtsgrundlage Art. 6 Abs. 1 lit. b DSGVO bzw. lit. f DSGVO).
+  </p>
+
   <h2>5. Cookies</h2>
   <p>
     Diese Website verwendet <strong>keine Cookies</strong> für Tracking-, Analyse- oder
@@ -137,16 +166,15 @@ footer.bar a:hover{ color:var(--gold-lt); }
     die korrekte Sprachversion angezeigt wird. Diese Information verlässt das Gerät nicht.
   </p>
 
-  <h2>6. Google Fonts</h2>
+  <h2>6. Schriftarten (lokal gehostet)</h2>
   <p>
-    Diese Website lädt Schriftarten (Cormorant Garamond, Inter) von Google Fonts
-    (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland). Dabei wird
-    die IP-Adresse des Nutzers an Google übertragen. Die Verarbeitung erfolgt zur
-    optisch ansprechenden Darstellung unserer Website. Rechtsgrundlage ist
-    Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).
+    Die verwendeten Schriftarten <strong>Cormorant Garamond</strong> und <strong>Inter</strong>
+    werden lokal von dieser Domain ausgeliefert. Es findet <strong>keine Übermittlung an
+    Google Fonts oder andere Drittanbieter</strong> statt. Beim Laden der Schriftarten
+    werden keine personenbezogenen Daten an Dritte übertragen.
   </p>
   <p>
-    Datenschutzerklärung Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>
+    Lizenz: SIL Open Font License 1.1 (frei für kommerzielle und private Nutzung).
   </p>
 
   <h2>7. Lucide Icons (CDN)</h2>
@@ -154,14 +182,37 @@ footer.bar a:hover{ color:var(--gold-lt); }
     Symbol-Icons werden über das CDN unpkg.com (Cloudflare Inc., USA) ausgeliefert.
     Beim Laden der Icons wird die IP-Adresse an unpkg/Cloudflare übertragen. Verarbeitung
     auf Grundlage Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an performantem
-    Webauftritt).
+    Webauftritt). Cloudflare ist unter dem EU-US Data Privacy Framework zertifiziert.
   </p>
 
-  <h2>8. Google Maps (Karte auf der Startseite)</h2>
+  <h2 id="google-maps">8. Google Maps (Zwei-Klick-Lösung)</h2>
   <p>
-    Zur Anzeige des Standorts wird Google Maps (Google Ireland Limited) verwendet.
-    Bei Nutzung der Karte werden Daten an Google übertragen, u. a. die IP-Adresse.
-    Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Weitere Informationen:
+    Zur Anzeige des Standorts auf der Startseite (Sektion „Kontakt") wird Google Maps
+    eingesetzt. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street,
+    Dublin 4, Irland.
+  </p>
+  <p>
+    <strong>Schutz Ihrer Daten durch Zwei-Klick-Lösung:</strong> Die Karte wird
+    <em>nicht automatisch</em> beim Aufruf der Website geladen. Sie wird erst angezeigt,
+    nachdem Sie aktiv den Button „Karte laden" angeklickt haben. Erst durch diesen Klick
+    werden Daten – insbesondere Ihre IP-Adresse, die aufgerufene Seite, Browser-Informationen
+    sowie ggf. Standortdaten Ihres Endgeräts – an Google in den USA übertragen.
+  </p>
+  <p>
+    Ihre Zustimmung wird ausschließlich lokal in Ihrem Browser (localStorage unter dem
+    Schlüssel <code>vso-maps-consent</code>) gespeichert, damit die Karte bei späteren
+    Besuchen direkt angezeigt wird. Diese Information verlässt Ihr Gerät nicht. Sie können
+    die Zustimmung jederzeit widerrufen, indem Sie den localStorage Ihres Browsers für
+    diese Domain löschen (Browser-Einstellungen → Website-Daten löschen).
+  </p>
+  <p>
+    Rechtsgrundlage für die Datenübermittlung an Google ist Art. 6 Abs. 1 lit. a DSGVO
+    (Einwilligung durch aktives Klicken). Google Inc. ist unter dem EU-US Data Privacy
+    Framework zertifiziert (siehe
+    <a href="https://www.dataprivacyframework.gov/list" target="_blank" rel="noopener noreferrer">dataprivacyframework.gov/list</a>).
+  </p>
+  <p>
+    Datenschutzerklärung Google:
     <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>
   </p>
 
