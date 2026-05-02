@@ -106,10 +106,23 @@ git tag v1.0.0-go-live
 git push --tags
 ```
 
-### 3.2 Custom Domain im GitHub-Pages-Setting eintragen
+### 3.2 Custom Domain in GitHub Pages aktivieren
 
-Im Browser: Repo → Settings → Pages → Custom domain: `violetta-schroeer.de` → Save.
-(Ist eigentlich schon durch die `CNAME`-Datei abgedeckt, aber sicher ist sicher.)
+Aus der lokalen Konsole (im `website/`-Ordner):
+
+```powershell
+# CNAME-Datei mit der Custom Domain anlegen
+'violetta-schroeer.de' | Set-Content CNAME
+
+# Pages-API: Custom Domain setzen
+gh api -X PUT repos/andreasgrundke-ops/vso-website-prod/pages -F "cname=violetta-schroeer.de"
+
+git add CNAME
+git commit -m "Go-Live: CNAME für violetta-schroeer.de aktivieren"
+git push
+```
+
+> **Warum CNAME erst jetzt?** Während der Preview-Phase würde GitHub Pages sonst von `andreasgrundke-ops.github.io/vso-website-prod` auf `violetta-schroeer.de` redirecten. Solange die DNS dort noch auf das alte WordPress zeigt, wäre die Vorschau nicht erreichbar.
 
 ### 3.3 DNS bei IONOS umstellen
 

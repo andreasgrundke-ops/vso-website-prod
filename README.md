@@ -15,8 +15,8 @@ CI 2026.01 · Navy + Gold · Cormorant Garamond + Inter
 | `404.html` | Fehlerseite im Navy-Hero-Look. |
 | `robots.txt` | Erlaubt alle Crawler inkl. AI (GPTBot, Google-Extended, ClaudeBot, PerplexityBot). |
 | `sitemap.xml` | URL-Karte für Search Engines, mit hreflang. |
-| `CNAME` | GitHub-Pages Custom-Domain-Marker (`violetta-schroeer.de`). |
 | `.nojekyll` | Schaltet Jekyll auf GitHub Pages aus (verhindert Probleme mit `_`-Verzeichnissen). |
+| `CNAME` (nicht im Repo während Preview) | wird zum Go-Live mit `violetta-schroeer.de` angelegt – siehe DEPLOY.md Abschnitt 3.2. |
 | `assets/img/` | Logo, Portrait, Hero-Bilder. |
 | `DEPLOY.md` | Deploy-Anleitung Schritt-für-Schritt (GitHub Pages + IONOS-DNS). |
 
