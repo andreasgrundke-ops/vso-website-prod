@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!--
   ============================================================================
-  Titel:        Violetta Schröer – Office Dienstleistungen (Produktion v2.3)
-  Version:      2.3.0  (2026-05-02)
+  Titel:        Violetta Schröer – Office Dienstleistungen (Produktion v2.4)
+  Version:      2.4.0  (2026-05-02)
   Autor:        Andreas Grundke – Grundke IT-Service
   CI:           CI 2026.01 · Grün (Kanzlei-Stil) · Cormorant Garamond + Inter
   Stack:        Vanilla HTML/CSS/JS · GitHub Pages · Custom Domain IONOS-DNS
@@ -25,6 +25,13 @@
                         Visitenkarte als Subpage
     2026-05-02  v2.1.1  Fix Scroll-to-Top Funcname-Kollision
     2026-05-02  v2.1.2  Lenis Smooth-Scroll (lokal) für Wheel/Trackpad
+    2026-05-02  v2.4.0  Polish-Round-2:
+                        - og-image.png (1200x630) via Headless-Chrome-Template
+                        - Service-Subpages /leistungen/baulohn-soka-bau.html
+                          + lohnbuchhaltung-muenchen.html (Long-Tail-SEO)
+                        - Favicon-Set: SVG + 16/32/180/192/512 PNG + Webmanifest
+                        - Service-Karten linken auf Subpages (svc_more i18n)
+                        - setup.ps1 fuer Onboarding auf neuem PC
     2026-05-02  v2.3.0  CSS in assets/css/main.css ausgelagert,
                         Variable --gold -> --accent (sauberer Naming),
                         Statische Sprach-Subdirs /en/ /pl/ /hr/ via
@@ -73,7 +80,7 @@
 <meta property="og:locale:alternate" content="en_US"/>
 <meta property="og:locale:alternate" content="pl_PL"/>
 <meta property="og:locale:alternate" content="hr_HR"/>
-<meta property="og:image" content="https://violetta-schroeer.de/assets/img/og-image.jpg"/>
+<meta property="og:image" content="https://violetta-schroeer.de/assets/img/og-image.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta property="og:image:alt" content="Violetta Schröer – Office Dienstleistungen, Grasbrunn bei München"/>
@@ -566,6 +573,7 @@
           <li data-i18n="svc2_l2">Porez na plaće</li>
           <li data-i18n="svc2_l3">Potvrde</li>
         </ul>
+        <a href="/leistungen/lohnbuchhaltung-muenchen.html" class="svc-more" data-i18n="svc_more">Saznaj više →</a>
       </article>
       <article class="svc">
         <div class="ico-line"><i data-lucide="hard-hat" aria-hidden="true"></i></div>
@@ -576,6 +584,7 @@
           <li data-i18n="svc3_l2">Tarifne plaće</li>
           <li data-i18n="svc3_l3">Socijalni fondovi</li>
         </ul>
+        <a href="/leistungen/baulohn-soka-bau.html" class="svc-more" data-i18n="svc_more">Saznaj više →</a>
       </article>
       <article class="svc">
         <div class="ico-line"><i data-lucide="file-text" aria-hidden="true"></i></div>
@@ -833,7 +842,7 @@
         <a href="/impressum.html" data-i18n="foot_imprint">Impressum</a>
         <a href="/datenschutz.html" data-i18n="foot_privacy">Zaštita podataka</a>
       </div>
-      <div class="ci-note">CI 2026.01 · Grundke IT-Service · <span id="siteVer">v2.3.0</span></div>
+      <div class="ci-note">CI 2026.01 · Grundke IT-Service · <span id="siteVer">v2.4.0</span></div>
     </div>
   </div>
 </footer>
@@ -940,7 +949,7 @@ const translations = {
     map_link_hint:"Route berechnen →",
     foot_about:"Steuerfachwirtin (IHK) in Grasbrunn bei München. Buchhaltung, Lohn, Baulöhne & Büroservice – persönlich und diskret.",
     foot_nav:"Navigation", foot_contact:"Kontakt", foot_legal:"Rechtliches",
-    foot_imprint:"Impressum", foot_privacy:"Datenschutz",
+    foot_imprint:"Impressum", foot_privacy:"Datenschutz", svc_more:"Mehr erfahren →",
     map_consent_title:"Karte anzeigen",
     map_consent_text:"Mit Klick auf „Karte laden“ wird Google Maps geladen. Dabei werden Daten – insbesondere Ihre IP-Adresse – an Google übertragen.",
     map_consent_btn:"Karte laden",
@@ -1041,7 +1050,7 @@ const translations = {
     map_link_hint:"Get directions →",
     foot_about:"Certified Tax Specialist (IHK) in Grasbrunn near Munich. Accounting, payroll, construction wages & office services – personal and discreet.",
     foot_nav:"Navigation", foot_contact:"Contact", foot_legal:"Legal",
-    foot_imprint:"Imprint", foot_privacy:"Privacy",
+    foot_imprint:"Imprint", foot_privacy:"Privacy", svc_more:"Learn more →",
     map_consent_title:"Show map",
     map_consent_text:"Clicking “Load map” will load Google Maps. Data – including your IP address – will be transmitted to Google.",
     map_consent_btn:"Load map",
@@ -1142,7 +1151,7 @@ const translations = {
     map_link_hint:"Wyznacz trasę →",
     foot_about:"Certyfikowana specjalistka podatkowa (IHK) w Grasbrunn k. Monachium.",
     foot_nav:"Nawigacja", foot_contact:"Kontakt", foot_legal:"Informacje prawne",
-    foot_imprint:"Impressum", foot_privacy:"Polityka prywatności",
+    foot_imprint:"Impressum", foot_privacy:"Polityka prywatności", svc_more:"Dowiedz się więcej →",
     map_consent_title:"Pokaż mapę",
     map_consent_text:"Klikając „Załaduj mapę“ załadujesz Google Maps. Dane – w szczególności Twój adres IP – zostaną przesłane do Google.",
     map_consent_btn:"Załaduj mapę",
@@ -1243,7 +1252,7 @@ const translations = {
     map_link_hint:"Izračunaj rutu →",
     foot_about:"Ovlaštena porezna stručnjakinja (IHK) u Grasbrunnu kraj Münchena.",
     foot_nav:"Navigacija", foot_contact:"Kontakt", foot_legal:"Pravne napomene",
-    foot_imprint:"Impressum", foot_privacy:"Zaštita podataka",
+    foot_imprint:"Impressum", foot_privacy:"Zaštita podataka", svc_more:"Saznaj više →",
     map_consent_title:"Prikaži kartu",
     map_consent_text:"Klikom na „Učitaj kartu“ učitava se Google Maps. Pritom se podaci – posebno vaša IP adresa – prenose Googleu.",
     map_consent_btn:"Učitaj kartu",

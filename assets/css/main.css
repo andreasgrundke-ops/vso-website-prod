@@ -865,3 +865,13 @@ html, body{ -webkit-overflow-scrolling: touch; }
   .topbar .meta a{ min-height:34px; padding:4px 0; }
   .menu-toggle{ width:44px; height:44px; display:inline-flex; align-items:center; justify-content:center; }
 }
+/* ============ Service-Card "Mehr erfahren" Link (verlinkt auf /leistungen/*) ============ */
+.svc-more{
+  display:inline-flex; align-items:center; gap:6px;
+  margin-top:14px; padding-top:14px;
+  border-top:1px dashed var(--line);
+  font-size:13px; font-weight:600; letter-spacing:.04em;
+  color:var(--accent-dk); text-decoration:none;
+  transition:color .2s, transform .2s;
+}
+.svc-more:hover{ color:var(--accent); transform:translateX(2px); text-decoration:none; }

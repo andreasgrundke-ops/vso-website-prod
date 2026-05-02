@@ -1,0 +1,17 @@
+{
+  "name": "Violetta Schröer – Office Dienstleistungen",
+  "short_name": "Schröer",
+  "description": "Steuerfachwirtin (IHK) in Grasbrunn bei München. Buchhaltung, Lohn, Baulöhne, Büroservice. Mehrsprachig DE/EN/PL/HR.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#2f5638",
+  "lang": "de-DE",
+  "icons": [
+    { "src": "/assets/img/favicon.svg",                    "sizes": "any",     "type": "image/svg+xml" },
+    { "src": "/assets/img/android-chrome-192x192.png",     "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/img/android-chrome-512x512.png",     "sizes": "512x512", "type": "image/png" },
+    { "src": "/assets/img/apple-touch-icon.png",           "sizes": "180x180", "type": "image/png" }
+  ]
+}

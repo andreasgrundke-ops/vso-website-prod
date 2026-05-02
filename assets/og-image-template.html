@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!--
+  og-image-Template (1200×630 px)
+  Quelle für: assets/img/og-image.jpg
+  Generieren via build-og-image.ps1 (Headless Chrome)
+-->
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<title>OG Image Template</title>
+<style>
+@page { size: 1200px 630px; margin: 0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1200px; height: 630px; overflow: hidden; }
+body {
+  font-family: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+  background: #0f1922;
+  position: relative;
+  color: #fff;
+  display: grid;
+  grid-template-columns: 460px 1fr;
+  align-items: stretch;
+}
+/* dezente Texturen wie auf der Hauptseite */
+body::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 88% 20%, rgba(74,122,85,.32) 0%, transparent 48%),
+    radial-gradient(circle at 8% 90%, rgba(46,86,56,.42) 0%, transparent 50%);
+  z-index: 0;
+}
+
+.left {
+  position: relative; z-index: 1;
+  background: url('img/Frau-Schröer.png') center top / cover no-repeat #2f5638;
+}
+.left::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent 60%, #0f1922 100%);
+}
+
+.right {
+  position: relative; z-index: 1;
+  padding: 70px 80px 70px 60px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.logo-row {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 38px;
+}
+.logo-row svg { width: 56px; height: 56px; }
+.logo-row .word {
+  font-family: 'Inter', sans-serif;
+}
+.logo-row .word .name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 600;
+  color: #fff; line-height: 1; letter-spacing: -.01em;
+}
+.logo-row .word .sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: #b6cdb8; margin-top: 5px;
+}
+
+.eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; font-weight: 600; letter-spacing: .26em;
+  text-transform: uppercase; color: #8db092;
+  margin-bottom: 18px;
+  display: inline-flex; align-items: center; gap: 14px;
+}
+.eyebrow::before {
+  content: ""; width: 36px; height: 1px; background: #8db092;
+}
+
+h1 {
+  font-size: 56px; font-weight: 500;
+  line-height: 1.08; letter-spacing: -.015em;
+  margin: 0 0 18px;
+  color: #fff;
+}
+h1 em {
+  display: block;
+  font-style: italic; font-weight: 300;
+  color: #e9d8a6;
+}
+
+.tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px; font-weight: 400;
+  color: #cfe1ec; line-height: 1.5;
+  max-width: 30ch;
+  margin-bottom: 32px;
+}
+
+.meta-row {
+  display: flex; flex-wrap: wrap; gap: 14px 22px;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 26px;
+}
+.meta-pill {
+  font-size: 13px; font-weight: 500;
+  letter-spacing: .14em;
+  padding: 6px 14px;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 999px;
+  color: #cfe1ec;
+}
+
+.url {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px; font-weight: 600;
+  letter-spacing: .1em;
+  color: #b6cdb8;
+  border-top: 1px solid rgba(255,255,255,.16);
+  padding-top: 18px;
+  margin-top: auto;
+}
+</style>
+<link rel="stylesheet" href="fonts/fonts.css"/>
+</head>
+<body>
+
+<div class="left"></div>
+
+<div class="right">
+  <div class="logo-row">
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+      <circle cx="50" cy="50" r="46" fill="#4a7a55"/>
+      <rect x="6" y="40" width="62" height="3.2" fill="#fff"/>
+      <rect x="6" y="50" width="62" height="3.2" fill="#fff"/>
+      <rect x="6" y="60" width="62" height="3.2" fill="#fff"/>
+    </svg>
+    <div class="word">
+      <div class="name">Schröer</div>
+      <div class="sub">Office Dienstleistungen</div>
+    </div>
+  </div>
+
+  <span class="eyebrow">Steuerfachwirtin · IHK</span>
+
+  <h1>
+    Grasbrunn b. München.
+    <em>Buchhaltung. Lohn. Baulöhne.</em>
+  </h1>
+
+  <p class="tagline">Persönlich. Diskret. Mehrsprachig. Seit über 20 Jahren für Handwerk und Mittelstand.</p>
+
+  <div class="meta-row">
+    <span class="meta-pill">DE · EN · PL · HR</span>
+    <span class="meta-pill">DATEV-zertifiziert</span>
+    <span class="meta-pill">SOKA-BAU</span>
+  </div>
+
+  <div class="url">violetta-schroeer.de</div>
+</div>
+
+</body>
+</html>
