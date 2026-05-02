@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <!--
   ============================================================================
-  Titel:        Violetta Schröer – Office Dienstleistungen (Produktion v1.0)
-  Version:      1.0.0  (2026-05-02)
+  Titel:        Violetta Schröer – Office Dienstleistungen (Produktion v2.0)
+  Version:      2.0.0  (2026-05-02)
   Autor:        Andreas Grundke – Grundke IT-Service
-  CI:           CI 2026.01 · Navy + Gold
+  CI:           CI 2026.01 · Grün (Kanzlei-Stil) · Cormorant Garamond + Inter
   Stack:        Vanilla HTML/CSS/JS · GitHub Pages · Custom Domain IONOS-DNS
 
   Beschreibung:
-    Statischer OnePager mit i18n DE/EN/PL/HR (client-seitig). Kein Build-Tool,
-    keine externen Dependencies außer Google Fonts + Lucide Icons (CDN).
-    SEO: Schema.org (AccountingService + LocalBusiness + Person + FAQPage),
-    hreflang, OpenGraph, semantisches HTML, FAQ-Block für GEO/AI-Suche.
+    Statischer OnePager mit i18n DE/EN/PL/HR (client-seitig). Hero-Slider
+    mit 5 lokalen Bildern, Sticky-CTA-Sidebar. SEO: Schema.org
+    (AccountingService + LocalBusiness + Person + FAQPage), hreflang,
+    OpenGraph, semantisches HTML, FAQ-Block für GEO/AI-Suche.
     A11y: Skip-Link, ARIA-Landmarks, prefers-reduced-motion, Focus-Visible.
 
   Änderungshistorie:
-    2026-05-02  v1.0.0  Initiale Produktionsversion auf Basis Cloud-Design v3,
-                        erweitert um FAQ-Sektion, echtes Logo+Portrait,
-                        GEO-Schema, A11y-Hardening.
+    2026-05-02  v1.0.0  Erste Produktion (Navy+Gold) — verworfen
+    2026-05-02  v2.0.0  Auf Cloud-Design v3 (Grün, Hero-Slider) umgestellt
+                        nach Kunden-Bestätigung per Screenshot
   ============================================================================
 -->
 <html lang="de">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="theme-color" content="#122f40"/>
+<meta name="theme-color" content="#2f5638"/>
 
 <title>Violetta Schröer – Steuerfachwirtin Grasbrunn b. München · Buchhaltung, Lohn, Baulöhne</title>
 <meta name="description" content="Steuerfachwirtin (IHK) in Grasbrunn bei München. Persönliche Finanzbuchhaltung, Lohnbuchhaltung, Baulöhne und Büroservice. Über 20 Jahre Erfahrung. Mehrsprachig DE/EN/PL/HR."/>
@@ -32,17 +32,15 @@
 <meta name="robots" content="index, follow, max-image-preview:large"/>
 <link rel="canonical" href="https://violetta-schroeer.de/"/>
 
-<!-- Sprachvarianten (i18n via URL-Parameter, eine HTML-Datei) -->
 <link rel="alternate" hreflang="de"        href="https://violetta-schroeer.de/?lang=de"/>
 <link rel="alternate" hreflang="en"        href="https://violetta-schroeer.de/?lang=en"/>
 <link rel="alternate" hreflang="pl"        href="https://violetta-schroeer.de/?lang=pl"/>
 <link rel="alternate" hreflang="hr"        href="https://violetta-schroeer.de/?lang=hr"/>
 <link rel="alternate" hreflang="x-default" href="https://violetta-schroeer.de/"/>
 
-<!-- Open Graph / Social Sharing -->
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="Violetta Schröer – Office Dienstleistungen | Steuerfachwirtin Grasbrunn"/>
-<meta property="og:description" content="Ihre Buchhaltung. Professionell. Persönlich. Steuerfachwirtin in Grasbrunn bei München. Über 20 Jahre Erfahrung. Mehrsprachig."/>
+<meta property="og:description" content="Wir sprechen Ihre Sprache. Buchhaltung in vier Sprachen – persönlich, diskret und mit über 20 Jahren Erfahrung."/>
 <meta property="og:url" content="https://violetta-schroeer.de/"/>
 <meta property="og:locale" content="de_DE"/>
 <meta property="og:locale:alternate" content="en_US"/>
@@ -54,12 +52,10 @@
 <meta property="og:image:alt" content="Violetta Schröer – Office Dienstleistungen, Grasbrunn bei München"/>
 <meta name="twitter:card" content="summary_large_image"/>
 
-<!-- Favicon / Touch-Icons (placeholder, später ergänzen) -->
-<link rel="icon" type="image/png" href="assets/img/cropped-Schröer-blau.png"/>
-<link rel="apple-touch-icon" href="assets/img/cropped-Schröer-blau.png"/>
+<!-- Favicon: grünes SVG-Logo -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%234a7a55'/%3E%3Crect x='6' y='40' width='62' height='3.2' fill='%23fff'/%3E%3Crect x='6' y='50' width='62' height='3.2' fill='%23fff'/%3E%3Crect x='6' y='60' width='62' height='3.2' fill='%23fff'/%3E%3C/svg%3E"/>
 
-<!-- ============ SCHEMA.ORG (für SEO + GEO/AI-Suche) ============ -->
-<!-- AccountingService: Hauptentität -->
+<!-- ============ SCHEMA.ORG (SEO + GEO/AI-Suche) ============ -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -69,7 +65,6 @@
   "alternateName": "Schröer Office Dienstleistungen",
   "description": "Steuerfachwirtin (IHK) in Grasbrunn bei München. Persönliche Finanzbuchhaltung, Lohnbuchhaltung, Baulöhne und Büroservice für KMU, Handwerk und Selbstständige. Mehrsprachig DE/EN/PL/HR.",
   "url": "https://violetta-schroeer.de",
-  "logo": "https://violetta-schroeer.de/assets/img/cropped-Schröer-blau.png",
   "image": "https://violetta-schroeer.de/assets/img/Frau-Schröer.png",
   "telephone": "+498966682201",
   "email": "info@violetta-schroeer.de",
@@ -82,37 +77,32 @@
     "addressRegion": "BY",
     "addressCountry": "DE"
   },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 48.0833,
-    "longitude": 11.7333
-  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 48.0833, "longitude": 11.7333 },
   "areaServed": [
     { "@type": "City", "name": "München" },
     { "@type": "City", "name": "Grasbrunn" },
     { "@type": "City", "name": "Haar" },
     { "@type": "City", "name": "Vaterstetten" },
     { "@type": "City", "name": "Putzbrunn" },
+    { "@type": "City", "name": "Ottobrunn" },
     { "@type": "AdministrativeArea", "name": "Landkreis München" }
   ],
   "openingHoursSpecification": [{
     "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    "opens": "09:00",
-    "closes": "17:00"
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens": "09:00", "closes": "17:00"
   }],
   "priceRange": "€€",
   "currenciesAccepted": "EUR",
   "paymentAccepted": "Überweisung, SEPA-Lastschrift",
-  "knowsLanguage": ["de", "en", "pl", "hr"],
+  "knowsLanguage": ["de","en","pl","hr"],
   "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Leistungen",
+    "@type": "OfferCatalog", "name": "Leistungen",
     "itemListElement": [
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Finanzbuchhaltung", "description": "Laufende Buchführung nach DATEV-Standard, Belegerfassung, Kontenabstimmung, USt-Voranmeldung, BWA." } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lohnbuchhaltung", "description": "Monatliche Lohn- und Gehaltsabrechnungen mit allen Meldungen an Krankenkassen und Finanzamt." } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Baulöhne", "description": "Spezialisiert auf Bau- und Handwerksbranche: SOKA-BAU, ULAK, Winterbau-Umlage." } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vorbereitende Buchhaltung", "description": "Saubere Vorbereitung für Ihren Steuerberater zur effizienten Jahresabschluss-Erstellung." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vorbereitende Buchhaltung", "description": "Saubere Vorbereitung für den Steuerberater zur effizienten Jahresabschluss-Erstellung." } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Büroservice", "description": "Ablage, Schriftverkehr, Mahnwesen, Reisekosten-Abrechnung." } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Beratung", "description": "Persönliches Gespräch zu Ihren Zahlen, mehrsprachig DE/EN/PL/HR." } }
     ]
@@ -120,7 +110,6 @@
 }
 </script>
 
-<!-- Person: Violetta Schröer -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -129,7 +118,7 @@
   "name": "Violetta Schröer",
   "jobTitle": "Steuerfachwirtin (IHK), Geschäftsführerin",
   "worksFor": { "@id": "https://violetta-schroeer.de/#business" },
-  "knowsLanguage": ["de", "en", "pl", "hr"],
+  "knowsLanguage": ["de","en","pl","hr"],
   "hasCredential": {
     "@type": "EducationalOccupationalCredential",
     "credentialCategory": "Steuerfachwirtin",
@@ -139,115 +128,73 @@
 }
 </script>
 
-<!-- FAQPage: kritisch für GEO / AI-Search-Antworten -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Was unterscheidet eine Steuerfachwirtin von einem Steuerberater?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Eine Steuerfachwirtin (IHK) ist eine geprüfte Fachkraft für Buchhaltung, Lohnabrechnung und vorbereitende Steuerarbeiten. Sie darf laufende Buchhaltung, Lohnbuchhaltung und Vorbereitungsarbeiten für den Steuerberater eigenständig durchführen. Die abschließende Steuerberatung und Erstellung des Jahresabschlusses bleibt zugelassenen Steuerberatern vorbehalten."
-      }
+    { "@type": "Question", "name": "Was unterscheidet eine Steuerfachwirtin von einem Steuerberater?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Eine Steuerfachwirtin (IHK) ist eine geprüfte Fachkraft für Buchhaltung, Lohnabrechnung und vorbereitende Steuerarbeiten. Sie darf laufende Buchhaltung, Lohnbuchhaltung und Vorbereitungsarbeiten für den Steuerberater eigenständig durchführen. Die abschließende Steuerberatung und Erstellung des Jahresabschlusses bleibt zugelassenen Steuerberatern vorbehalten." }
     },
-    {
-      "@type": "Question",
-      "name": "Welche Leistungen bietet Schröer Office Dienstleistungen an?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sechs Kernleistungen: Finanzbuchhaltung (DATEV), Lohnbuchhaltung mit allen SV-Meldungen, Baulöhne mit SOKA-BAU, vorbereitende Buchhaltung für den Steuerberater, allgemeiner Büroservice (Mahnwesen, Korrespondenz, Reisekosten) sowie persönliche Beratung in Deutsch, Englisch, Polnisch und Kroatisch."
-      }
+    { "@type": "Question", "name": "Welche Leistungen bietet Schröer Office Dienstleistungen an?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sechs Kernleistungen: Finanzbuchhaltung (DATEV), Lohnbuchhaltung mit allen SV-Meldungen, Baulöhne mit SOKA-BAU, vorbereitende Buchhaltung für den Steuerberater, allgemeiner Büroservice (Mahnwesen, Korrespondenz, Reisekosten) sowie persönliche Beratung in Deutsch, Englisch, Polnisch und Kroatisch." }
     },
-    {
-      "@type": "Question",
-      "name": "Für welche Branchen ist Violetta Schröer spezialisiert?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Schwerpunkt sind kleine und mittelständische Unternehmen, Handwerksbetriebe und Selbstständige in München und Umgebung. Besondere Erfahrung in der Bau- und Handwerksbranche mit SOKA-BAU, ULAK und tariflichen Lohnabrechnungen."
-      }
+    { "@type": "Question", "name": "Für welche Branchen ist Violetta Schröer spezialisiert?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Schwerpunkt sind kleine und mittelständische Unternehmen, Handwerksbetriebe und Selbstständige in München und Umgebung. Besondere Erfahrung in der Bau- und Handwerksbranche mit SOKA-BAU, ULAK und tariflichen Lohnabrechnungen." }
     },
-    {
-      "@type": "Question",
-      "name": "Wo befindet sich der Standort und welche Region wird betreut?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Der Standort ist Bretonischer Ring 18, 85630 Grasbrunn bei München. Betreut werden Unternehmen in Grasbrunn, München, Haar, Vaterstetten, Putzbrunn und im gesamten Landkreis München. Termine vor Ort oder digital möglich."
-      }
+    { "@type": "Question", "name": "Wo befindet sich der Standort und welche Region wird betreut?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Der Standort ist Bretonischer Ring 18, 85630 Grasbrunn bei München. Betreut werden Unternehmen in Grasbrunn, München, Haar, Vaterstetten, Putzbrunn, Ottobrunn und im gesamten Landkreis München. Termine vor Ort oder digital möglich." }
     },
-    {
-      "@type": "Question",
-      "name": "Welche Sprachen werden gesprochen?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Beratung und Korrespondenz sind möglich in Deutsch, Englisch, Polnisch und Kroatisch. Damit können auch Mitarbeitende und Geschäftspartner in ihrer Muttersprache betreut werden."
-      }
+    { "@type": "Question", "name": "Welche Sprachen werden gesprochen?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Beratung und Korrespondenz sind möglich in Deutsch, Englisch, Polnisch und Kroatisch. Damit können auch Mitarbeitende und Geschäftspartner in ihrer Muttersprache betreut werden." }
     },
-    {
-      "@type": "Question",
-      "name": "Wie läuft die Zusammenarbeit konkret ab?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "In vier Schritten: 1. Unverbindliches Kennenlerngespräch (telefonisch oder vor Ort), 2. Transparente Pauschalangebot auf Bedarf zugeschnitten, 3. Sichere Belegübergabe digital oder im Ordner, 4. Laufende Betreuung mit monatlichen Auswertungen."
-      }
+    { "@type": "Question", "name": "Wie läuft die Zusammenarbeit konkret ab?",
+      "acceptedAnswer": { "@type": "Answer", "text": "In vier Schritten: 1. Unverbindliches Kennenlerngespräch (telefonisch oder vor Ort), 2. Transparentes Pauschalangebot auf Bedarf zugeschnitten, 3. Sichere Belegübergabe digital oder im Ordner, 4. Laufende Betreuung mit monatlichen Auswertungen." }
     },
-    {
-      "@type": "Question",
-      "name": "Wie kann ich einen Termin vereinbaren?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Per Telefon unter +49 (0) 89 666 822 01 oder per E-Mail an info@violetta-schroeer.de. Rückmeldung erfolgt innerhalb eines Werktags. Sprechzeiten: Montag bis Freitag 09:00–17:00."
-      }
+    { "@type": "Question", "name": "Wie kann ich einen Termin vereinbaren?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Per Telefon unter +49 (0) 89 666 822 01 oder per E-Mail an info@violetta-schroeer.de. Rückmeldung erfolgt innerhalb eines Werktags. Sprechzeiten: Montag bis Freitag 09:00–17:00." }
     }
   ]
 }
 </script>
 
-<!-- ============ FONTS (Performance: preconnect + critical-only weights) ============ -->
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 
 <style>
 /* ============================================================================
-   VSO 2026 – Production CSS
-   Color: Navy + Gold (Option A) · Type: Cormorant Garamond + Inter
+   VSO 2026 v2.0 – Anlehnung an Kanzlei Gmeinwieser
+   Hell · ruhig · klassisch · viel Weißraum · große Serif-Headlines · Grün
    ============================================================================ */
 :root{
-  --navy-dk:   #122f40;
-  --navy:      #1d4e6b;
-  --navy-md:   #2e7898;
-  --blue:      #5a9ab5;
-  --blue-lt:   #a8d0e0;
-  --blue-bg:   #eef6fa;
-  --creme:     #f8f4ef;
-  --gold:      #c49a45;
-  --gold-lt:   #dfc27a;
-  --gold-xlt:  #f5ecd6;
-  --text:      #111827;
-  --text-md:   #374151;
-  --text-lt:   #6b7280;
-  --border:    #dde8ee;
-  --black:     #0a1a24;
+  --ink:        #14202a;
+  --ink-md:     #3a4854;
+  --ink-lt:     #6c7884;
+  --line:       #e7ebef;
+  --line-md:    #d3dae0;
+  --bg:         #ffffff;
+  --bg-soft:    #f6f4ef;
+  --bg-cool:    #f1f4f7;
+  --accent:     #4a7a55;
+  --accent-dk:  #2f5638;
+  --accent-lt:  #b6cdb8;
+  --gold:       #4a7a55;
+  --gold-lt:    #8db092;
 
   --serif: "Cormorant Garamond", "Times New Roman", Georgia, serif;
   --sans:  "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
-  --container: 1200px;
-  --radius: 12px;
-  --radius-sm: 8px;
+  --container: 1240px;
 
-  --shadow-sm: 0 2px 8px rgba(18,47,64,.06);
-  --shadow-md: 0 8px 28px rgba(18,47,64,.10);
-  --shadow-lg: 0 18px 50px rgba(18,47,64,.14);
+  --shadow-sm: 0 2px 12px rgba(20,32,42,.05);
+  --shadow-md: 0 14px 40px rgba(20,32,42,.10);
+  --shadow-lg: 0 22px 60px rgba(20,32,42,.16);
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
 
-/* Respect users who prefer less motion */
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior:auto; }
   *,*::before,*::after{
@@ -261,708 +208,539 @@ body{
   margin:0;
   font-family:var(--sans);
   font-size:15px;
-  line-height:1.7;
-  color:var(--text);
-  background:#fff;
+  line-height:1.75;
+  color:var(--ink);
+  background:var(--bg);
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
 }
-
 img{ max-width:100%; display:block; height:auto; }
-
 a{ color:inherit; text-decoration:none; }
-a:focus-visible,
-button:focus-visible{
+a:focus-visible, button:focus-visible{
   outline:3px solid var(--gold);
   outline-offset:3px;
-  border-radius:4px;
+  border-radius:3px;
 }
 
 h1,h2,h3,h4{
   font-family:var(--serif);
-  font-weight:500;
-  line-height:1.1;
+  font-weight:400;
+  line-height:1.12;
   letter-spacing:-.005em;
   margin:0 0 .5em;
-  color:var(--text);
+  color:var(--ink);
 }
-h1{ font-size:clamp(2.6rem, 5.6vw, 4.4rem); font-weight:500; }
-h2{ font-size:clamp(2.1rem, 4vw, 3.2rem); font-weight:500; }
-h3{ font-size:1.5rem; font-weight:600; }
+h1{ font-size:clamp(2.8rem, 6vw, 5rem); font-weight:400; }
+h2{ font-size:clamp(2.1rem, 3.8vw, 3rem); font-weight:400; }
+h3{ font-size:1.35rem; font-weight:500; }
 
 .italic{ font-style:italic; font-weight:300; }
-.gold{ color:var(--gold); }
-.gold-lt{ color:var(--gold-lt); }
 
 /* ---------- Skip-Link (a11y) ---------- */
 .skip-link{
   position:absolute;
-  left:-9999px;
-  top:0;
-  background:var(--gold);
-  color:var(--navy-dk);
+  left:-9999px; top:0;
+  background:var(--accent-dk);
+  color:#fff;
   padding:12px 22px;
   font-weight:600;
   z-index:9999;
-  border-radius:0 0 var(--radius-sm) 0;
+  border-radius:0 0 6px 0;
 }
 .skip-link:focus{ left:0; }
 
-/* ---------- Layout ---------- */
 .wrap{
   width:100%;
   max-width:var(--container);
   margin:0 auto;
-  padding:0 28px;
+  padding:0 32px;
 }
 
-section{ padding:110px 0; position:relative; }
-section.compact{ padding:64px 0; }
+section{ padding:120px 0; position:relative; }
 
-.eyebrow{
-  font-family:var(--sans);
+.eyebrow-c{
   font-size:11px;
   font-weight:600;
+  letter-spacing:.24em;
   text-transform:uppercase;
-  letter-spacing:.22em;
   color:var(--gold);
+  margin-bottom:18px;
   display:inline-flex;
   align-items:center;
-  gap:12px;
-  margin-bottom:18px;
+  gap:14px;
 }
-.eyebrow::before{
+.eyebrow-c::before{
   content:"";
-  width:28px; height:1px;
+  width:36px; height:1px;
   background:var(--gold);
-  display:inline-block;
-}
-.eyebrow.dark{ color:var(--navy); }
-.eyebrow.dark::before{ background:var(--navy); }
-
-.lead{
-  font-size:17px;
-  line-height:1.7;
-  color:var(--text-md);
-  max-width:62ch;
 }
 
 /* ---------- Topbar ---------- */
 .topbar{
-  background:var(--navy-dk);
-  color:#cfe1ec;
+  background:var(--bg-soft);
+  color:var(--ink-md);
   font-size:12.5px;
-  letter-spacing:.02em;
+  border-bottom:1px solid var(--line);
 }
 .topbar .wrap{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  min-height:42px;
-  gap:24px;
+  display:flex; align-items:center; justify-content:space-between;
+  min-height:42px; gap:24px;
 }
-.topbar .meta{
-  display:flex;
-  align-items:center;
-  gap:22px;
-  flex-wrap:wrap;
-}
-.topbar .meta a{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  color:#cfe1ec;
-  transition:color .2s;
-}
-.topbar .meta a:hover{ color:var(--gold-lt); }
+.topbar .meta{ display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
+.topbar .meta a{ display:inline-flex; align-items:center; gap:7px; transition:color .2s; }
+.topbar .meta a:hover{ color:var(--accent); }
 .topbar .meta i{ width:13px; height:13px; }
-.topbar .meta .sep{ opacity:.3; }
+.topbar .meta .sep{ opacity:.4; }
+
+.lang-wrap{ display:flex; align-items:center; gap:10px; }
+.lang-wrap .lang-label{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:11px; font-weight:600; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--gold);
+}
+.lang-wrap .lang-label i{ width:14px; height:14px; }
 .lang-sw{
-  display:flex;
-  gap:2px;
-  align-items:center;
+  display:flex; gap:4px; align-items:center;
+  background:#fff; padding:4px;
+  border:1px solid var(--line-md);
+  border-radius:3px; box-shadow:var(--shadow-sm);
 }
 .lang-sw a{
-  padding:4px 9px;
-  font-weight:500;
-  color:#cfe1ec;
-  font-size:11.5px;
-  letter-spacing:.08em;
-  border-radius:3px;
-  transition:all .2s;
+  padding:6px 12px; font-weight:600;
+  font-size:12px; letter-spacing:.1em;
+  border-radius:2px; color:var(--ink-md);
+  transition:all .2s; position:relative;
 }
-.lang-sw a:hover{ color:var(--gold-lt); }
-.lang-sw a.act{
-  color:var(--navy-dk);
-  background:var(--gold-lt);
+.lang-sw a:hover{ color:var(--accent-dk); background:var(--bg-soft); }
+.lang-sw a.act{ color:#fff; background:var(--accent-dk); }
+@keyframes lang-pulse {
+  0%, 100% { box-shadow:0 0 0 0 rgba(74,122,85,.45); }
+  50%      { box-shadow:0 0 0 8px rgba(74,122,85,0); }
 }
+.lang-sw.pulse{ animation:lang-pulse 2s ease-out 3; }
 
 /* ---------- Header ---------- */
 header.site{
   position:sticky; top:0;
-  background:rgba(255,255,255,.96);
+  background:rgba(255,255,255,.97);
   backdrop-filter:saturate(140%) blur(10px);
   -webkit-backdrop-filter:saturate(140%) blur(10px);
-  border-bottom:1px solid var(--border);
+  border-bottom:1px solid var(--line);
   z-index:80;
 }
 header.site .wrap{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  min-height:84px;
-  gap:24px;
+  display:flex; align-items:center; justify-content:space-between;
+  min-height:92px; gap:24px;
 }
-.logo{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  text-decoration:none;
-  color:inherit;
-}
-.logo img{
-  width:54px; height:54px;
-  object-fit:contain;
-  flex-shrink:0;
-}
-.logo .logo-text{
-  display:flex; flex-direction:column;
-  line-height:1.05;
-}
+.logo{ display:flex; align-items:center; gap:14px; }
 .logo .name{
   font-family:var(--serif);
-  font-size:22px;
-  font-weight:600;
-  color:var(--navy-dk);
-  letter-spacing:-.01em;
+  font-size:23px; font-weight:500;
+  color:var(--ink);
+  letter-spacing:-.005em; line-height:1.1;
 }
 .logo .tagline{
-  font-size:11px;
-  font-weight:500;
-  text-transform:uppercase;
-  letter-spacing:.18em;
-  color:var(--text-lt);
-  margin-top:3px;
+  font-size:11px; font-weight:500;
+  text-transform:uppercase; letter-spacing:.2em;
+  color:var(--ink-lt); margin-top:3px;
 }
 
-nav.main{
-  display:flex;
-  align-items:center;
-  gap:34px;
-}
+nav.main{ display:flex; align-items:center; gap:36px; }
 nav.main a{
-  font-size:14px;
-  font-weight:500;
-  color:var(--text-md);
-  transition:color .2s;
-  position:relative;
+  font-size:14px; font-weight:500;
+  color:var(--ink-md);
+  position:relative; transition:color .2s;
 }
-nav.main a:not(.btn):hover{ color:var(--navy); }
+nav.main a:not(.btn):hover{ color:var(--accent); }
 nav.main a:not(.btn)::after{
-  content:"";
-  position:absolute;
+  content:""; position:absolute;
   left:0; right:0; bottom:-6px;
-  height:1px;
-  background:var(--gold);
-  transform:scaleX(0);
-  transform-origin:left;
+  height:1px; background:var(--accent);
+  transform:scaleX(0); transform-origin:left;
   transition:transform .25s;
 }
 nav.main a:not(.btn):hover::after{ transform:scaleX(1); }
 
 .btn{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:12px 22px;
+  display:inline-flex; align-items:center; gap:8px;
+  padding:13px 26px;
   font-family:var(--sans);
-  font-size:13.5px;
-  font-weight:500;
+  font-size:13.5px; font-weight:500;
   letter-spacing:.04em;
-  border-radius:var(--radius-sm);
+  border-radius:2px;
   border:1px solid transparent;
-  cursor:pointer;
-  transition:all .25s;
-  text-decoration:none;
+  cursor:pointer; transition:all .25s;
   white-space:nowrap;
+  text-decoration:none;
 }
 .btn i{ width:15px; height:15px; }
-.btn-primary{
-  background:var(--navy);
-  color:#fff;
-  border-color:var(--navy);
-}
-.btn-primary:hover{
-  background:var(--navy-dk);
-  border-color:var(--navy-dk);
-  transform:translateY(-1px);
-  box-shadow:var(--shadow-md);
-}
-.btn-gold{
-  background:var(--gold);
-  color:var(--navy-dk);
-  border-color:var(--gold);
-  font-weight:600;
-}
-.btn-gold:hover{
-  background:var(--gold-lt);
-  border-color:var(--gold-lt);
-  transform:translateY(-1px);
-  box-shadow:0 12px 30px rgba(196,154,69,.32);
-}
-.btn-outline-light{
-  background:transparent;
-  color:#fff;
-  border-color:rgba(255,255,255,.35);
-}
-.btn-outline-light:hover{
-  background:rgba(255,255,255,.08);
-  border-color:rgba(255,255,255,.6);
-}
+.btn-primary{ background:var(--accent-dk); color:#fff; border-color:var(--accent-dk); }
+.btn-primary:hover{ background:var(--ink); border-color:var(--ink); transform:translateY(-1px); }
+.btn-outline{ background:transparent; color:var(--ink); border-color:var(--line-md); }
+.btn-outline:hover{ border-color:var(--accent); color:var(--accent); }
+.btn-outline-light{ background:transparent; color:#fff; border-color:rgba(255,255,255,.5); }
+.btn-outline-light:hover{ background:rgba(255,255,255,.12); border-color:#fff; }
+.btn-gold{ background:var(--gold); color:#fff; border-color:var(--gold); }
+.btn-gold:hover{ background:var(--ink); border-color:var(--ink); transform:translateY(-1px); }
 
-.menu-toggle{
-  display:none;
-  background:none; border:0; padding:8px;
-  cursor:pointer; color:var(--navy-dk);
-}
+.menu-toggle{ display:none; background:none; border:0; padding:8px; cursor:pointer; color:var(--ink); }
 .menu-toggle i{ width:24px; height:24px; }
 
-/* ---------- Hero ---------- */
-.hero{
-  background:var(--navy-dk);
-  color:#e9f1f6;
-  padding:130px 0 140px;
-  position:relative;
-  overflow:hidden;
+/* ============ HERO – Slider + Sticky CTA ============ */
+.hero{ position:relative; background:#0f1922; overflow:hidden; }
+.hero-grid{ display:grid; grid-template-columns:1fr 360px; min-height:680px; }
+.hero-slider{ position:relative; overflow:hidden; background:#0f1922; }
+.hero-slide{
+  position:absolute; inset:0; opacity:0;
+  transition:opacity 1.2s ease; pointer-events:none;
 }
-.hero::before{
-  content:"";
+.hero-slide.act{ opacity:1; pointer-events:auto; }
+.hero-slide .img{
+  position:absolute; inset:0;
+  background-size:cover; background-position:center;
+  transform:scale(1.05); transition:transform 7s ease;
+}
+.hero-slide.act .img{ transform:scale(1.12); }
+.hero-slide::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(15,25,34,.30) 0%, rgba(15,25,34,.45) 60%, rgba(15,25,34,.78) 100%);
+}
+.hero-slide .copy{
   position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at 88% 20%, rgba(196,154,69,.16) 0%, transparent 48%),
-    radial-gradient(circle at 8% 90%, rgba(46,120,152,.28) 0%, transparent 50%);
-  pointer-events:none;
+  left:0; right:0; bottom:0;
+  padding:0 64px 88px;
+  z-index:2; max-width:780px;
 }
-.hero .wrap{
-  position:relative;
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:80px;
-  align-items:center;
-}
-.hero h1{
+.hero-slide .eyebrow-c{ color:var(--gold-lt); margin-bottom:22px; }
+.hero-slide .eyebrow-c::before{ background:var(--gold-lt); }
+.hero-slide h1{
   color:#fff;
-  font-size:clamp(2.8rem, 5.6vw, 4.6rem);
-  font-weight:500;
-  margin-bottom:28px;
-  letter-spacing:-.015em;
+  font-size:clamp(2.6rem, 5vw, 4.4rem);
+  font-weight:400; margin-bottom:24px;
+  letter-spacing:-.01em;
+  text-shadow:0 2px 30px rgba(0,0,0,.45);
 }
-.hero h1 .italic{
-  color:var(--gold-lt);
-  font-style:italic;
-  font-weight:300;
-  display:block;
+.hero-slide h1 .italic{ display:block; font-style:italic; font-weight:300; color:#e9d8a6; }
+.hero-slide p.sub{
+  font-size:17px; line-height:1.7;
+  color:#dde6ec; max-width:54ch;
+  margin:0 0 32px;
+  text-shadow:0 1px 20px rgba(0,0,0,.3);
 }
-.hero p.sub{
-  font-size:17px;
-  line-height:1.75;
-  color:#bcd0dc;
-  max-width:54ch;
-  margin:0 0 38px;
-}
-.hero .cta-row{
-  display:flex; flex-wrap:wrap;
-  gap:14px;
-  margin-bottom:48px;
-}
-.hero .credentials{
-  display:flex;
-  flex-wrap:wrap;
-  gap:34px 44px;
-  padding-top:34px;
-  border-top:1px solid rgba(255,255,255,.12);
-}
-.hero .cred{
-  display:flex; flex-direction:column;
-  gap:4px;
-}
-.hero .cred .num{
-  font-family:var(--serif);
-  font-size:38px;
-  font-weight:500;
-  color:var(--gold-lt);
-  line-height:1;
-  letter-spacing:-.02em;
-}
-.hero .cred .lbl{
-  font-size:12px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:#94adba;
-  font-weight:500;
-}
+.hero-slide .cta-row{ display:flex; flex-wrap:wrap; gap:12px; }
 
-/* Hero portrait card */
-.portrait-card{
-  position:relative;
-  justify-self:end;
-  width:100%;
-  max-width:420px;
-  aspect-ratio:4/5;
-  border-radius:var(--radius);
-  overflow:hidden;
-  box-shadow:var(--shadow-lg);
-  border:1px solid rgba(255,255,255,.06);
-  background:var(--navy);
+.hello-row{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:26px; }
+.hello-chip{
+  font-family:var(--serif); font-style:italic; font-weight:400;
+  font-size:18px; letter-spacing:.005em;
+  color:#fff;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:999px;
+  padding:6px 16px;
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
 }
-.portrait-card img{
-  position:absolute; inset:0;
-  width:100%; height:100%;
-  object-fit:cover;
-  object-position:center top;
-}
-.portrait-card::after{
-  content:"";
-  position:absolute; inset:0;
-  background:linear-gradient(180deg, transparent 50%, rgba(10,26,36,.72) 100%);
-}
-.portrait-card .badge{
-  position:absolute;
-  bottom:24px; left:24px; right:24px;
-  background:rgba(255,255,255,.96);
-  color:var(--navy-dk);
-  padding:18px 22px;
-  border-radius:var(--radius-sm);
-  display:flex;
-  align-items:center;
-  gap:14px;
-  z-index:2;
-}
-.portrait-card .badge .ico{
-  width:42px; height:42px;
-  background:var(--gold-xlt);
-  color:var(--gold);
-  display:grid; place-items:center;
-  border-radius:50%;
-  flex-shrink:0;
-}
-.portrait-card .badge .ico i{ width:20px; height:20px; }
-.portrait-card .badge .t{
-  font-family:var(--serif);
-  font-style:italic;
-  font-size:18px;
-  font-weight:500;
-  line-height:1.2;
-}
-.portrait-card .badge .s{
-  font-size:11px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--text-lt);
-  margin-top:2px;
-}
+.hello-chip:nth-child(2){ color:#f4e8cd; }
+.hello-chip:nth-child(3){ color:#e6d4a3; }
+.hello-chip:nth-child(4){ color:#d8b975; }
 
-/* ---------- USP Bar ---------- */
-.usp{
-  background:var(--creme);
-  border-bottom:1px solid var(--border);
-  padding:48px 0;
+.lang-hint{
+  display:inline-flex; align-items:center; gap:8px;
+  margin:0 0 26px;
+  padding:8px 14px;
+  background:rgba(216,185,117,.16);
+  border:1px dashed rgba(216,185,117,.55);
+  border-radius:999px;
+  font-size:13px; font-weight:500;
+  letter-spacing:.04em; color:#f4e8cd;
 }
-.usp-grid{
-  display:grid;
-  grid-template-columns:repeat(4, 1fr);
-  gap:36px;
+.lang-hint i{ width:15px; height:15px; color:var(--gold-lt); }
+
+.hero-dots{ position:absolute; left:64px; bottom:38px; display:flex; gap:10px; z-index:5; }
+.hero-dots button{
+  width:36px; height:3px; border:0; padding:0;
+  background:rgba(255,255,255,.28);
+  cursor:pointer; transition:background .25s;
 }
-.usp-item{
-  display:flex;
-  align-items:flex-start;
-  gap:14px;
-}
-.usp-item .ico{
+.hero-dots button.act{ background:var(--gold-lt); }
+
+.hero-arrows{ position:absolute; right:32px; bottom:36px; display:flex; gap:8px; z-index:5; }
+.hero-arrows button{
   width:44px; height:44px;
-  background:#fff;
-  color:var(--navy);
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.25);
+  color:#fff;
+  display:grid; place-items:center;
+  cursor:pointer; transition:all .25s;
+}
+.hero-arrows button:hover{ background:rgba(255,255,255,.18); border-color:rgba(255,255,255,.5); }
+.hero-arrows i{ width:18px; height:18px; }
+
+.hero-cta{
+  background:var(--bg-soft);
+  padding:56px 40px;
+  display:flex; flex-direction:column;
+  border-left:1px solid var(--line);
+}
+.hero-cta .cta-eyebrow{
+  font-size:11px; font-weight:600;
+  letter-spacing:.22em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:14px;
+}
+.hero-cta .cta-h{
+  font-family:var(--serif);
+  font-size:2rem; font-weight:400;
+  line-height:1.15; color:var(--ink);
+  margin:0 0 14px; letter-spacing:-.005em;
+}
+.hero-cta .cta-h .italic{ display:block; font-style:italic; font-weight:300; color:var(--accent); }
+.hero-cta .cta-sub{ font-size:14px; color:var(--ink-md); line-height:1.65; margin:0 0 32px; }
+
+.cta-block{
+  display:block;
+  padding:22px 0;
+  border-top:1px solid var(--line);
+  transition:padding-left .25s;
+  text-decoration:none;
+}
+.cta-block:last-of-type{ border-bottom:1px solid var(--line); }
+.cta-block:hover{ padding-left:6px; }
+.cta-block .cta-row-i{ display:flex; align-items:center; gap:14px; margin-bottom:6px; }
+.cta-block .cta-ico{
+  width:34px; height:34px; border-radius:50%;
+  background:#fff; color:var(--accent-dk);
+  display:grid; place-items:center; flex-shrink:0;
+  border:1px solid var(--line);
+}
+.cta-block .cta-ico i{ width:16px; height:16px; }
+.cta-block .lbl{
+  font-size:11px; letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--ink-lt); font-weight:600;
+}
+.cta-block .val{
+  font-family:var(--serif); font-size:24px;
+  font-weight:500; color:var(--ink);
+  line-height:1.1; letter-spacing:-.005em;
+}
+.cta-block .hint{ font-size:12px; color:var(--ink-lt); margin-top:4px; margin-left:48px; }
+
+.hero-cta .hours{
+  margin-top:28px;
+  display:flex; align-items:flex-start; gap:12px;
+  font-size:13px; color:var(--ink-md);
+  text-decoration:none; transition:color .2s;
+}
+.hero-cta a.hours:hover{ color:var(--accent-dk); }
+.hero-cta .hours i{
+  width:16px; height:16px; color:var(--gold);
+  flex-shrink:0; margin-top:3px;
+}
+.map-link-hint{
+  display:inline-block; margin-top:6px;
+  font-size:12px; font-weight:600;
+  letter-spacing:.04em; color:var(--gold);
+  text-transform:none;
+}
+
+/* ============ Trust Bar ============ */
+.trust{ background:#fff; padding:34px 0; border-bottom:1px solid var(--line); }
+.trust .wrap{
+  display:flex; flex-wrap:wrap;
+  gap:18px 48px; align-items:center; justify-content:center;
+}
+.trust-item{
+  display:flex; align-items:center; gap:10px;
+  font-size:13px; color:var(--ink-md); font-weight:500;
+}
+.trust-item i{ width:16px; height:16px; color:var(--gold); }
+.trust-item .sep{ color:var(--line-md); font-size:18px; }
+
+/* ============ USP ============ */
+.usp-row{ background:#fff; padding:120px 0; }
+.usp-row .head{ text-align:center; max-width:680px; margin:0 auto 80px; }
+.usp-row .head h2{ margin:0; }
+.usp-row .head h2 .italic{ display:block; color:var(--accent); }
+.usp-grid{
+  display:grid; grid-template-columns:repeat(4, 1fr);
+  gap:48px; text-align:center;
+}
+.usp-cell .ico-circle{
+  width:96px; height:96px; margin:0 auto 24px;
   border-radius:50%;
+  background:var(--bg-soft); color:var(--accent-dk);
   display:grid; place-items:center;
-  flex-shrink:0;
-  border:1px solid var(--border);
+  border:1px solid var(--line);
+  transition:all .35s;
 }
-.usp-item .ico i{ width:20px; height:20px; }
-.usp-item .t{
-  font-family:var(--serif);
-  font-size:18px;
-  font-weight:600;
-  color:var(--navy-dk);
-  line-height:1.2;
-  margin-bottom:4px;
+.usp-cell .ico-circle i{ width:36px; height:36px; stroke-width:1.4; }
+.usp-cell:hover .ico-circle{
+  background:var(--accent-dk); color:var(--bg-soft);
+  border-color:var(--accent-dk); transform:translateY(-4px);
 }
-.usp-item .s{
-  font-size:13px;
-  color:var(--text-lt);
-  line-height:1.5;
+.usp-cell h3{
+  font-family:var(--serif); font-size:1.45rem;
+  font-weight:500; margin-bottom:10px; color:var(--ink);
 }
+.usp-cell p{ font-size:14px; color:var(--ink-md); line-height:1.65; margin:0 auto; max-width:26ch; }
 
-/* ---------- Section header ---------- */
-.sec-head{
-  max-width:760px;
-  margin:0 auto 64px;
-  text-align:center;
-}
-.sec-head h2{ margin-bottom:20px; }
-.sec-head p{
-  font-size:17px;
-  color:var(--text-md);
-  line-height:1.7;
-  margin:0;
-}
-
-/* ---------- Services ---------- */
-.services{ background:#fff; }
-.svc-grid{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:24px;
-}
-.svc{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:38px 32px;
-  transition:all .3s;
-  position:relative;
-  overflow:hidden;
-}
-.svc::before{
-  content:"";
-  position:absolute;
-  top:0; left:0; right:0;
-  height:3px;
-  background:var(--gold);
-  transform:scaleX(0);
-  transform-origin:left;
-  transition:transform .35s;
-}
-.svc:hover{
-  border-color:var(--blue-lt);
-  transform:translateY(-4px);
-  box-shadow:var(--shadow-md);
-}
-.svc:hover::before{ transform:scaleX(1); }
-.svc .ico{
-  width:54px; height:54px;
-  background:var(--blue-bg);
-  color:var(--navy);
-  display:grid; place-items:center;
-  border-radius:var(--radius-sm);
-  margin-bottom:24px;
-}
-.svc .ico i{ width:24px; height:24px; }
-.svc h3{
-  font-family:var(--serif);
-  font-size:1.55rem;
-  font-weight:600;
-  color:var(--navy-dk);
-  margin-bottom:14px;
-  letter-spacing:-.005em;
-}
-.svc p{
-  font-size:14.5px;
-  color:var(--text-md);
-  line-height:1.7;
-  margin:0 0 18px;
-}
-.svc ul{
-  list-style:none;
-  padding:0;
-  margin:0;
-}
-.svc ul li{
-  font-size:13.5px;
-  color:var(--text-md);
-  padding:6px 0 6px 22px;
-  position:relative;
-}
-.svc ul li::before{
-  content:"";
-  position:absolute;
-  left:0; top:14px;
-  width:10px; height:1px;
-  background:var(--gold);
-}
-
-/* ---------- About ---------- */
-.about{
-  background:var(--creme);
-}
+/* ============ ABOUT ============ */
+.about{ background:var(--bg-soft); }
 .about-grid{
-  display:grid;
-  grid-template-columns:.85fr 1.15fr;
-  gap:80px;
-  align-items:center;
+  display:grid; grid-template-columns:.95fr 1.05fr;
+  gap:96px; align-items:center;
 }
-.about-photo{
-  position:relative;
-  aspect-ratio:4/5;
-  border-radius:var(--radius);
-  overflow:hidden;
+.about-photos{ position:relative; aspect-ratio:5/6; }
+.about-photos .main-photo{
+  position:absolute; inset:0 30% 18% 0;
+  background-size:cover; background-position:center 30%;
+  background-color:#dde6ec;
   box-shadow:var(--shadow-md);
-  background:#fff;
 }
-.about-photo img{
-  position:absolute; inset:0;
-  width:100%; height:100%;
-  object-fit:cover;
-  object-position:center top;
+.about-photos .small-photo{
+  position:absolute; width:55%; aspect-ratio:1/1;
+  right:0; bottom:0;
+  background-size:cover; background-position:center;
+  background-color:#cbd6dd;
+  border:8px solid var(--bg-soft);
+  box-shadow:var(--shadow-md);
 }
-.about-photo .frame-acc{
-  position:absolute;
-  inset:auto -16px -16px auto;
-  width:140px; height:140px;
+.about-photos .frame{
+  position:absolute; top:24px; left:-24px;
+  width:80%; height:80%;
   border:1px solid var(--gold);
-  border-radius:var(--radius);
   z-index:-1;
 }
-.about-text h2{
-  margin-bottom:24px;
-}
-.about-text .quote{
+
+.about-text h2{ margin-bottom:32px; }
+.about-text h2 .italic{ display:block; color:var(--accent); }
+.about-text p{ font-size:15.5px; color:var(--ink-md); line-height:1.85; margin:0 0 20px; }
+.about-text p:first-of-type::first-letter{
   font-family:var(--serif);
-  font-size:1.55rem;
-  font-style:italic;
-  font-weight:300;
-  color:var(--navy);
-  line-height:1.4;
-  margin:0 0 28px;
-  padding-left:22px;
-  border-left:2px solid var(--gold);
-}
-.about-text p{
-  font-size:15.5px;
-  color:var(--text-md);
-  line-height:1.8;
-  margin:0 0 18px;
+  font-size:3.6em; font-weight:400;
+  float:left; line-height:.85;
+  margin:.08em .12em 0 0;
+  color:var(--accent-dk);
 }
 .about-features{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:14px 28px;
-  margin-top:30px;
-  padding-top:28px;
-  border-top:1px solid var(--border);
+  display:grid; grid-template-columns:repeat(2,1fr);
+  gap:14px 28px; margin-top:36px;
+  padding-top:32px; border-top:1px solid var(--line);
 }
-.about-features .f{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-size:14px;
-  color:var(--text-md);
+.about-features .f{ display:flex; align-items:center; gap:10px; font-size:14px; color:var(--ink-md); }
+.about-features .f i{ width:16px; height:16px; color:var(--gold); flex-shrink:0; }
+
+/* ============ SERVICES ============ */
+.services{ background:#fff; }
+.sec-head{ text-align:center; max-width:760px; margin:0 auto 80px; }
+.sec-head h2{ margin-bottom:22px; }
+.sec-head h2 .italic{ display:block; color:var(--accent); }
+.sec-head p{ font-size:16px; color:var(--ink-md); line-height:1.7; margin:0; }
+
+.svc-grid{
+  display:grid; grid-template-columns:repeat(3, 1fr);
+  gap:1px; background:var(--line);
+  border:1px solid var(--line);
 }
-.about-features .f i{
-  width:16px; height:16px;
-  color:var(--gold);
-  flex-shrink:0;
+.svc{ background:#fff; padding:48px 38px; display:flex; flex-direction:column; transition:background .25s; }
+.svc:hover{ background:#fcfaf6; }
+.svc .ico-line{ color:var(--accent-dk); margin-bottom:26px; }
+.svc .ico-line i{ width:36px; height:36px; stroke-width:1.4; }
+.svc h3{ font-family:var(--serif); font-size:1.55rem; font-weight:500; color:var(--ink); margin-bottom:14px; }
+.svc p{ font-size:14.5px; color:var(--ink-md); line-height:1.7; margin:0 0 18px; flex-grow:1; }
+.svc ul{ list-style:none; padding:18px 0 0; margin:0; border-top:1px solid var(--line); }
+.svc ul li{ font-size:13.5px; color:var(--ink-md); padding:5px 0 5px 18px; position:relative; }
+.svc ul li::before{
+  content:""; position:absolute;
+  left:0; top:14px; width:8px; height:1px; background:var(--gold);
 }
 
-/* ---------- Process ---------- */
-.process{ background:#fff; }
-.process-grid{
-  display:grid;
-  grid-template-columns:repeat(4, 1fr);
-  gap:0;
-  position:relative;
+/* ============ Quote Band ============ */
+.quote-band{
+  position:relative; padding:0;
+  min-height:560px;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center; overflow:hidden;
 }
-.process-grid::before{
-  content:"";
-  position:absolute;
-  top:32px; left:8%; right:8%;
-  height:1px;
-  background:var(--border);
-  z-index:0;
+.quote-band .bg{
+  position:absolute; inset:0;
+  background-size:cover; background-position:center;
+  background-color:#2a3540;
+}
+.quote-band::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(15,25,34,.55) 0%, rgba(15,25,34,.7) 100%);
+}
+.quote-inner{ position:relative; z-index:1; max-width:780px; padding:120px 32px; color:#fff; }
+.quote-inner .mark{
+  font-family:var(--serif); font-size:120px; line-height:1;
+  font-style:italic; color:var(--gold-lt); opacity:.6;
+  margin-bottom:-30px;
+}
+.quote-inner blockquote{
+  font-family:var(--serif);
+  font-size:clamp(1.7rem, 3vw, 2.3rem);
+  font-weight:300; font-style:italic;
+  line-height:1.35; color:#fff;
+  margin:0 0 28px; letter-spacing:-.005em;
+}
+.quote-inner cite{
+  font-family:var(--sans); font-style:normal;
+  font-size:13px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--gold-lt); font-weight:600;
+}
+
+/* ============ Process ============ */
+.process{ background:var(--bg-soft); }
+.process-grid{
+  display:grid; grid-template-columns:repeat(4, 1fr);
+  gap:0; margin-top:60px;
 }
 .step{
-  position:relative;
-  text-align:center;
-  padding:0 18px;
-  z-index:1;
+  position:relative; padding:0 28px;
+  border-left:1px solid var(--line-md);
 }
+.step:first-child{ border-left:0; padding-left:0; }
 .step .num{
-  width:64px; height:64px;
-  background:#fff;
-  border:1px solid var(--border);
-  color:var(--navy-dk);
-  display:grid; place-items:center;
-  border-radius:50%;
-  margin:0 auto 22px;
   font-family:var(--serif);
-  font-size:24px;
-  font-weight:500;
-  font-style:italic;
-  position:relative;
+  font-size:48px; font-weight:400; font-style:italic;
+  color:var(--gold); line-height:1; margin-bottom:18px;
 }
-.step .num::after{
-  content:"";
-  position:absolute;
-  inset:-6px;
-  border-radius:50%;
-  border:1px solid transparent;
-  transition:border-color .3s;
-}
-.step:hover .num{ color:var(--gold); }
-.step:hover .num::after{ border-color:var(--gold-xlt); }
-.step h3{
-  font-size:1.2rem;
-  font-weight:600;
-  color:var(--navy-dk);
-  margin-bottom:8px;
-}
-.step p{
-  font-size:13.5px;
-  color:var(--text-md);
-  line-height:1.6;
-  margin:0;
-}
+.step h3{ font-family:var(--serif); font-size:1.35rem; font-weight:500; color:var(--ink); margin-bottom:10px; }
+.step p{ font-size:13.5px; color:var(--ink-md); line-height:1.65; margin:0; }
 
-/* ---------- FAQ (wichtig für GEO/AI-Suche) ---------- */
-.faq{ background:var(--creme); }
+/* ============ FAQ (für GEO/AI-Suche) ============ */
+.faq{ background:#fff; }
 .faq-list{
-  max-width:820px;
-  margin:0 auto;
-  display:flex;
-  flex-direction:column;
-  gap:14px;
+  max-width:820px; margin:0 auto;
+  display:flex; flex-direction:column; gap:14px;
 }
 .faq details{
   background:#fff;
-  border:1px solid var(--border);
-  border-radius:var(--radius);
+  border:1px solid var(--line);
+  border-radius:6px;
   overflow:hidden;
-  transition:box-shadow .25s;
+  transition:box-shadow .25s, border-color .25s;
 }
 .faq details[open]{
   box-shadow:var(--shadow-md);
-  border-color:var(--gold);
+  border-color:var(--accent);
 }
 .faq summary{
-  list-style:none;
-  cursor:pointer;
+  list-style:none; cursor:pointer;
   padding:22px 28px;
   font-family:var(--serif);
-  font-size:1.18rem;
-  font-weight:600;
-  color:var(--navy-dk);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:18px;
-  position:relative;
+  font-size:1.18rem; font-weight:500;
+  color:var(--ink);
+  display:flex; align-items:center; justify-content:space-between;
+  gap:18px; position:relative;
 }
 .faq summary::-webkit-details-marker{ display:none; }
 .faq summary::after{
-  content:"";
-  width:14px; height:14px;
-  border-right:2px solid var(--gold);
-  border-bottom:2px solid var(--gold);
+  content:""; width:14px; height:14px;
+  border-right:2px solid var(--accent);
+  border-bottom:2px solid var(--accent);
   transform:rotate(45deg);
   transition:transform .25s;
   flex-shrink:0;
@@ -970,276 +748,137 @@ nav.main a:not(.btn):hover::after{ transform:scaleX(1); }
 .faq details[open] summary::after{ transform:rotate(-135deg); }
 .faq .answer{
   padding:0 28px 24px;
-  font-size:15px;
-  color:var(--text-md);
-  line-height:1.75;
+  font-size:15px; color:var(--ink-md); line-height:1.75;
 }
 
-/* ---------- Contact ---------- */
-.contact{
-  background:var(--navy);
-  color:#e9f1f6;
-  position:relative;
-  overflow:hidden;
-}
-.contact::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at 95% 5%, rgba(196,154,69,.18) 0%, transparent 45%);
-  pointer-events:none;
-}
-.contact .wrap{ position:relative; }
+/* ============ Contact ============ */
+.contact{ background:#fff; }
 .contact-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:80px;
-  align-items:start;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:80px; align-items:start;
 }
-.contact h2{ color:#fff; }
-.contact .lead{ color:#bcd0dc; }
-.contact .eyebrow{ color:var(--gold-lt); }
-.contact .eyebrow::before{ background:var(--gold-lt); }
+.contact h2{ margin-bottom:24px; }
+.contact h2 .italic{ display:block; color:var(--accent); }
+.contact .lead{ font-size:16px; color:var(--ink-md); line-height:1.7; margin:0 0 36px; max-width:46ch; }
 
-.contact-info{
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-  margin-top:34px;
-}
+.contact-info{ display:flex; flex-direction:column; }
 .contact-row{
-  display:flex;
-  align-items:flex-start;
-  gap:18px;
-  padding:18px 22px;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:var(--radius-sm);
-  transition:all .25s;
-  color:#e9f1f6;
+  display:flex; align-items:flex-start; gap:18px;
+  padding:22px 0;
+  border-bottom:1px solid var(--line);
+  transition:all .2s;
 }
-a.contact-row:hover{
-  background:rgba(255,255,255,.08);
-  border-color:var(--gold);
-  transform:translateX(2px);
-}
+a.contact-row:hover{ padding-left:6px; }
 .contact-row .ico{
-  width:42px; height:42px;
-  background:rgba(196,154,69,.14);
-  color:var(--gold-lt);
-  border-radius:50%;
+  width:40px; height:40px;
+  color:var(--accent-dk);
   display:grid; place-items:center;
   flex-shrink:0;
+  background:var(--bg-soft);
+  border-radius:50%;
 }
 .contact-row .ico i{ width:18px; height:18px; }
 .contact-row .lbl{
-  font-size:11px;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:#94adba;
-  font-weight:500;
-  margin-bottom:3px;
+  font-size:11px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--ink-lt);
+  font-weight:600; margin-bottom:3px;
 }
-.contact-row .val{
-  font-size:16px;
-  color:#fff;
-  font-weight:500;
-  line-height:1.4;
-}
+.contact-row .val{ font-size:16px; color:var(--ink); font-weight:500; }
+.contact-cta{ margin-top:32px; display:flex; flex-wrap:wrap; gap:12px; }
 
-.contact-cta{
-  margin-top:34px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-}
-
-/* Map */
 .map-wrap{
-  border-radius:var(--radius);
-  overflow:hidden;
-  box-shadow:var(--shadow-lg);
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.08);
-  height:100%;
-  min-height:480px;
-  position:relative;
+  border:1px solid var(--line);
+  height:100%; min-height:480px;
+  position:relative; overflow:hidden;
 }
-.map-wrap iframe{
-  display:block;
-  width:100%;
-  height:100%;
-  min-height:480px;
-  border:0;
+.map-wrap iframe{ display:block; width:100%; height:100%; min-height:480px; border:0; }
+.map-overlay-cta{
+  position:absolute; right:16px; bottom:16px;
+  display:inline-flex; align-items:center; gap:8px;
+  padding:11px 18px;
+  background:var(--accent-dk); color:#fff;
+  font-size:13px; font-weight:500; letter-spacing:.04em;
+  border-radius:2px;
+  box-shadow:var(--shadow-md);
+  transition:all .25s;
+  z-index:2; text-decoration:none;
 }
-.map-placeholder{
-  position:absolute; inset:0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:14px;
-  background:
-    repeating-linear-gradient(45deg,
-      rgba(255,255,255,.025) 0 18px,
-      rgba(255,255,255,.06) 18px 36px);
-  color:#bcd0dc;
-  text-align:center;
-  padding:40px;
-}
-.map-placeholder i{ width:36px; height:36px; color:var(--gold-lt); }
-.map-placeholder .t{
-  font-family:var(--serif);
-  font-size:22px;
-  font-style:italic;
-  color:#fff;
-}
-.map-placeholder .s{
-  font-size:13px;
-  letter-spacing:.04em;
-}
+.map-overlay-cta:hover{ background:var(--gold); transform:translateY(-1px); }
+.map-overlay-cta i{ width:15px; height:15px; }
 
-/* ---------- Footer ---------- */
+/* ============ Footer ============ */
 footer.site{
-  background:var(--black);
-  color:#94adba;
-  padding:64px 0 28px;
+  background:#0f1922;
+  color:#9aaab6;
+  padding:72px 0 28px;
 }
 .foot-grid{
-  display:grid;
-  grid-template-columns:1.4fr 1fr 1fr 1fr;
-  gap:48px;
-  padding-bottom:42px;
+  display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:48px; padding-bottom:42px;
   border-bottom:1px solid rgba(255,255,255,.08);
 }
-.foot-brand .name{
-  font-family:var(--serif);
-  font-size:22px;
-  font-weight:600;
-  color:#fff;
-  margin-bottom:10px;
-  letter-spacing:-.005em;
-}
-.foot-brand p{
-  font-size:13.5px;
-  line-height:1.7;
-  margin:0;
-  max-width:36ch;
-}
+.foot-brand .name{ font-family:var(--serif); font-size:24px; font-weight:500; color:#fff; margin-bottom:8px; }
+.foot-brand .tag{ font-size:11px; text-transform:uppercase; letter-spacing:.2em; color:var(--gold-lt); margin-bottom:18px; }
+.foot-brand p{ font-size:13.5px; line-height:1.75; margin:0; max-width:34ch; }
 .foot-col h4{
-  font-family:var(--sans);
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:.18em;
-  color:var(--gold-lt);
-  font-weight:600;
-  margin:0 0 16px;
+  font-family:var(--sans); font-size:11px;
+  text-transform:uppercase; letter-spacing:.2em;
+  color:#fff; font-weight:600; margin:0 0 18px;
 }
-.foot-col ul{
-  list-style:none;
-  padding:0;
-  margin:0;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-.foot-col a{
-  font-size:13.5px;
-  color:#94adba;
-  transition:color .2s;
-}
+.foot-col ul{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; }
+.foot-col a{ font-size:13.5px; color:#9aaab6; transition:color .2s; }
 .foot-col a:hover{ color:var(--gold-lt); }
 .foot-bottom{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:14px;
-  padding-top:24px;
-  font-size:12px;
-  color:#5e7a8a;
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:14px; padding-top:24px;
+  font-size:12px; color:#5e7a8a;
 }
-.foot-bottom .legal{
-  display:flex; gap:22px;
-  flex-wrap:wrap;
-}
+.foot-bottom .legal{ display:flex; gap:22px; flex-wrap:wrap; }
 .foot-bottom a:hover{ color:var(--gold-lt); }
-.foot-bottom .ci-note{
-  font-size:11px;
-  letter-spacing:.06em;
-  opacity:.55;
-}
+.foot-bottom .ci-note{ font-size:11px; letter-spacing:.06em; opacity:.55; }
 
 /* ---------- Responsive ---------- */
+@media (max-width: 1100px){
+  .hero-grid{ grid-template-columns:1fr 320px; }
+}
 @media (max-width: 980px){
   section{ padding:80px 0; }
-  .hero{ padding:88px 0 96px; }
-  .hero .wrap{
-    grid-template-columns:1fr;
-    gap:56px;
-  }
-  .portrait-card{
-    justify-self:center;
-    max-width:360px;
-  }
-  .about-grid{
-    grid-template-columns:1fr;
-    gap:48px;
-  }
-  .about-photo{ max-width:380px; margin:0 auto; }
-  .contact-grid{
-    grid-template-columns:1fr;
-    gap:48px;
-  }
-  .usp-grid{
-    grid-template-columns:repeat(2, 1fr);
-    gap:28px;
-  }
-  .svc-grid{
-    grid-template-columns:repeat(2, 1fr);
-  }
-  .process-grid{
-    grid-template-columns:repeat(2, 1fr);
-    gap:48px 24px;
-  }
-  .process-grid::before{ display:none; }
-  .foot-grid{
-    grid-template-columns:repeat(2, 1fr);
-    gap:36px;
-  }
+  .hero-grid{ grid-template-columns:1fr; min-height:0; }
+  .hero-slider{ min-height:520px; }
+  .hero-slide .copy{ padding:0 32px 100px; }
+  .hero-cta{ border-left:0; border-top:1px solid var(--line); padding:48px 32px; }
+  .hero-dots{ left:32px; }
+  .hero-arrows{ right:16px; }
+  .usp-grid{ grid-template-columns:repeat(2,1fr); gap:40px 24px; }
+  .svc-grid{ grid-template-columns:repeat(2,1fr); }
+  .about-grid{ grid-template-columns:1fr; gap:60px; }
+  .about-photos{ max-width:460px; margin:0 auto; }
+  .process-grid{ grid-template-columns:repeat(2,1fr); gap:48px 24px; }
+  .step{ border-left:0; padding-left:0; }
+  .contact-grid{ grid-template-columns:1fr; gap:48px; }
+  .foot-grid{ grid-template-columns:repeat(2,1fr); gap:36px; }
   nav.main{
-    position:absolute;
-    top:100%; left:0; right:0;
-    background:#fff;
-    border-bottom:1px solid var(--border);
-    flex-direction:column;
-    align-items:stretch;
-    padding:14px 28px 22px;
-    gap:6px;
+    position:absolute; top:100%; left:0; right:0;
+    background:#fff; border-bottom:1px solid var(--line);
+    flex-direction:column; align-items:stretch;
+    padding:14px 28px 22px; gap:6px;
     box-shadow:var(--shadow-md);
     display:none;
   }
   nav.main.open{ display:flex; }
-  nav.main a{
-    padding:12px 4px;
-    border-bottom:1px solid var(--border);
-  }
-  nav.main a.btn{
-    margin-top:10px;
-    border-bottom:0;
-    justify-content:center;
-  }
+  nav.main a{ padding:12px 4px; border-bottom:1px solid var(--line); }
+  nav.main a.btn{ margin-top:10px; border-bottom:0; justify-content:center; }
   .menu-toggle{ display:inline-flex; }
 }
 @media (max-width:600px){
   .topbar .meta .hide-sm{ display:none; }
   .svc-grid{ grid-template-columns:1fr; }
-  .usp-grid{ grid-template-columns:1fr; gap:22px; }
+  .usp-grid{ grid-template-columns:1fr; gap:36px; }
   .foot-grid{ grid-template-columns:1fr; }
-  .hero .credentials{ gap:24px; }
-  .hero .cred .num{ font-size:30px; }
   .about-features{ grid-template-columns:1fr; }
+  .hero-slide .copy{ padding:0 24px 110px; }
+  .hero-slide h1{ font-size:2.2rem; }
+  .quote-inner blockquote{ font-size:1.4rem; }
   .faq summary{ font-size:1.05rem; padding:18px 22px; }
   .faq .answer{ padding:0 22px 20px; font-size:14.5px; }
 }
@@ -1247,7 +886,6 @@ footer.site{
 </head>
 <body>
 
-<!-- Skip-Link für Tastatur-/Screenreader-Nutzer -->
 <a href="#main" class="skip-link" data-i18n="skip_link">Zum Hauptinhalt springen</a>
 
 <!-- ============ TOPBAR ============ -->
@@ -1260,11 +898,14 @@ footer.site{
       <span class="sep hide-sm" aria-hidden="true">·</span>
       <span class="hide-sm" style="display:inline-flex;align-items:center;gap:7px;"><i data-lucide="clock" aria-hidden="true"></i><span data-i18n="topbar_hours">Mo–Fr 09:00–17:00</span></span>
     </div>
-    <div class="lang-sw" role="group" aria-label="Sprache wählen">
-      <a href="?lang=de" data-lang="de" class="act" hreflang="de" aria-label="Deutsch">DE</a>
-      <a href="?lang=en" data-lang="en" hreflang="en" aria-label="English">EN</a>
-      <a href="?lang=pl" data-lang="pl" hreflang="pl" aria-label="Polski">PL</a>
-      <a href="?lang=hr" data-lang="hr" hreflang="hr" aria-label="Hrvatski">HR</a>
+    <div class="lang-wrap">
+      <span class="lang-label"><i data-lucide="globe" aria-hidden="true"></i><span data-i18n="lang_label">Sprache wählen</span></span>
+      <div class="lang-sw pulse" id="lang-sw" role="group" aria-label="Sprache">
+        <a href="?lang=de" data-lang="de" class="act" hreflang="de">DE</a>
+        <a href="?lang=en" data-lang="en" hreflang="en">EN</a>
+        <a href="?lang=pl" data-lang="pl" hreflang="pl">PL</a>
+        <a href="?lang=hr" data-lang="hr" hreflang="hr">HR</a>
+      </div>
     </div>
   </div>
 </div>
@@ -1272,10 +913,15 @@ footer.site{
 <!-- ============ HEADER ============ -->
 <header class="site" role="banner">
   <div class="wrap">
-    <a href="#top" class="logo" aria-label="Violetta Schröer – Startseite">
-      <img src="assets/img/cropped-Schröer-blau.png" alt="" width="54" height="54" loading="eager" decoding="async"/>
-      <span class="logo-text">
-        <span class="name">Violetta Schröer</span>
+    <a href="#top" class="logo" aria-label="Schröer – Office Dienstleistungen">
+      <svg viewBox="0 0 100 100" width="50" height="50" aria-hidden="true">
+        <circle cx="50" cy="50" r="46" fill="#4a7a55"/>
+        <rect x="6" y="40" width="62" height="3.2" fill="#fff"/>
+        <rect x="6" y="50" width="62" height="3.2" fill="#fff"/>
+        <rect x="6" y="60" width="62" height="3.2" fill="#fff"/>
+      </svg>
+      <span>
+        <span class="name">Schröer</span><br/>
         <span class="tagline" data-i18n="logo_tagline">Office Dienstleistungen</span>
       </span>
     </a>
@@ -1295,104 +941,294 @@ footer.site{
 
 <main id="main">
 
-<!-- ============ HERO ============ -->
-<section class="hero" id="top" aria-labelledby="hero-heading">
-  <div class="wrap">
-    <div class="hero-text">
-      <span class="eyebrow" style="color:var(--gold-lt);" data-i18n="hero_eyebrow">Steuerfachwirtin · Grasbrunn b. München</span>
-      <h1 id="hero-heading">
-        <span data-i18n="hero_h1_a">Ihre Buchhaltung.</span>
-        <span class="italic" data-i18n="hero_h1_b">Professionell. Persönlich.</span>
-      </h1>
-      <p class="sub" data-i18n="hero_sub">Über 20 Jahre Erfahrung als Steuerfachwirtin. Ich kümmere mich diskret und sorgfältig um Ihre Finanzbuchhaltung, Lohnabrechnung und Baulöhne – damit Sie sich auf Ihr Geschäft konzentrieren können.</p>
-      <div class="cta-row">
-        <a href="#kontakt" class="btn btn-gold">
-          <i data-lucide="calendar-check" aria-hidden="true"></i>
-          <span data-i18n="hero_cta_primary">Termin vereinbaren</span>
-        </a>
-        <a href="#leistungen" class="btn btn-outline-light">
-          <span data-i18n="hero_cta_secondary">Leistungen entdecken</span>
-          <i data-lucide="arrow-right" aria-hidden="true"></i>
-        </a>
+<!-- ============ HERO – Slider + Sticky CTA ============ -->
+<section class="hero" id="top" aria-label="Hero">
+  <div class="hero-grid">
+    <div class="hero-slider" id="hero-slider">
+
+      <div class="hero-slide act" data-slide="0">
+        <div class="img" style="background-image:url('assets/img/hero/slide5-buero.jpg');"></div>
+        <div class="copy">
+          <div class="hello-row" aria-hidden="true">
+            <span class="hello-chip">Herzlich willkommen</span>
+            <span class="hello-chip">Welcome</span>
+            <span class="hello-chip">Witamy</span>
+            <span class="hello-chip">Dobrodošli</span>
+          </div>
+          <h1>
+            <span data-i18n="hero1_h1_a">Wir sprechen</span>
+            <span class="italic" data-i18n="hero1_h1_b">Ihre Sprache.</span>
+          </h1>
+          <p class="sub" data-i18n="hero1_sub">Buchhaltung in vier Sprachen – Deutsch, Englisch, Polnisch, Kroatisch. Persönlich, diskret und mit über 20 Jahren Erfahrung.</p>
+          <div class="lang-hint">
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+            <span data-i18n="hero1_lang_hint">Sprache oben rechts wählen</span>
+          </div>
+          <div class="cta-row">
+            <a href="#leistungen" class="btn btn-gold">
+              <span data-i18n="hero_cta_services">Leistungen entdecken</span>
+              <i data-lucide="arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="#kontakt" class="btn btn-outline-light">
+              <span data-i18n="hero_cta_contact">Termin vereinbaren</span>
+            </a>
+          </div>
+        </div>
       </div>
-      <div class="credentials" role="list">
-        <div class="cred" role="listitem">
-          <span class="num">20<span style="font-size:.7em;">+</span></span>
-          <span class="lbl" data-i18n="cred_years">Jahre Erfahrung</span>
+
+      <div class="hero-slide" data-slide="1">
+        <div class="img" style="background-image:url('assets/img/hero/slide1-steuerformulare.jpg');"></div>
+        <div class="copy">
+          <div class="hello-row" aria-hidden="true">
+            <span class="hello-chip">Herzlich willkommen</span>
+            <span class="hello-chip">Welcome</span>
+            <span class="hello-chip">Witamy</span>
+            <span class="hello-chip">Dobrodošli</span>
+          </div>
+          <span class="eyebrow-c" data-i18n="hero2_eyebrow">Finanzbuchhaltung</span>
+          <h1>
+            <span data-i18n="hero2_h1_a">Saubere Bücher.</span>
+            <span class="italic" data-i18n="hero2_h1_b">Klare Auswertungen.</span>
+          </h1>
+          <p class="sub" data-i18n="hero2_sub">DATEV-Standard, monatliche BWA und USt-Voranmeldungen – pünktlich und nachvollziehbar.</p>
+          <div class="cta-row">
+            <a href="#leistungen" class="btn btn-gold">
+              <span data-i18n="hero_cta_services">Leistungen entdecken</span>
+              <i data-lucide="arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="#kontakt" class="btn btn-outline-light">
+              <span data-i18n="hero_cta_contact">Termin vereinbaren</span>
+            </a>
+          </div>
         </div>
-        <div class="cred" role="listitem">
-          <span class="num">4</span>
-          <span class="lbl" data-i18n="cred_langs">Sprachen</span>
+      </div>
+
+      <div class="hero-slide" data-slide="2">
+        <div class="img" style="background-image:url('assets/img/hero/slide4-belege.jpg');"></div>
+        <div class="copy">
+          <div class="hello-row" aria-hidden="true">
+            <span class="hello-chip">Herzlich willkommen</span>
+            <span class="hello-chip">Welcome</span>
+            <span class="hello-chip">Witamy</span>
+            <span class="hello-chip">Dobrodošli</span>
+          </div>
+          <span class="eyebrow-c" data-i18n="hero3_eyebrow">Lohn &amp; Baulöhne</span>
+          <h1>
+            <span data-i18n="hero3_h1_a">Lohnabrechnung,</span>
+            <span class="italic" data-i18n="hero3_h1_b">die hält, was sie verspricht.</span>
+          </h1>
+          <p class="sub" data-i18n="hero3_sub">Spezialisiert auf SOKA-BAU, Tariflöhne und alle SV-Meldungen – Monat für Monat verlässlich.</p>
+          <div class="cta-row">
+            <a href="#leistungen" class="btn btn-gold">
+              <span data-i18n="hero_cta_services">Leistungen entdecken</span>
+              <i data-lucide="arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="#kontakt" class="btn btn-outline-light">
+              <span data-i18n="hero_cta_contact">Termin vereinbaren</span>
+            </a>
+          </div>
         </div>
-        <div class="cred" role="listitem">
-          <span class="num">100<span style="font-size:.7em;">%</span></span>
-          <span class="lbl" data-i18n="cred_dsgvo">DSGVO-konform</span>
+      </div>
+
+      <div class="hero-slide" data-slide="3">
+        <div class="img" style="background-image:url('assets/img/hero/slide2-schreibtisch.jpg');"></div>
+        <div class="copy">
+          <div class="hello-row" aria-hidden="true">
+            <span class="hello-chip">Herzlich willkommen</span>
+            <span class="hello-chip">Welcome</span>
+            <span class="hello-chip">Witamy</span>
+            <span class="hello-chip">Dobrodošli</span>
+          </div>
+          <span class="eyebrow-c" data-i18n="hero4_eyebrow">Persönlich &amp; mehrsprachig</span>
+          <h1>
+            <span data-i18n="hero4_h1_a">Eine Ansprechpartnerin.</span>
+            <span class="italic" data-i18n="hero4_h1_b">Vier Sprachen.</span>
+          </h1>
+          <p class="sub" data-i18n="hero4_sub">DE · EN · PL · HR – Verständigung ohne Reibung. Direkt, greifbar, ohne Callcenter.</p>
+          <div class="cta-row">
+            <a href="#ueber" class="btn btn-gold">
+              <span data-i18n="hero_cta_about">Mehr über mich</span>
+              <i data-lucide="arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="#kontakt" class="btn btn-outline-light">
+              <span data-i18n="hero_cta_contact">Termin vereinbaren</span>
+            </a>
+          </div>
         </div>
+      </div>
+
+      <div class="hero-slide" data-slide="4">
+        <div class="img" style="background-image:url('assets/img/hero/slide3-unterlagen.jpg');"></div>
+        <div class="copy">
+          <div class="hello-row" aria-hidden="true">
+            <span class="hello-chip">Herzlich willkommen</span>
+            <span class="hello-chip">Welcome</span>
+            <span class="hello-chip">Witamy</span>
+            <span class="hello-chip">Dobrodošli</span>
+          </div>
+          <span class="eyebrow-c" data-i18n="hero5_eyebrow">Grasbrunn b. München</span>
+          <h1>
+            <span data-i18n="hero5_h1_a">Vor Ort verankert.</span>
+            <span class="italic" data-i18n="hero5_h1_b">Digital aufgestellt.</span>
+          </h1>
+          <p class="sub" data-i18n="hero5_sub">Bretonischer Ring 18, Grasbrunn – persönlicher Termin oder digitale Belegübergabe, wie es Ihnen passt.</p>
+          <div class="cta-row">
+            <a href="#kontakt" class="btn btn-gold">
+              <span data-i18n="hero_cta_contact">Termin vereinbaren</span>
+              <i data-lucide="arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="#leistungen" class="btn btn-outline-light">
+              <span data-i18n="hero_cta_services">Leistungen entdecken</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-dots" role="tablist" aria-label="Slider Steuerung">
+        <button class="act" data-go="0" aria-label="Slide 1"></button>
+        <button data-go="1" aria-label="Slide 2"></button>
+        <button data-go="2" aria-label="Slide 3"></button>
+        <button data-go="3" aria-label="Slide 4"></button>
+        <button data-go="4" aria-label="Slide 5"></button>
+      </div>
+      <div class="hero-arrows">
+        <button id="hero-prev" aria-label="Vorherige Slide"><i data-lucide="chevron-left" aria-hidden="true"></i></button>
+        <button id="hero-next" aria-label="Nächste Slide"><i data-lucide="chevron-right" aria-hidden="true"></i></button>
       </div>
     </div>
-    <figure class="portrait-card">
-      <img src="assets/img/Frau-Schröer.png" alt="Violetta Schröer, Steuerfachwirtin" width="420" height="525" loading="eager" decoding="async"/>
-      <figcaption class="badge">
-        <div class="ico"><i data-lucide="award" aria-hidden="true"></i></div>
-        <div>
-          <div class="t" data-i18n="hero_badge_title">Geprüfte Steuerfachwirtin</div>
-          <div class="s" data-i18n="hero_badge_sub">IHK · Seit 2003</div>
+
+    <aside class="hero-cta" aria-label="Direkter Kontakt">
+      <span class="cta-eyebrow" data-i18n="cta_eyebrow">Direkter Draht</span>
+      <h2 class="cta-h">
+        <span data-i18n="cta_h_a">Lassen Sie uns</span>
+        <span class="italic" data-i18n="cta_h_b">in Ruhe reden.</span>
+      </h2>
+      <p class="cta-sub" data-i18n="cta_sub">Erstgespräch unverbindlich – Antwort innerhalb eines Werktags.</p>
+
+      <a href="tel:+498966682201" class="cta-block">
+        <div class="cta-row-i">
+          <div class="cta-ico"><i data-lucide="phone" aria-hidden="true"></i></div>
+          <div>
+            <div class="lbl" data-i18n="cta_phone_lbl">Telefon</div>
+            <div class="val">+49 (0) 89 666 822 01</div>
+          </div>
         </div>
-      </figcaption>
-    </figure>
+        <div class="hint" data-i18n="cta_phone_hint">Mo–Fr 09:00–17:00</div>
+      </a>
+
+      <a href="mailto:info@violetta-schroeer.de?subject=Anfrage%20Erstgespr%C3%A4ch" class="cta-block">
+        <div class="cta-row-i">
+          <div class="cta-ico"><i data-lucide="mail" aria-hidden="true"></i></div>
+          <div>
+            <div class="lbl" data-i18n="cta_mail_lbl">E-Mail</div>
+            <div class="val">info@violetta-schroeer.de</div>
+          </div>
+        </div>
+        <div class="hint" data-i18n="cta_mail_hint">Antwort binnen 1 Werktag</div>
+      </a>
+
+      <a href="https://www.google.com/maps/dir/?api=1&destination=Bretonischer+Ring+18,+85630+Grasbrunn" target="_blank" rel="noopener" onclick="return openRoute(event)" class="hours" title="Route berechnen">
+        <i data-lucide="map-pin" aria-hidden="true"></i>
+        <span><strong style="color:var(--ink);">Bretonischer Ring 18</strong><br/>85630 Grasbrunn<br/><span class="map-link-hint" data-i18n="map_link_hint">Route berechnen →</span></span>
+      </a>
+    </aside>
   </div>
 </section>
 
-<!-- ============ USP BAR ============ -->
-<aside class="usp" aria-label="Eigenschaften">
+<!-- ============ TRUST BAR ============ -->
+<aside class="trust" aria-label="Qualitätsmerkmale">
   <div class="wrap">
+    <div class="trust-item"><i data-lucide="award" aria-hidden="true"></i><span data-i18n="trust1">Steuerfachwirtin (IHK)</span></div>
+    <span class="sep" aria-hidden="true">·</span>
+    <div class="trust-item"><i data-lucide="shield-check" aria-hidden="true"></i><span data-i18n="trust2">DATEV-zertifiziert</span></div>
+    <span class="sep" aria-hidden="true">·</span>
+    <div class="trust-item"><i data-lucide="hard-hat" aria-hidden="true"></i><span data-i18n="trust3">SOKA-BAU erfahren</span></div>
+    <span class="sep" aria-hidden="true">·</span>
+    <div class="trust-item"><i data-lucide="languages" aria-hidden="true"></i><span data-i18n="trust4">DE · EN · PL · HR</span></div>
+    <span class="sep" aria-hidden="true">·</span>
+    <div class="trust-item"><i data-lucide="lock" aria-hidden="true"></i><span data-i18n="trust5">DSGVO-konform</span></div>
+  </div>
+</aside>
+
+<!-- ============ USP ============ -->
+<section class="usp-row" aria-labelledby="usp-heading">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow-c" data-i18n="usp_eyebrow">Was Sie erwartet</span>
+      <h2 id="usp-heading">
+        <span data-i18n="usp_h2_a">Mehr als nur Buchungen.</span>
+        <span class="italic" data-i18n="usp_h2_b">Eine ruhige Hand.</span>
+      </h2>
+    </div>
     <div class="usp-grid">
-      <div class="usp-item">
-        <div class="ico"><i data-lucide="user-check" aria-hidden="true"></i></div>
-        <div>
-          <div class="t" data-i18n="usp1_t">Persönlich</div>
-          <div class="s" data-i18n="usp1_s">Eine Ansprechpartnerin – kein Callcenter.</div>
-        </div>
+      <div class="usp-cell">
+        <div class="ico-circle"><i data-lucide="award" aria-hidden="true"></i></div>
+        <h3 data-i18n="usp1_t">Vielseitige Expertise</h3>
+        <p data-i18n="usp1_s">Fachwissen, das Ihre Buchhaltung wirklich weiterbringt.</p>
       </div>
-      <div class="usp-item">
-        <div class="ico"><i data-lucide="shield-check" aria-hidden="true"></i></div>
-        <div>
-          <div class="t" data-i18n="usp2_t">Diskret</div>
-          <div class="s" data-i18n="usp2_s">Verschwiegenheit ist selbstverständlich.</div>
-        </div>
+      <div class="usp-cell">
+        <div class="ico-circle"><i data-lucide="laptop" aria-hidden="true"></i></div>
+        <h3 data-i18n="usp2_t">Digitale Prozesse</h3>
+        <p data-i18n="usp2_s">DATEV-Standard. Belege digital. Auswertungen jederzeit.</p>
       </div>
-      <div class="usp-item">
-        <div class="ico"><i data-lucide="clock" aria-hidden="true"></i></div>
-        <div>
-          <div class="t" data-i18n="usp3_t">Pünktlich</div>
-          <div class="s" data-i18n="usp3_s">Fristen halten wir – jedes Mal.</div>
-        </div>
+      <div class="usp-cell">
+        <div class="ico-circle"><i data-lucide="user-check" aria-hidden="true"></i></div>
+        <h3 data-i18n="usp3_t">Persönlicher Kontakt</h3>
+        <p data-i18n="usp3_s">Eine Ansprechpartnerin – direkt, greifbar, ohne Umwege.</p>
       </div>
-      <div class="usp-item">
-        <div class="ico"><i data-lucide="languages" aria-hidden="true"></i></div>
-        <div>
-          <div class="t" data-i18n="usp4_t">Mehrsprachig</div>
-          <div class="s" data-i18n="usp4_s">DE · EN · PL · HR</div>
+      <div class="usp-cell">
+        <div class="ico-circle"><i data-lucide="languages" aria-hidden="true"></i></div>
+        <h3 data-i18n="usp4_t">Mehrsprachig</h3>
+        <p data-i18n="usp4_s">DE · EN · PL · HR – Verständigung ohne Reibung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="ueber" aria-labelledby="about-heading">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-photos">
+        <div class="frame" aria-hidden="true"></div>
+        <div class="main-photo" style="background-image:url('assets/img/Frau-Schröer.png');"
+             role="img" aria-label="Portrait Violetta Schröer"></div>
+        <div class="small-photo" style="background-image:url('assets/img/hero/slide2-schreibtisch.jpg');" aria-hidden="true"></div>
+      </div>
+      <div class="about-text">
+        <span class="eyebrow-c" data-i18n="about_eyebrow">Über mich</span>
+        <h2 id="about-heading">
+          <span data-i18n="about_h2_a">Über Violetta Schröer.</span>
+          <span class="italic" data-i18n="about_h2_b">Zwei Jahrzehnte in Zahlen zuhause.</span>
+        </h2>
+        <p data-i18n="about_p1">Seit 2003 begleite ich Unternehmer:innen, Handwerksbetriebe und Selbstständige rund um München bei allen Fragen der laufenden Buchhaltung und Lohnabrechnung. Als geprüfte Steuerfachwirtin (IHK) verbinde ich präzises Fachwissen mit einem ruhigen, persönlichen Stil – auf Basis aktueller Gesetzeslage und digitaler Prozesse.</p>
+        <p data-i18n="about_p2">Ich erfasse Belege sauber, stimme Konten ab, rechne Löhne pünktlich ab und erkläre Ihre Auswertungen so, dass Sie sie verstehen. Bauunternehmen unterstütze ich bei SOKA-BAU und Tariflohnfragen, Selbstständigen helfe ich, ihre Zahlen jederzeit im Griff zu haben.</p>
+        <p data-i18n="about_p3">Meine Arbeitsweise ist klar: Ich höre zu, prüfe sorgfältig, halte Fristen ein – und bleibe verschwiegen. Keine Floskeln, keine Standardpakete, sondern ehrliche Buchhaltung, die spürbar entlastet.</p>
+        <div class="about-features">
+          <div class="f"><i data-lucide="check" aria-hidden="true"></i><span data-i18n="about_f1">Steuerfachwirtin (IHK)</span></div>
+          <div class="f"><i data-lucide="check" aria-hidden="true"></i><span data-i18n="about_f2">DATEV-zertifiziert</span></div>
+          <div class="f"><i data-lucide="check" aria-hidden="true"></i><span data-i18n="about_f3">SOKA-BAU erfahren</span></div>
+          <div class="f"><i data-lucide="check" aria-hidden="true"></i><span data-i18n="about_f4">DE · EN · PL · HR</span></div>
         </div>
       </div>
     </div>
   </div>
-</aside>
+</section>
 
 <!-- ============ SERVICES ============ -->
 <section class="services" id="leistungen" aria-labelledby="svc-heading">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow dark" data-i18n="svc_eyebrow">Leistungen</span>
+      <span class="eyebrow-c" data-i18n="svc_eyebrow">Leistungen</span>
       <h2 id="svc-heading">
         <span data-i18n="svc_h2_a">Alles, was Ihre Zahlen brauchen.</span>
-        <span class="italic gold" style="display:block;" data-i18n="svc_h2_b">Aus einer Hand.</span>
+        <span class="italic" data-i18n="svc_h2_b">Aus einer Hand.</span>
       </h2>
       <p data-i18n="svc_intro">Sechs Kernleistungen für kleine und mittelständische Unternehmen, Handwerksbetriebe und Selbstständige in München und Umgebung.</p>
     </div>
     <div class="svc-grid">
       <article class="svc">
-        <div class="ico"><i data-lucide="calculator" aria-hidden="true"></i></div>
+        <div class="ico-line"><i data-lucide="calculator" aria-hidden="true"></i></div>
         <h3 data-i18n="svc1_t">Finanzbuchhaltung</h3>
         <p data-i18n="svc1_s">Laufende Buchführung nach DATEV-Standard. Belege erfassen, Konten abstimmen, Auswertungen liefern.</p>
         <ul>
@@ -1402,7 +1238,7 @@ footer.site{
         </ul>
       </article>
       <article class="svc">
-        <div class="ico"><i data-lucide="users" aria-hidden="true"></i></div>
+        <div class="ico-line"><i data-lucide="users" aria-hidden="true"></i></div>
         <h3 data-i18n="svc2_t">Lohnbuchhaltung</h3>
         <p data-i18n="svc2_s">Monatliche Lohn- und Gehaltsabrechnungen inklusive aller Meldungen an Krankenkassen und Finanzamt.</p>
         <ul>
@@ -1412,7 +1248,7 @@ footer.site{
         </ul>
       </article>
       <article class="svc">
-        <div class="ico"><i data-lucide="hard-hat" aria-hidden="true"></i></div>
+        <div class="ico-line"><i data-lucide="hard-hat" aria-hidden="true"></i></div>
         <h3 data-i18n="svc3_t">Baulöhne</h3>
         <p data-i18n="svc3_s">Spezialisiert auf Bau- und Handwerksbranche: SOKA-BAU, ULAK, Winterbau-Umlage – alles korrekt abgerechnet.</p>
         <ul>
@@ -1422,7 +1258,7 @@ footer.site{
         </ul>
       </article>
       <article class="svc">
-        <div class="ico"><i data-lucide="file-text" aria-hidden="true"></i></div>
+        <div class="ico-line"><i data-lucide="file-text" aria-hidden="true"></i></div>
         <h3 data-i18n="svc4_t">Vorbereitende Buchhaltung</h3>
         <p data-i18n="svc4_s">Saubere Vorbereitung für Ihren Steuerberater – damit der Jahresabschluss schnell und ohne Rückfragen läuft.</p>
         <ul>
@@ -1432,7 +1268,7 @@ footer.site{
         </ul>
       </article>
       <article class="svc">
-        <div class="ico"><i data-lucide="briefcase" aria-hidden="true"></i></div>
+        <div class="ico-line"><i data-lucide="briefcase" aria-hidden="true"></i></div>
         <h3 data-i18n="svc5_t">Büroservice</h3>
         <p data-i18n="svc5_s">Ablage, Schriftverkehr, Mahnwesen – alle administrativen Aufgaben, die Ihnen den Rücken freihalten.</p>
         <ul>
@@ -1442,7 +1278,7 @@ footer.site{
         </ul>
       </article>
       <article class="svc">
-        <div class="ico"><i data-lucide="message-circle" aria-hidden="true"></i></div>
+        <div class="ico-line"><i data-lucide="message-circle" aria-hidden="true"></i></div>
         <h3 data-i18n="svc6_t">Beratung</h3>
         <p data-i18n="svc6_s">Persönliches Gespräch zu Ihren Zahlen. Verständlich erklärt – ohne Fachchinesisch.</p>
         <ul>
@@ -1455,31 +1291,13 @@ footer.site{
   </div>
 </section>
 
-<!-- ============ ABOUT ============ -->
-<section class="about" id="ueber" aria-labelledby="about-heading">
-  <div class="wrap">
-    <div class="about-grid">
-      <figure class="about-photo">
-        <div class="frame-acc" aria-hidden="true"></div>
-        <img src="assets/img/Frau-Schröer.png" alt="Violetta Schröer, geprüfte Steuerfachwirtin" width="380" height="475" loading="lazy" decoding="async"/>
-      </figure>
-      <div class="about-text">
-        <span class="eyebrow dark" data-i18n="about_eyebrow">Über mich</span>
-        <h2 id="about-heading">
-          <span data-i18n="about_h2_a">Zwei Jahrzehnte</span>
-          <span class="italic gold" style="display:block;" data-i18n="about_h2_b">in Zahlen zuhause.</span>
-        </h2>
-        <blockquote class="quote" data-i18n="about_quote">„Buchhaltung ist Vertrauenssache. Ich mache sie zu Ihrer Ruheinsel im Geschäftsalltag."</blockquote>
-        <p data-i18n="about_p1">Seit 2003 bin ich geprüfte Steuerfachwirtin (IHK) und unterstütze Unternehmer:innen, Handwerksbetriebe und Selbstständige rund um München bei allen Fragen der laufenden Buchhaltung und Lohnabrechnung.</p>
-        <p data-i18n="about_p2">Was mich auszeichnet: Ich denke mit, ich bleibe diskret, und ich erkläre Ihnen Ihre Zahlen so, dass Sie sie auch verstehen. Vier Sprachen helfen mir dabei, mit Ihnen oder Ihren Mitarbeitenden so zu sprechen, dass nichts auf der Strecke bleibt.</p>
-        <div class="about-features">
-          <div class="f"><i data-lucide="check" aria-hidden="true"></i><span data-i18n="about_f1">Steuerfachwirtin (IHK)</span></div>
-          <div class="f"><i data-lucide="check" aria-hidden="true"></i><span data-i18n="about_f2">DATEV-zertifiziert</span></div>
-          <div class="f"><i data-lucide="check" aria-hidden="true"></i><span data-i18n="about_f3">SOKA-BAU erfahren</span></div>
-          <div class="f"><i data-lucide="check" aria-hidden="true"></i><span data-i18n="about_f4">DE · EN · PL · HR</span></div>
-        </div>
-      </div>
-    </div>
+<!-- ============ QUOTE BAND ============ -->
+<section class="quote-band" aria-label="Zitat">
+  <div class="bg" style="background-image:url('assets/img/hero/slide5-buero.jpg');" aria-hidden="true"></div>
+  <div class="quote-inner">
+    <div class="mark" aria-hidden="true">&ldquo;</div>
+    <blockquote data-i18n="quote_text">Buchhaltung ist Vertrauenssache. Ich mache sie zu Ihrer Ruheinsel im Geschäftsalltag.</blockquote>
+    <cite data-i18n="quote_author">Violetta Schröer · Steuerfachwirtin (IHK)</cite>
   </div>
 </section>
 
@@ -1487,13 +1305,13 @@ footer.site{
 <section class="process" id="ablauf" aria-labelledby="proc-heading">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow dark" data-i18n="proc_eyebrow">Ablauf</span>
+      <span class="eyebrow-c" data-i18n="proc_eyebrow">Ablauf</span>
       <h2 id="proc-heading">
         <span data-i18n="proc_h2_a">Vier Schritte</span>
-        <span class="italic gold" style="display:block;" data-i18n="proc_h2_b">zur sauberen Buchhaltung.</span>
+        <span class="italic" data-i18n="proc_h2_b">zur sauberen Buchhaltung.</span>
       </h2>
     </div>
-    <ol class="process-grid" style="list-style:none;padding:0;margin:0;">
+    <ol class="process-grid" style="list-style:none;padding:0;margin:60px 0 0;">
       <li class="step">
         <div class="num" aria-hidden="true">I</div>
         <h3 data-i18n="step1_t">Kennenlernen</h3>
@@ -1518,14 +1336,14 @@ footer.site{
   </div>
 </section>
 
-<!-- ============ FAQ (wichtig für GEO/AI-Suche) ============ -->
+<!-- ============ FAQ (für GEO/AI-Suche) ============ -->
 <section class="faq" id="faq" aria-labelledby="faq-heading">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow dark" data-i18n="faq_eyebrow">Häufige Fragen</span>
+      <span class="eyebrow-c" data-i18n="faq_eyebrow">Häufige Fragen</span>
       <h2 id="faq-heading">
         <span data-i18n="faq_h2_a">Klare Antworten</span>
-        <span class="italic gold" style="display:block;" data-i18n="faq_h2_b">auf typische Fragen.</span>
+        <span class="italic" data-i18n="faq_h2_b">auf typische Fragen.</span>
       </h2>
     </div>
     <div class="faq-list">
@@ -1543,7 +1361,7 @@ footer.site{
       </details>
       <details>
         <summary data-i18n="faq4_q">Welche Region wird betreut?</summary>
-        <div class="answer" data-i18n="faq4_a">Standort ist Bretonischer Ring 18, 85630 Grasbrunn bei München. Betreut werden Unternehmen in Grasbrunn, München, Haar, Vaterstetten, Putzbrunn und im gesamten Landkreis München. Termine vor Ort oder digital möglich.</div>
+        <div class="answer" data-i18n="faq4_a">Standort ist Bretonischer Ring 18, 85630 Grasbrunn bei München. Betreut werden Unternehmen in Grasbrunn, München, Haar, Vaterstetten, Putzbrunn, Ottobrunn und im gesamten Landkreis München. Termine vor Ort oder digital möglich.</div>
       </details>
       <details>
         <summary data-i18n="faq5_q">In welchen Sprachen können wir kommunizieren?</summary>
@@ -1566,10 +1384,10 @@ footer.site{
   <div class="wrap">
     <div class="contact-grid">
       <div>
-        <span class="eyebrow" data-i18n="contact_eyebrow">Kontakt</span>
+        <span class="eyebrow-c" data-i18n="contact_eyebrow">Kontakt</span>
         <h2 id="contact-heading">
-          <span data-i18n="contact_h2_a">Lassen Sie uns</span>
-          <span class="italic" style="display:block;color:var(--gold-lt);" data-i18n="contact_h2_b">in Ruhe reden.</span>
+          <span data-i18n="contact_h2_a">Jetzt kontaktieren.</span>
+          <span class="italic" data-i18n="contact_h2_b">In Ruhe sprechen.</span>
         </h2>
         <p class="lead" data-i18n="contact_intro">Ein Anruf oder eine kurze Mail genügen. Ich melde mich innerhalb eines Werktags zurück und wir vereinbaren ein unverbindliches Erstgespräch.</p>
 
@@ -1588,13 +1406,14 @@ footer.site{
               <div class="val">info@violetta-schroeer.de</div>
             </div>
           </a>
-          <div class="contact-row" style="cursor:default;">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Bretonischer+Ring+18,+85630+Grasbrunn" target="_blank" rel="noopener" onclick="return openRoute(event)" class="contact-row">
             <div class="ico"><i data-lucide="map-pin" aria-hidden="true"></i></div>
             <div>
               <div class="lbl" data-i18n="contact_addr_lbl">Adresse</div>
               <div class="val">Bretonischer Ring 18<br/>85630 Grasbrunn</div>
+              <div class="map-link-hint" data-i18n="map_link_hint">Route berechnen →</div>
             </div>
-          </div>
+          </a>
           <div class="contact-row" style="cursor:default;">
             <div class="ico"><i data-lucide="clock" aria-hidden="true"></i></div>
             <div>
@@ -1605,24 +1424,29 @@ footer.site{
         </div>
 
         <div class="contact-cta">
-          <a href="mailto:info@violetta-schroeer.de?subject=Anfrage%20Erstgespr%C3%A4ch" class="btn btn-gold">
+          <a href="mailto:info@violetta-schroeer.de?subject=Anfrage%20Erstgespr%C3%A4ch" class="btn btn-primary">
             <i data-lucide="send" aria-hidden="true"></i>
             <span data-i18n="contact_cta_primary">Anfrage senden</span>
           </a>
-          <a href="tel:+498966682201" class="btn btn-outline-light">
+          <a href="tel:+498966682201" class="btn btn-outline">
             <i data-lucide="phone" aria-hidden="true"></i>
             <span data-i18n="contact_cta_secondary">Direkt anrufen</span>
           </a>
         </div>
       </div>
 
-      <div class="map-wrap" aria-label="Standort auf Karte">
-        <!-- Echter Maps-Embed wird vor Go-Live eingesetzt (siehe DEPLOY.md Schritt 6) -->
-        <div class="map-placeholder" aria-hidden="true">
-          <i data-lucide="map-pinned"></i>
-          <div class="t" data-i18n="map_t">Bretonischer Ring 18, Grasbrunn</div>
-          <div class="s" data-i18n="map_s">Karte wird vor Go-Live eingebunden</div>
-        </div>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.openstreetmap.org/export/embed.html?bbox=11.7233%2C48.0783%2C11.7433%2C48.0883&amp;layer=mapnik&amp;marker=48.0833%2C11.7333"
+          width="100%" height="100%"
+          style="border:0;"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Standort Violetta Schröer auf OpenStreetMap"></iframe>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=Bretonischer+Ring+18,+85630+Grasbrunn" target="_blank" rel="noopener" onclick="return openRoute(event)" class="map-overlay-cta">
+          <i data-lucide="navigation" aria-hidden="true"></i>
+          <span data-i18n="map_link_hint">Route berechnen →</span>
+        </a>
       </div>
     </div>
   </div>
@@ -1636,7 +1460,8 @@ footer.site{
     <div class="foot-grid">
       <div class="foot-brand">
         <div class="name">Violetta Schröer</div>
-        <p data-i18n="foot_about">Office Dienstleistungen · Steuerfachwirtin (IHK) in Grasbrunn bei München. Buchhaltung, Lohn, Baulöhne &amp; Büroservice.</p>
+        <div class="tag" data-i18n="logo_tagline">Office Dienstleistungen</div>
+        <p data-i18n="foot_about">Steuerfachwirtin (IHK) in Grasbrunn bei München. Buchhaltung, Lohn, Baulöhne &amp; Büroservice – persönlich und diskret.</p>
       </div>
       <div class="foot-col">
         <h4 data-i18n="foot_nav">Navigation</h4>
@@ -1651,7 +1476,7 @@ footer.site{
       <div class="foot-col">
         <h4 data-i18n="foot_contact">Kontakt</h4>
         <ul>
-          <li><a href="tel:+498966682201">+49 (0) 89 666 822 01</a></li>
+          <li><a href="tel:+498966682201">+49 (0)89 666 822 01</a></li>
           <li><a href="mailto:info@violetta-schroeer.de">info@violetta-schroeer.de</a></li>
           <li>Bretonischer Ring 18</li>
           <li>85630 Grasbrunn</li>
@@ -1676,41 +1501,58 @@ footer.site{
   </div>
 </footer>
 
-<!-- Lucide Icons (defer for non-blocking load) -->
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
 <script>
-/* ============================================================================
+/* ============================================================
    i18n – DE / EN / PL / HR
-   ============================================================================ */
+   ============================================================ */
 const translations = {
   de: {
-    skip_link:    "Zum Hauptinhalt springen",
-    topbar_hours: "Mo–Fr 09:00–17:00",
-    logo_tagline: "Office Dienstleistungen",
-    nav_services: "Leistungen",
-    nav_about:    "Über mich",
-    nav_process:  "Ablauf",
-    nav_faq:      "FAQ",
-    nav_contact:  "Kontakt",
-    nav_cta:      "Termin anfragen",
-    hero_eyebrow: "Steuerfachwirtin · Grasbrunn b. München",
-    hero_h1_a:    "Ihre Buchhaltung.",
-    hero_h1_b:    "Professionell. Persönlich.",
-    hero_sub:     "Über 20 Jahre Erfahrung als Steuerfachwirtin. Ich kümmere mich diskret und sorgfältig um Ihre Finanzbuchhaltung, Lohnabrechnung und Baulöhne – damit Sie sich auf Ihr Geschäft konzentrieren können.",
-    hero_cta_primary:   "Termin vereinbaren",
-    hero_cta_secondary: "Leistungen entdecken",
-    cred_years:   "Jahre Erfahrung",
-    cred_langs:   "Sprachen",
-    cred_dsgvo:   "DSGVO-konform",
-    hero_badge_title: "Geprüfte Steuerfachwirtin",
-    hero_badge_sub:   "IHK · Seit 2003",
-    usp1_t:"Persönlich",  usp1_s:"Eine Ansprechpartnerin – kein Callcenter.",
-    usp2_t:"Diskret",     usp2_s:"Verschwiegenheit ist selbstverständlich.",
-    usp3_t:"Pünktlich",   usp3_s:"Fristen halten wir – jedes Mal.",
-    usp4_t:"Mehrsprachig",usp4_s:"DE · EN · PL · HR",
+    skip_link:"Zum Hauptinhalt springen",
+    topbar_hours:"Mo–Fr 09:00–17:00",
+    logo_tagline:"Office Dienstleistungen",
+    nav_services:"Leistungen", nav_about:"Über mich",
+    nav_process:"Ablauf", nav_faq:"FAQ", nav_contact:"Kontakt", nav_cta:"Termin anfragen",
+    lang_label:"Sprache wählen",
+    hero1_h1_a:"Wir sprechen", hero1_h1_b:"Ihre Sprache.",
+    hero1_sub:"Buchhaltung in vier Sprachen – Deutsch, Englisch, Polnisch, Kroatisch. Persönlich, diskret und mit über 20 Jahren Erfahrung.",
+    hero1_lang_hint:"Sprache oben rechts wählen",
+    hero2_eyebrow:"Finanzbuchhaltung",
+    hero2_h1_a:"Saubere Bücher.", hero2_h1_b:"Klare Auswertungen.",
+    hero2_sub:"DATEV-Standard, monatliche BWA und USt-Voranmeldungen – pünktlich und nachvollziehbar.",
+    hero3_eyebrow:"Lohn & Baulöhne",
+    hero3_h1_a:"Lohnabrechnung,", hero3_h1_b:"die hält, was sie verspricht.",
+    hero3_sub:"Spezialisiert auf SOKA-BAU, Tariflöhne und alle SV-Meldungen – Monat für Monat verlässlich.",
+    hero4_eyebrow:"Persönlich & mehrsprachig",
+    hero4_h1_a:"Eine Ansprechpartnerin.", hero4_h1_b:"Vier Sprachen.",
+    hero4_sub:"DE · EN · PL · HR – Verständigung ohne Reibung. Direkt, greifbar, ohne Callcenter.",
+    hero5_eyebrow:"Grasbrunn b. München",
+    hero5_h1_a:"Vor Ort verankert.", hero5_h1_b:"Digital aufgestellt.",
+    hero5_sub:"Bretonischer Ring 18, Grasbrunn – persönlicher Termin oder digitale Belegübergabe, wie es Ihnen passt.",
+    hero_cta_services:"Leistungen entdecken", hero_cta_contact:"Termin vereinbaren",
+    hero_cta_about:"Mehr über mich",
+    cta_eyebrow:"Direkter Draht",
+    cta_h_a:"Lassen Sie uns", cta_h_b:"in Ruhe reden.",
+    cta_sub:"Erstgespräch unverbindlich – Antwort innerhalb eines Werktags.",
+    cta_phone_lbl:"Telefon", cta_phone_hint:"Mo–Fr 09:00–17:00",
+    cta_mail_lbl:"E-Mail",   cta_mail_hint:"Antwort binnen 1 Werktag",
+    trust1:"Steuerfachwirtin (IHK)", trust2:"DATEV-zertifiziert",
+    trust3:"SOKA-BAU erfahren", trust4:"DE · EN · PL · HR", trust5:"DSGVO-konform",
+    usp_eyebrow:"Was Sie erwartet",
+    usp_h2_a:"Mehr als nur Buchungen.", usp_h2_b:"Eine ruhige Hand.",
+    usp1_t:"Vielseitige Expertise",  usp1_s:"Fachwissen, das Ihre Buchhaltung wirklich weiterbringt.",
+    usp2_t:"Digitale Prozesse",      usp2_s:"DATEV-Standard. Belege digital. Auswertungen jederzeit.",
+    usp3_t:"Persönlicher Kontakt",   usp3_s:"Eine Ansprechpartnerin – direkt, greifbar, ohne Umwege.",
+    usp4_t:"Mehrsprachig",           usp4_s:"DE · EN · PL · HR – Verständigung ohne Reibung.",
+    about_eyebrow:"Über mich",
+    about_h2_a:"Über Violetta Schröer.", about_h2_b:"Zwei Jahrzehnte in Zahlen zuhause.",
+    about_p1:"Seit 2003 begleite ich Unternehmer:innen, Handwerksbetriebe und Selbstständige rund um München bei allen Fragen der laufenden Buchhaltung und Lohnabrechnung. Als geprüfte Steuerfachwirtin (IHK) verbinde ich präzises Fachwissen mit einem ruhigen, persönlichen Stil – auf Basis aktueller Gesetzeslage und digitaler Prozesse.",
+    about_p2:"Ich erfasse Belege sauber, stimme Konten ab, rechne Löhne pünktlich ab und erkläre Ihre Auswertungen so, dass Sie sie verstehen. Bauunternehmen unterstütze ich bei SOKA-BAU und Tariflohnfragen, Selbstständigen helfe ich, ihre Zahlen jederzeit im Griff zu haben.",
+    about_p3:"Meine Arbeitsweise ist klar: Ich höre zu, prüfe sorgfältig, halte Fristen ein – und bleibe verschwiegen. Keine Floskeln, keine Standardpakete, sondern ehrliche Buchhaltung, die spürbar entlastet.",
+    about_f1:"Steuerfachwirtin (IHK)", about_f2:"DATEV-zertifiziert",
+    about_f3:"SOKA-BAU erfahren", about_f4:"DE · EN · PL · HR",
     svc_eyebrow:"Leistungen",
-    svc_h2_a:"Alles, was Ihre Zahlen brauchen.",
-    svc_h2_b:"Aus einer Hand.",
+    svc_h2_a:"Alles, was Ihre Zahlen brauchen.", svc_h2_b:"Aus einer Hand.",
     svc_intro:"Sechs Kernleistungen für kleine und mittelständische Unternehmen, Handwerksbetriebe und Selbstständige in München und Umgebung.",
     svc1_t:"Finanzbuchhaltung", svc1_s:"Laufende Buchführung nach DATEV-Standard. Belege erfassen, Konten abstimmen, Auswertungen liefern.",
     svc1_l1:"Belegerfassung & Kontierung", svc1_l2:"USt-Voranmeldung", svc1_l3:"BWA & Summen-Salden",
@@ -1724,24 +1566,16 @@ const translations = {
     svc5_l1:"Mahnwesen & Zahlungsverkehr", svc5_l2:"Ablage & Korrespondenz", svc5_l3:"Reisekosten-Abrechnung",
     svc6_t:"Beratung",          svc6_s:"Persönliches Gespräch zu Ihren Zahlen. Verständlich erklärt – ohne Fachchinesisch.",
     svc6_l1:"Auswertungen besprechen", svc6_l2:"Prozesse optimieren", svc6_l3:"Mehrsprachig DE/EN/PL/HR",
-    about_eyebrow:"Über mich",
-    about_h2_a:"Zwei Jahrzehnte",
-    about_h2_b:"in Zahlen zuhause.",
-    about_quote:"„Buchhaltung ist Vertrauenssache. Ich mache sie zu Ihrer Ruheinsel im Geschäftsalltag.\"",
-    about_p1:"Seit 2003 bin ich geprüfte Steuerfachwirtin (IHK) und unterstütze Unternehmer:innen, Handwerksbetriebe und Selbstständige rund um München bei allen Fragen der laufenden Buchhaltung und Lohnabrechnung.",
-    about_p2:"Was mich auszeichnet: Ich denke mit, ich bleibe diskret, und ich erkläre Ihnen Ihre Zahlen so, dass Sie sie auch verstehen. Vier Sprachen helfen mir dabei, mit Ihnen oder Ihren Mitarbeitenden so zu sprechen, dass nichts auf der Strecke bleibt.",
-    about_f1:"Steuerfachwirtin (IHK)", about_f2:"DATEV-zertifiziert",
-    about_f3:"SOKA-BAU erfahren",      about_f4:"DE · EN · PL · HR",
+    quote_text:"Buchhaltung ist Vertrauenssache. Ich mache sie zu Ihrer Ruheinsel im Geschäftsalltag.",
+    quote_author:"Violetta Schröer · Steuerfachwirtin (IHK)",
     proc_eyebrow:"Ablauf",
-    proc_h2_a:"Vier Schritte",
-    proc_h2_b:"zur sauberen Buchhaltung.",
+    proc_h2_a:"Vier Schritte", proc_h2_b:"zur sauberen Buchhaltung.",
     step1_t:"Kennenlernen", step1_s:"Unverbindliches Gespräch – telefonisch oder vor Ort in Grasbrunn.",
     step2_t:"Angebot",      step2_s:"Transparente Pauschale auf Ihren Bedarf zugeschnitten – keine Überraschungen.",
     step3_t:"Übergabe",     step3_s:"Sichere Belegübergabe – digital oder klassisch im Ordner.",
     step4_t:"Laufende Betreuung", step4_s:"Monatliche Auswertungen, jederzeit erreichbar bei Fragen.",
     faq_eyebrow:"Häufige Fragen",
-    faq_h2_a:"Klare Antworten",
-    faq_h2_b:"auf typische Fragen.",
+    faq_h2_a:"Klare Antworten", faq_h2_b:"auf typische Fragen.",
     faq1_q:"Was unterscheidet eine Steuerfachwirtin von einem Steuerberater?",
     faq1_a:"Eine Steuerfachwirtin (IHK) ist eine geprüfte Fachkraft für Buchhaltung, Lohnabrechnung und vorbereitende Steuerarbeiten. Sie darf laufende Buchhaltung, Lohnbuchhaltung und Vorbereitungsarbeiten für den Steuerberater eigenständig durchführen. Die abschließende Steuerberatung und Erstellung des Jahresabschlusses bleibt zugelassenen Steuerberatern vorbehalten.",
     faq2_q:"Welche Leistungen bieten Sie konkret an?",
@@ -1749,7 +1583,7 @@ const translations = {
     faq3_q:"Für welche Branchen sind Sie besonders spezialisiert?",
     faq3_a:"Schwerpunkt sind kleine und mittelständische Unternehmen, Handwerksbetriebe und Selbstständige in München und Umgebung. Besondere Erfahrung in der Bau- und Handwerksbranche mit SOKA-BAU, ULAK und tariflichen Lohnabrechnungen.",
     faq4_q:"Welche Region wird betreut?",
-    faq4_a:"Standort ist Bretonischer Ring 18, 85630 Grasbrunn bei München. Betreut werden Unternehmen in Grasbrunn, München, Haar, Vaterstetten, Putzbrunn und im gesamten Landkreis München. Termine vor Ort oder digital möglich.",
+    faq4_a:"Standort ist Bretonischer Ring 18, 85630 Grasbrunn bei München. Betreut werden Unternehmen in Grasbrunn, München, Haar, Vaterstetten, Putzbrunn, Ottobrunn und im gesamten Landkreis München. Termine vor Ort oder digital möglich.",
     faq5_q:"In welchen Sprachen können wir kommunizieren?",
     faq5_a:"Beratung und Korrespondenz sind möglich in Deutsch, Englisch, Polnisch und Kroatisch. Damit können auch Mitarbeitende und Geschäftspartner in ihrer Muttersprache betreut werden.",
     faq6_q:"Wie läuft die Zusammenarbeit ab?",
@@ -1757,72 +1591,86 @@ const translations = {
     faq7_q:"Wie kann ich einen Termin vereinbaren?",
     faq7_a:"Per Telefon unter +49 (0) 89 666 822 01 oder per E-Mail an info@violetta-schroeer.de. Rückmeldung erfolgt innerhalb eines Werktags. Sprechzeiten: Montag bis Freitag 09:00–17:00 Uhr.",
     contact_eyebrow:"Kontakt",
-    contact_h2_a:"Lassen Sie uns",
-    contact_h2_b:"in Ruhe reden.",
+    contact_h2_a:"Jetzt kontaktieren.", contact_h2_b:"In Ruhe sprechen.",
     contact_intro:"Ein Anruf oder eine kurze Mail genügen. Ich melde mich innerhalb eines Werktags zurück und wir vereinbaren ein unverbindliches Erstgespräch.",
     contact_phone_lbl:"Telefon", contact_mail_lbl:"E-Mail",
     contact_addr_lbl:"Adresse",  contact_hours_lbl:"Sprechzeiten",
     contact_hours_val:"Mo–Fr 09:00–17:00 · Termine nach Vereinbarung",
     contact_cta_primary:"Anfrage senden", contact_cta_secondary:"Direkt anrufen",
-    map_t:"Bretonischer Ring 18, Grasbrunn",
-    map_s:"Karte wird vor Go-Live eingebunden",
-    foot_about:"Office Dienstleistungen · Steuerfachwirtin (IHK) in Grasbrunn bei München. Buchhaltung, Lohn, Baulöhne & Büroservice.",
+    map_link_hint:"Route berechnen →",
+    foot_about:"Steuerfachwirtin (IHK) in Grasbrunn bei München. Buchhaltung, Lohn, Baulöhne & Büroservice – persönlich und diskret.",
     foot_nav:"Navigation", foot_contact:"Kontakt", foot_legal:"Rechtliches",
     foot_imprint:"Impressum", foot_privacy:"Datenschutz"
   },
   en: {
-    skip_link:    "Skip to main content",
-    topbar_hours: "Mon–Fri 9:00 am–5:00 pm",
-    logo_tagline: "Office Services",
-    nav_services: "Services", nav_about:"About", nav_process:"Process",
-    nav_faq:      "FAQ",
-    nav_contact:  "Contact",  nav_cta:"Book an appointment",
-    hero_eyebrow: "Tax specialist · Grasbrunn nr. Munich",
-    hero_h1_a:    "Your bookkeeping.",
-    hero_h1_b:    "Professional. Personal.",
-    hero_sub:     "Over 20 years of experience as a certified tax specialist. I take care of your financial accounting, payroll and construction wages with discretion and precision – so you can focus on your business.",
-    hero_cta_primary:   "Schedule appointment",
-    hero_cta_secondary: "Explore services",
-    cred_years:   "Years of experience", cred_langs:"Languages", cred_dsgvo:"GDPR compliant",
-    hero_badge_title:"Certified Tax Specialist", hero_badge_sub:"IHK · Since 2003",
-    usp1_t:"Personal",     usp1_s:"One contact person – never a call centre.",
-    usp2_t:"Discreet",     usp2_s:"Confidentiality is a given.",
-    usp3_t:"On time",      usp3_s:"We meet every deadline – every time.",
-    usp4_t:"Multilingual", usp4_s:"DE · EN · PL · HR",
+    skip_link:"Skip to main content",
+    topbar_hours:"Mon–Fri 9:00 am–5:00 pm",
+    logo_tagline:"Office Services",
+    nav_services:"Services", nav_about:"About", nav_process:"Process",
+    nav_faq:"FAQ", nav_contact:"Contact", nav_cta:"Book an appointment",
+    lang_label:"Choose language",
+    hero1_h1_a:"We speak", hero1_h1_b:"your language.",
+    hero1_sub:"Bookkeeping in four languages – German, English, Polish, Croatian. Personal, discreet and with over 20 years of experience.",
+    hero1_lang_hint:"Choose your language top right",
+    hero2_eyebrow:"Financial accounting",
+    hero2_h1_a:"Clean books.", hero2_h1_b:"Clear reports.",
+    hero2_sub:"DATEV standard, monthly BWA and VAT advance returns – on time and traceable.",
+    hero3_eyebrow:"Payroll & construction wages",
+    hero3_h1_a:"Payroll", hero3_h1_b:"that delivers what it promises.",
+    hero3_sub:"Specialised in SOKA-BAU, wage scales and all social security filings – month after month.",
+    hero4_eyebrow:"Personal & multilingual",
+    hero4_h1_a:"One contact person.", hero4_h1_b:"Four languages.",
+    hero4_sub:"DE · EN · PL · HR – communication without friction. Direct, reachable, no call centre.",
+    hero5_eyebrow:"Grasbrunn near Munich",
+    hero5_h1_a:"Locally rooted.", hero5_h1_b:"Digitally set up.",
+    hero5_sub:"Bretonischer Ring 18, Grasbrunn – meet in person or hand over receipts digitally, as you prefer.",
+    hero_cta_services:"Explore services", hero_cta_contact:"Schedule appointment",
+    hero_cta_about:"More about me",
+    cta_eyebrow:"Direct line",
+    cta_h_a:"Let's have a", cta_h_b:"calm conversation.",
+    cta_sub:"No-obligation first call – reply within one business day.",
+    cta_phone_lbl:"Phone", cta_phone_hint:"Mon–Fri 9 am–5 pm",
+    cta_mail_lbl:"E-mail", cta_mail_hint:"Reply within 1 business day",
+    trust1:"Tax Specialist (IHK)", trust2:"DATEV certified",
+    trust3:"SOKA-BAU experienced", trust4:"DE · EN · PL · HR", trust5:"GDPR compliant",
+    usp_eyebrow:"What to expect",
+    usp_h2_a:"More than just bookings.", usp_h2_b:"A steady hand.",
+    usp1_t:"Versatile expertise", usp1_s:"Knowledge that genuinely moves your accounting forward.",
+    usp2_t:"Digital processes",   usp2_s:"DATEV standard. Receipts digitised. Reports anytime.",
+    usp3_t:"Personal contact",    usp3_s:"One contact person – direct, reachable, no detours.",
+    usp4_t:"Multilingual",        usp4_s:"DE · EN · PL · HR – communication without friction.",
+    about_eyebrow:"About me",
+    about_h2_a:"About Violetta Schröer.", about_h2_b:"Two decades at home in numbers.",
+    about_p1:"Since 2003 I have supported entrepreneurs, trades and self-employed professionals in and around Munich with all questions of ongoing accounting and payroll. As a certified tax specialist (IHK) I combine precise expertise with a calm, personal style – always grounded in current law and digital processes.",
+    about_p2:"I record receipts cleanly, reconcile accounts, run payroll on time, and explain your reports so that you actually understand them. I support construction firms with SOKA-BAU and wage-scale questions, and help self-employed professionals stay on top of their numbers.",
+    about_p3:"My way of working is clear: I listen, I check carefully, I meet deadlines – and I stay discreet. No empty phrases, no standard packages, just honest bookkeeping that takes a real load off you.",
+    about_f1:"Tax Specialist (IHK)", about_f2:"DATEV certified",
+    about_f3:"SOKA-BAU experienced", about_f4:"DE · EN · PL · HR",
     svc_eyebrow:"Services",
-    svc_h2_a:"Everything your numbers need.",
-    svc_h2_b:"From one trusted source.",
+    svc_h2_a:"Everything your numbers need.", svc_h2_b:"From one trusted source.",
     svc_intro:"Six core services for small and medium businesses, trades, and self-employed professionals in Munich and the surrounding area.",
     svc1_t:"Financial accounting", svc1_s:"Ongoing bookkeeping to DATEV standards. Recording receipts, reconciling accounts, delivering reports.",
     svc1_l1:"Receipt entry & coding", svc1_l2:"VAT advance returns", svc1_l3:"BWA & trial balances",
-    svc2_t:"Payroll",              svc2_s:"Monthly payroll including all reports to health insurance funds and the tax office.",
+    svc2_t:"Payroll", svc2_s:"Monthly payroll including all reports to health insurance funds and the tax office.",
     svc2_l1:"Payslips & social security filings", svc2_l2:"Payroll tax filing", svc2_l3:"Certificates",
-    svc3_t:"Construction wages",   svc3_s:"Specialised in construction and trades: SOKA-BAU, ULAK, winter construction levy – billed correctly.",
+    svc3_t:"Construction wages", svc3_s:"Specialised in construction and trades: SOKA-BAU, ULAK, winter construction levy – billed correctly.",
     svc3_l1:"SOKA-BAU filings", svc3_l2:"Wage scales & bonuses", svc3_l3:"Construction social funds",
-    svc4_t:"Pre-accounting",       svc4_s:"Clean preparation for your tax advisor – so the annual statement runs fast and without queries.",
+    svc4_t:"Pre-accounting", svc4_s:"Clean preparation for your tax advisor – so the annual statement runs fast and without queries.",
     svc4_l1:"Sort & pre-code receipts", svc4_l2:"Reconcile accounts", svc4_l3:"Hand-over to advisor",
-    svc5_t:"Office services",      svc5_s:"Filing, correspondence, dunning – all admin tasks that keep your back free.",
+    svc5_t:"Office services", svc5_s:"Filing, correspondence, dunning – all admin tasks that keep your back free.",
     svc5_l1:"Dunning & payments", svc5_l2:"Filing & correspondence", svc5_l3:"Travel expenses",
-    svc6_t:"Consulting",           svc6_s:"A personal conversation about your numbers. Explained clearly – no jargon.",
+    svc6_t:"Consulting", svc6_s:"A personal conversation about your numbers. Explained clearly – no jargon.",
     svc6_l1:"Discuss reports", svc6_l2:"Optimise processes", svc6_l3:"Multilingual DE/EN/PL/HR",
-    about_eyebrow:"About me",
-    about_h2_a:"Two decades",
-    about_h2_b:"at home in numbers.",
-    about_quote:"\"Bookkeeping is a matter of trust. I make it your quiet island in the daily grind.\"",
-    about_p1:"Since 2003 I have been a certified tax specialist (IHK) and have supported entrepreneurs, trades and self-employed professionals in and around Munich with all questions of ongoing accounting and payroll.",
-    about_p2:"What sets me apart: I think along with you, I stay discreet, and I explain your numbers so that you actually understand them. Four languages help me speak with you or your team so nothing gets lost.",
-    about_f1:"Tax Specialist (IHK)", about_f2:"DATEV certified",
-    about_f3:"SOKA-BAU experienced", about_f4:"DE · EN · PL · HR",
+    quote_text:"Bookkeeping is a matter of trust. I make it your quiet island in the daily grind.",
+    quote_author:"Violetta Schröer · Tax Specialist (IHK)",
     proc_eyebrow:"Process",
-    proc_h2_a:"Four steps",
-    proc_h2_b:"to clean bookkeeping.",
+    proc_h2_a:"Four steps", proc_h2_b:"to clean bookkeeping.",
     step1_t:"Get acquainted", step1_s:"A no-obligation conversation – by phone or in Grasbrunn.",
     step2_t:"Proposal",       step2_s:"Transparent flat fee tailored to your needs – no surprises.",
     step3_t:"Hand-over",      step3_s:"Secure document hand-over – digital or in a classic folder.",
     step4_t:"Ongoing care",   step4_s:"Monthly reports, always reachable for questions.",
     faq_eyebrow:"FAQ",
-    faq_h2_a:"Clear answers",
-    faq_h2_b:"to common questions.",
+    faq_h2_a:"Clear answers", faq_h2_b:"to common questions.",
     faq1_q:"What is the difference between a tax specialist and a tax advisor?",
     faq1_a:"A certified tax specialist (Steuerfachwirtin IHK) is a qualified professional for bookkeeping, payroll and pre-accounting work. They handle ongoing accounting, payroll and preparatory work for the tax advisor. Final tax advice and the annual statement remain reserved for licensed tax advisors.",
     faq2_q:"What services do you offer in detail?",
@@ -1830,7 +1678,7 @@ const translations = {
     faq3_q:"Which industries do you specialise in?",
     faq3_a:"Focus on small and medium businesses, trades and self-employed professionals in Munich and surroundings. Particular experience in construction and trades with SOKA-BAU, ULAK and tariff wage accounting.",
     faq4_q:"Which region do you cover?",
-    faq4_a:"Location is Bretonischer Ring 18, 85630 Grasbrunn near Munich. Clients in Grasbrunn, Munich, Haar, Vaterstetten, Putzbrunn and the entire Munich district are served. On-site or digital appointments possible.",
+    faq4_a:"Location is Bretonischer Ring 18, 85630 Grasbrunn near Munich. Clients in Grasbrunn, Munich, Haar, Vaterstetten, Putzbrunn, Ottobrunn and the entire Munich district are served. On-site or digital appointments possible.",
     faq5_q:"Which languages can we communicate in?",
     faq5_a:"Consulting and correspondence are possible in German, English, Polish and Croatian – so employees and business partners can be served in their native language too.",
     faq6_q:"How does our cooperation work?",
@@ -1838,176 +1686,204 @@ const translations = {
     faq7_q:"How can I schedule an appointment?",
     faq7_a:"By phone at +49 (0) 89 666 822 01 or by email to info@violetta-schroeer.de. Reply within one business day. Office hours: Monday to Friday 9 am to 5 pm.",
     contact_eyebrow:"Contact",
-    contact_h2_a:"Let's have a",
-    contact_h2_b:"calm conversation.",
+    contact_h2_a:"Get in touch.", contact_h2_b:"Talk it through calmly.",
     contact_intro:"A call or a short e-mail is enough. I'll get back to you within one business day and we'll arrange a no-obligation first meeting.",
     contact_phone_lbl:"Phone", contact_mail_lbl:"E-mail",
     contact_addr_lbl:"Address", contact_hours_lbl:"Hours",
     contact_hours_val:"Mon–Fri 9 am–5 pm · By appointment",
     contact_cta_primary:"Send enquiry", contact_cta_secondary:"Call now",
-    map_t:"Bretonischer Ring 18, Grasbrunn",
-    map_s:"Map will be added before go-live",
-    foot_about:"Office Services · Certified Tax Specialist (IHK) in Grasbrunn near Munich. Accounting, payroll, construction wages & office services.",
+    map_link_hint:"Get directions →",
+    foot_about:"Certified Tax Specialist (IHK) in Grasbrunn near Munich. Accounting, payroll, construction wages & office services – personal and discreet.",
     foot_nav:"Navigation", foot_contact:"Contact", foot_legal:"Legal",
     foot_imprint:"Imprint", foot_privacy:"Privacy"
   },
   pl: {
-    skip_link:    "Przejdź do treści głównej",
-    topbar_hours: "Pn–Pt 09:00–17:00",
-    logo_tagline: "Usługi biurowe",
+    skip_link:"Przejdź do treści głównej",
+    topbar_hours:"Pn–Pt 09:00–17:00",
+    logo_tagline:"Usługi biurowe",
     nav_services:"Usługi", nav_about:"O mnie", nav_process:"Przebieg",
-    nav_faq:"FAQ",
-    nav_contact:"Kontakt", nav_cta:"Umów spotkanie",
-    hero_eyebrow:"Specjalistka podatkowa · Grasbrunn k. Monachium",
-    hero_h1_a:"Twoja księgowość.",
-    hero_h1_b:"Profesjonalnie. Osobiście.",
-    hero_sub:"Ponad 20 lat doświadczenia jako certyfikowana specjalistka podatkowa. Dyskretnie i starannie zajmuję się Twoją księgowością, płacami i wynagrodzeniami budowlanymi – abyś mógł skupić się na swojej firmie.",
-    hero_cta_primary:"Umów termin", hero_cta_secondary:"Zobacz usługi",
-    cred_years:"Lat doświadczenia", cred_langs:"Języki", cred_dsgvo:"Zgodność z RODO",
-    hero_badge_title:"Certyfikowana specjalistka podatkowa", hero_badge_sub:"IHK · Od 2003",
-    usp1_t:"Osobiście",  usp1_s:"Jedna osoba kontaktowa – żadnego call center.",
-    usp2_t:"Dyskretnie", usp2_s:"Poufność jest oczywistością.",
-    usp3_t:"Punktualnie",usp3_s:"Dotrzymujemy terminów – za każdym razem.",
-    usp4_t:"Wielojęzycznie", usp4_s:"DE · EN · PL · HR",
-    svc_eyebrow:"Usługi",
-    svc_h2_a:"Wszystko, czego potrzebują Twoje liczby.",
-    svc_h2_b:"Z jednej ręki.",
-    svc_intro:"Sześć kluczowych usług dla małych i średnich firm, zakładów rzemieślniczych i osób samozatrudnionych w Monachium i okolicy.",
-    svc1_t:"Księgowość finansowa", svc1_s:"Bieżąca księgowość zgodnie ze standardem DATEV. Ewidencja dokumentów, uzgadnianie kont, raporty.",
-    svc1_l1:"Ewidencja & dekretacja", svc1_l2:"Deklaracje VAT", svc1_l3:"BWA & zestawienia",
-    svc2_t:"Księgowość płacowa",   svc2_s:"Comiesięczne rozliczenia płac wraz ze wszystkimi zgłoszeniami do kas chorych i urzędu skarbowego.",
-    svc2_l1:"Listy płac & zgłoszenia ZUS", svc2_l2:"Podatek od wynagrodzeń", svc2_l3:"Zaświadczenia",
-    svc3_t:"Płace budowlane",      svc3_s:"Specjalizacja w branży budowlanej i rzemieślniczej: SOKA-BAU, ULAK, opłata zimowa – wszystko prawidłowo rozliczone.",
-    svc3_l1:"Zgłoszenia SOKA-BAU", svc3_l2:"Płace taryfowe & dodatki", svc3_l3:"Kasy socjalne pracowników budowlanych",
-    svc4_t:"Księgowość przygotowawcza", svc4_s:"Staranne przygotowanie dla Twojego doradcy podatkowego – aby roczne sprawozdanie przebiegało szybko i bez pytań.",
-    svc4_l1:"Sortowanie & wstępna dekretacja", svc4_l2:"Uzgadnianie kont", svc4_l3:"Przekazanie doradcy",
-    svc5_t:"Usługi biurowe",       svc5_s:"Archiwum, korespondencja, monity – wszystkie zadania administracyjne, które zdejmuję z Twoich barków.",
-    svc5_l1:"Monity & płatności", svc5_l2:"Archiwum & korespondencja", svc5_l3:"Rozliczenia podróży",
-    svc6_t:"Doradztwo",            svc6_s:"Osobista rozmowa o Twoich liczbach. Wyjaśniam zrozumiale – bez fachowego żargonu.",
-    svc6_l1:"Omówienie raportów", svc6_l2:"Optymalizacja procesów", svc6_l3:"Wielojęzycznie DE/EN/PL/HR",
+    nav_faq:"FAQ", nav_contact:"Kontakt", nav_cta:"Umów spotkanie",
+    lang_label:"Wybierz język",
+    hero1_h1_a:"Mówimy", hero1_h1_b:"Twoim językiem.",
+    hero1_sub:"Księgowość w czterech językach – niemiecki, angielski, polski, chorwacki. Osobiście, dyskretnie i z ponad 20-letnim doświadczeniem.",
+    hero1_lang_hint:"Wybierz język w prawym górnym rogu",
+    hero2_eyebrow:"Księgowość finansowa",
+    hero2_h1_a:"Czyste księgi.", hero2_h1_b:"Klarowne raporty.",
+    hero2_sub:"Standard DATEV, miesięczne BWA i deklaracje VAT – terminowo i przejrzyście.",
+    hero3_eyebrow:"Płace i płace budowlane",
+    hero3_h1_a:"Rozliczenia płac,", hero3_h1_b:"które dotrzymują obietnic.",
+    hero3_sub:"Specjalizacja: SOKA-BAU, płace taryfowe, wszystkie zgłoszenia ZUS – miesiąc po miesiącu.",
+    hero4_eyebrow:"Osobiście i wielojęzycznie",
+    hero4_h1_a:"Jedna osoba kontaktowa.", hero4_h1_b:"Cztery języki.",
+    hero4_sub:"DE · EN · PL · HR – komunikacja bez tarć. Bezpośrednio, bez call center.",
+    hero5_eyebrow:"Grasbrunn k. Monachium",
+    hero5_h1_a:"Zakorzenione lokalnie.", hero5_h1_b:"Cyfrowo zorganizowane.",
+    hero5_sub:"Bretonischer Ring 18, Grasbrunn – osobiste spotkanie lub cyfrowe przekazanie dokumentów.",
+    hero_cta_services:"Zobacz usługi", hero_cta_contact:"Umów termin",
+    hero_cta_about:"Więcej o mnie",
+    cta_eyebrow:"Bezpośredni kontakt",
+    cta_h_a:"Porozmawiajmy", cta_h_b:"w spokoju.",
+    cta_sub:"Niezobowiązująca rozmowa – odpowiedź w ciągu jednego dnia roboczego.",
+    cta_phone_lbl:"Telefon", cta_phone_hint:"Pn–Pt 09:00–17:00",
+    cta_mail_lbl:"E-mail",   cta_mail_hint:"Odpowiedź w ciągu 1 dnia roboczego",
+    trust1:"Specjalistka podatkowa (IHK)", trust2:"Certyfikat DATEV",
+    trust3:"Doświadczenie SOKA-BAU", trust4:"DE · EN · PL · HR", trust5:"Zgodność z RODO",
+    usp_eyebrow:"Czego się spodziewać",
+    usp_h2_a:"Coś więcej niż księgowanie.", usp_h2_b:"Spokojna ręka.",
+    usp1_t:"Wszechstronna wiedza",   usp1_s:"Fachowość, która naprawdę porządkuje Twoją księgowość.",
+    usp2_t:"Procesy cyfrowe",        usp2_s:"DATEV. Dokumenty cyfrowo. Raporty zawsze dostępne.",
+    usp3_t:"Osobisty kontakt",       usp3_s:"Jedna osoba kontaktowa – bezpośrednio i bez zaobilaznica.",
+    usp4_t:"Wielojęzycznie",         usp4_s:"DE · EN · PL · HR – komunikacja bez tarć.",
     about_eyebrow:"O mnie",
-    about_h2_a:"Dwie dekady",
-    about_h2_b:"w świecie liczb.",
-    about_quote:"„Księgowość to kwestia zaufania. Sprawiam, że staje się Twoją oazą spokoju w codziennym biznesie.\"",
-    about_p1:"Od 2003 roku jestem certyfikowaną specjalistką podatkową (IHK) i wspieram przedsiębiorców, zakłady rzemieślnicze i osoby samozatrudnione w Monachium i okolicy we wszystkich kwestiach bieżącej księgowości i płac.",
-    about_p2:"Co mnie wyróżnia: myślę razem z Tobą, zachowuję dyskrecję i wyjaśniam Twoje liczby tak, abyś je rozumiał. Cztery języki pomagają mi rozmawiać z Tobą lub Twoimi pracownikami tak, by nic się nie zgubiło.",
+    about_h2_a:"O Violetcie Schröer.", about_h2_b:"Dwie dekady w świecie liczb.",
+    about_p1:"Od 2003 roku wspieram przedsiębiorców, zakłady rzemieślnicze i osoby samozatrudnione w Monachium i okolicy we wszystkich kwestiach bieżącej księgowości i płac.",
+    about_p2:"Starannie ewidencjonuję dokumenty, uzgadniam konta, rozliczam płace na czas i wyjaśniam raporty tak, byś je rozumiał.",
+    about_p3:"Mój sposób pracy jest jasny: słucham, sprawdzam dokładnie, dotrzymuję terminów i zachowuję dyskrecję.",
     about_f1:"Specjalistka podatkowa (IHK)", about_f2:"Certyfikat DATEV",
-    about_f3:"Doświadczenie SOKA-BAU",       about_f4:"DE · EN · PL · HR",
+    about_f3:"Doświadczenie SOKA-BAU", about_f4:"DE · EN · PL · HR",
+    svc_eyebrow:"Usługi",
+    svc_h2_a:"Wszystko, czego potrzebują Twoje liczby.", svc_h2_b:"Z jednej ręki.",
+    svc_intro:"Sześć kluczowych usług dla małych i średnich firm, zakładów rzemieślniczych i osób samozatrudnionych.",
+    svc1_t:"Księgowość finansowa", svc1_s:"Bieżąca księgowość zgodnie z DATEV.",
+    svc1_l1:"Ewidencja & dekretacja", svc1_l2:"Deklaracje VAT", svc1_l3:"BWA & zestawienia",
+    svc2_t:"Księgowość płacowa", svc2_s:"Comiesięczne rozliczenia płac wraz ze wszystkimi zgłoszeniami.",
+    svc2_l1:"Listy płac & ZUS", svc2_l2:"Podatek od wynagrodzeń", svc2_l3:"Zaświadczenia",
+    svc3_t:"Płace budowlane", svc3_s:"Specjalizacja w budownictwie: SOKA-BAU, ULAK, opłata zimowa.",
+    svc3_l1:"Zgłoszenia SOKA-BAU", svc3_l2:"Płace taryfowe", svc3_l3:"Kasy socjalne",
+    svc4_t:"Księgowość przygotowawcza", svc4_s:"Staranne przygotowanie dla doradcy podatkowego.",
+    svc4_l1:"Sortowanie dokumentów", svc4_l2:"Uzgadnianie kont", svc4_l3:"Przekazanie doradcy",
+    svc5_t:"Usługi biurowe", svc5_s:"Archiwum, korespondencja, monity – wszystkie zadania administracyjne.",
+    svc5_l1:"Monity & płatności", svc5_l2:"Archiwum & korespondencja", svc5_l3:"Rozliczenia podróży",
+    svc6_t:"Doradztwo", svc6_s:"Osobista rozmowa o Twoich liczbach.",
+    svc6_l1:"Omówienie raportów", svc6_l2:"Optymalizacja procesów", svc6_l3:"Wielojęzycznie DE/EN/PL/HR",
+    quote_text:"Księgowość to kwestia zaufania. Sprawiam, że staje się Twoją oazą spokoju.",
+    quote_author:"Violetta Schröer · Specjalistka podatkowa (IHK)",
     proc_eyebrow:"Przebieg",
-    proc_h2_a:"Cztery kroki",
-    proc_h2_b:"do uporządkowanej księgowości.",
-    step1_t:"Poznanie",     step1_s:"Niezobowiązująca rozmowa – telefonicznie lub na miejscu w Grasbrunn.",
-    step2_t:"Oferta",       step2_s:"Przejrzysty ryczałt dopasowany do Twoich potrzeb – bez niespodzianek.",
-    step3_t:"Przekazanie",  step3_s:"Bezpieczne przekazanie dokumentów – cyfrowo lub klasycznie w segregatorze.",
-    step4_t:"Stała opieka", step4_s:"Comiesięczne raporty, zawsze dostępna do Twoich pytań.",
+    proc_h2_a:"Cztery kroki", proc_h2_b:"do uporządkowanej księgowości.",
+    step1_t:"Poznanie", step1_s:"Niezobowiązująca rozmowa – telefonicznie lub w Grasbrunn.",
+    step2_t:"Oferta", step2_s:"Przejrzysty ryczałt dopasowany do potrzeb – bez niespodzianek.",
+    step3_t:"Przekazanie", step3_s:"Bezpieczne przekazanie dokumentów – cyfrowo lub klasycznie.",
+    step4_t:"Stała opieka", step4_s:"Comiesięczne raporty, zawsze dostępna do pytań.",
     faq_eyebrow:"FAQ",
-    faq_h2_a:"Jasne odpowiedzi",
-    faq_h2_b:"na typowe pytania.",
+    faq_h2_a:"Jasne odpowiedzi", faq_h2_b:"na typowe pytania.",
     faq1_q:"Jaka jest różnica między specjalistką podatkową a doradcą podatkowym?",
     faq1_a:"Certyfikowana specjalistka podatkowa (Steuerfachwirtin IHK) to wykwalifikowana fachowiec ds. księgowości, płac i czynności przygotowawczych. Może samodzielnie prowadzić bieżącą księgowość, płace i prace przygotowawcze dla doradcy podatkowego. Końcowe doradztwo podatkowe i sporządzanie rocznego sprawozdania pozostają zastrzeżone dla licencjonowanych doradców podatkowych.",
     faq2_q:"Jakie usługi oferujecie konkretnie?",
-    faq2_a:"Sześć kluczowych usług: księgowość finansowa (DATEV), księgowość płacowa ze wszystkimi zgłoszeniami SV, płace budowlane z SOKA-BAU, księgowość przygotowawcza dla doradcy podatkowego, ogólne usługi biurowe (monity, korespondencja, podróże) oraz osobiste doradztwo po niemiecku, angielsku, polsku i chorwacku.",
+    faq2_a:"Sześć kluczowych usług: księgowość finansowa (DATEV), księgowość płacowa ze wszystkimi zgłoszeniami SV, płace budowlane z SOKA-BAU, księgowość przygotowawcza, ogólne usługi biurowe oraz osobiste doradztwo po niemiecku, angielsku, polsku i chorwacku.",
     faq3_q:"W jakich branżach jesteście wyspecjalizowani?",
-    faq3_a:"Skupienie na małych i średnich firmach, zakładach rzemieślniczych i osobach samozatrudnionych w Monachium i okolicy. Szczególne doświadczenie w branży budowlanej i rzemieślniczej z SOKA-BAU, ULAK i taryfowymi rozliczeniami płac.",
+    faq3_a:"Skupienie na małych i średnich firmach, zakładach rzemieślniczych i osobach samozatrudnionych w Monachium i okolicy. Szczególne doświadczenie w branży budowlanej z SOKA-BAU, ULAK i taryfowymi rozliczeniami płac.",
     faq4_q:"Jaki region obsługujecie?",
-    faq4_a:"Siedziba: Bretonischer Ring 18, 85630 Grasbrunn k. Monachium. Obsługujemy firmy w Grasbrunn, Monachium, Haar, Vaterstetten, Putzbrunn i całym powiecie monachijskim. Spotkania na miejscu lub cyfrowo.",
+    faq4_a:"Siedziba: Bretonischer Ring 18, 85630 Grasbrunn k. Monachium. Obsługujemy firmy w całym powiecie monachijskim. Spotkania na miejscu lub cyfrowo.",
     faq5_q:"W jakich językach możemy się komunikować?",
-    faq5_a:"Doradztwo i korespondencja możliwe są po niemiecku, angielsku, polsku i chorwacku. Dzięki temu również pracownicy i partnerzy biznesowi mogą być obsługiwani w swoim języku ojczystym.",
+    faq5_a:"Doradztwo i korespondencja możliwe są po niemiecku, angielsku, polsku i chorwacku.",
     faq6_q:"Jak wygląda nasza współpraca?",
-    faq6_a:"W czterech krokach: 1. Niezobowiązująca rozmowa wstępna (telefon lub na miejscu), 2. Przejrzysta oferta ryczałtowa dopasowana do Twoich potrzeb, 3. Bezpieczne przekazanie dokumentów cyfrowo lub w segregatorze, 4. Stała opieka z comiesięcznymi raportami.",
+    faq6_a:"W czterech krokach: 1. Niezobowiązująca rozmowa wstępna, 2. Przejrzysta oferta ryczałtowa, 3. Bezpieczne przekazanie dokumentów, 4. Stała opieka z miesięcznymi raportami.",
     faq7_q:"Jak mogę umówić spotkanie?",
-    faq7_a:"Telefonicznie: +49 (0) 89 666 822 01 lub e-mailem: info@violetta-schroeer.de. Odpowiedź w ciągu jednego dnia roboczego. Godziny: poniedziałek–piątek 09:00–17:00.",
+    faq7_a:"Telefonicznie: +49 (0) 89 666 822 01 lub e-mailem: info@violetta-schroeer.de. Odpowiedź w ciągu jednego dnia roboczego.",
     contact_eyebrow:"Kontakt",
-    contact_h2_a:"Porozmawiajmy",
-    contact_h2_b:"w spokoju.",
-    contact_intro:"Wystarczy telefon lub krótki e-mail. Odezwę się w ciągu jednego dnia roboczego i umówimy niezobowiązujące pierwsze spotkanie.",
+    contact_h2_a:"Skontaktuj się.", contact_h2_b:"Porozmawiajmy w spokoju.",
+    contact_intro:"Wystarczy telefon lub krótki e-mail. Odezwę się w ciągu jednego dnia roboczego.",
     contact_phone_lbl:"Telefon", contact_mail_lbl:"E-mail",
-    contact_addr_lbl:"Adres",    contact_hours_lbl:"Godziny pracy",
+    contact_addr_lbl:"Adres", contact_hours_lbl:"Godziny pracy",
     contact_hours_val:"Pn–Pt 09:00–17:00 · Wizyty po umówieniu",
     contact_cta_primary:"Wyślij zapytanie", contact_cta_secondary:"Zadzwoń teraz",
-    map_t:"Bretonischer Ring 18, Grasbrunn",
-    map_s:"Mapa zostanie dodana przed publikacją",
-    foot_about:"Usługi biurowe · Certyfikowana specjalistka podatkowa (IHK) w Grasbrunn k. Monachium. Księgowość, płace, płace budowlane i usługi biurowe.",
+    map_link_hint:"Wyznacz trasę →",
+    foot_about:"Certyfikowana specjalistka podatkowa (IHK) w Grasbrunn k. Monachium.",
     foot_nav:"Nawigacja", foot_contact:"Kontakt", foot_legal:"Informacje prawne",
     foot_imprint:"Impressum", foot_privacy:"Polityka prywatności"
   },
   hr: {
-    skip_link:    "Preskoči na glavni sadržaj",
-    topbar_hours: "Pon–Pet 09:00–17:00",
-    logo_tagline: "Uredske usluge",
+    skip_link:"Preskoči na glavni sadržaj",
+    topbar_hours:"Pon–Pet 09:00–17:00",
+    logo_tagline:"Uredske usluge",
     nav_services:"Usluge", nav_about:"O meni", nav_process:"Tijek",
-    nav_faq:"FAQ",
-    nav_contact:"Kontakt", nav_cta:"Dogovori termin",
-    hero_eyebrow:"Porezna stručnjakinja · Grasbrunn kraj Münchena",
-    hero_h1_a:"Vaše knjigovodstvo.",
-    hero_h1_b:"Profesionalno. Osobno.",
-    hero_sub:"Više od 20 godina iskustva kao ovlaštena porezna stručnjakinja. Diskretno i pažljivo brinem se o vašem financijskom knjigovodstvu, plaćama i građevinskim plaćama – kako biste se vi mogli posvetiti svom poslu.",
-    hero_cta_primary:"Dogovori termin", hero_cta_secondary:"Otkrijte usluge",
-    cred_years:"Godina iskustva", cred_langs:"Jezika", cred_dsgvo:"Sukladno GDPR-u",
-    hero_badge_title:"Ovlaštena porezna stručnjakinja", hero_badge_sub:"IHK · Od 2003.",
-    usp1_t:"Osobno",       usp1_s:"Jedna kontakt osoba – bez pozivnih centara.",
-    usp2_t:"Diskretno",    usp2_s:"Povjerljivost je sama po sebi razumljiva.",
-    usp3_t:"Točno",        usp3_s:"Rokove poštujemo – svaki put.",
-    usp4_t:"Višejezično",  usp4_s:"DE · EN · PL · HR",
-    svc_eyebrow:"Usluge",
-    svc_h2_a:"Sve što vašim brojevima treba.",
-    svc_h2_b:"Iz jedne ruke.",
-    svc_intro:"Šest ključnih usluga za male i srednje tvrtke, obrte i samozaposlene u Münchenu i okolici.",
-    svc1_t:"Financijsko knjigovodstvo", svc1_s:"Tekuće knjigovodstvo prema DATEV standardu. Evidencija, usklađivanje računa, izvještaji.",
-    svc1_l1:"Evidencija & kontiranje", svc1_l2:"PDV prijave", svc1_l3:"BWA & bruto bilanca",
-    svc2_t:"Obračun plaća",          svc2_s:"Mjesečni obračuni plaća uključujući sve prijave zdravstvenom osiguranju i poreznoj upravi.",
-    svc2_l1:"Plaće & SV prijave", svc2_l2:"Porez na plaće", svc2_l3:"Potvrde",
-    svc3_t:"Građevinske plaće",      svc3_s:"Specijalizacija za građevinarstvo i obrt: SOKA-BAU, ULAK, zimska pristojba – sve točno obračunato.",
-    svc3_l1:"SOKA-BAU prijave", svc3_l2:"Tarifne plaće & dodaci", svc3_l3:"Socijalni fondovi građevinara",
-    svc4_t:"Pripremno knjigovodstvo", svc4_s:"Uredna priprema za vašeg poreznog savjetnika – godišnji obračun ide brzo i bez upita.",
-    svc4_l1:"Sortiranje & predkontiranje", svc4_l2:"Usklađivanje računa", svc4_l3:"Predaja savjetniku",
-    svc5_t:"Uredske usluge",         svc5_s:"Pohrana, korespondencija, opomene – svi administrativni zadaci koji vam štede vrijeme.",
-    svc5_l1:"Opomene & plaćanja", svc5_l2:"Pohrana & dopisivanje", svc5_l3:"Putni troškovi",
-    svc6_t:"Savjetovanje",           svc6_s:"Osobni razgovor o vašim brojevima. Razumljivo objašnjeno – bez stručnog žargona.",
-    svc6_l1:"Razmatranje izvještaja", svc6_l2:"Optimizacija procesa", svc6_l3:"Višejezično DE/EN/PL/HR",
+    nav_faq:"FAQ", nav_contact:"Kontakt", nav_cta:"Dogovori termin",
+    lang_label:"Odaberi jezik",
+    hero1_h1_a:"Govorimo", hero1_h1_b:"Vaš jezik.",
+    hero1_sub:"Knjigovodstvo na četiri jezika – njemački, engleski, poljski, hrvatski. Osobno, diskretno i s više od 20 godina iskustva.",
+    hero1_lang_hint:"Odaberite jezik gore desno",
+    hero2_eyebrow:"Financijsko knjigovodstvo",
+    hero2_h1_a:"Čiste knjige.", hero2_h1_b:"Jasni izvještaji.",
+    hero2_sub:"DATEV standard, mjesečni BWA i PDV prijave – na vrijeme i pregledno.",
+    hero3_eyebrow:"Plaće i građevinske plaće",
+    hero3_h1_a:"Obračun plaća", hero3_h1_b:"koji drži obećanja.",
+    hero3_sub:"Specijalizacija: SOKA-BAU, tarifne plaće i sve SV prijave – iz mjeseca u mjesec.",
+    hero4_eyebrow:"Osobno i višejezično",
+    hero4_h1_a:"Jedna kontakt osoba.", hero4_h1_b:"Četiri jezika.",
+    hero4_sub:"DE · EN · PL · HR – komunikacija bez trzavica. Izravno, bez pozivnih centara.",
+    hero5_eyebrow:"Grasbrunn kraj Münchena",
+    hero5_h1_a:"Lokalno ukorijenjeni.", hero5_h1_b:"Digitalno organizirani.",
+    hero5_sub:"Bretonischer Ring 18, Grasbrunn – osobni termin ili digitalna predaja dokumenata.",
+    hero_cta_services:"Otkrijte usluge", hero_cta_contact:"Dogovori termin",
+    hero_cta_about:"Više o meni",
+    cta_eyebrow:"Izravna linija",
+    cta_h_a:"Razgovarajmo", cta_h_b:"u miru.",
+    cta_sub:"Neobvezujući razgovor – odgovor unutar jednog radnog dana.",
+    cta_phone_lbl:"Telefon", cta_phone_hint:"Pon–Pet 09:00–17:00",
+    cta_mail_lbl:"E-mail", cta_mail_hint:"Odgovor unutar 1 radnog dana",
+    trust1:"Porezna stručnjakinja (IHK)", trust2:"DATEV certificirana",
+    trust3:"Iskusna sa SOKA-BAU", trust4:"DE · EN · PL · HR", trust5:"Sukladno GDPR-u",
+    usp_eyebrow:"Što možete očekivati",
+    usp_h2_a:"Više od samog knjiženja.", usp_h2_b:"Mirna ruka.",
+    usp1_t:"Svestrana stručnost", usp1_s:"Znanje koje stvarno unaprijeđuje vaše knjigovodstvo.",
+    usp2_t:"Digitalni procesi",   usp2_s:"DATEV. Dokumenti digitalno. Izvještaji uvijek dostupni.",
+    usp3_t:"Osobni kontakt",      usp3_s:"Jedna kontakt osoba – izravno, bez zaobilaznica.",
+    usp4_t:"Višejezično",         usp4_s:"DE · EN · PL · HR – komunikacija bez trzavica.",
     about_eyebrow:"O meni",
-    about_h2_a:"Dva desetljeća",
-    about_h2_b:"kod kuće u brojevima.",
-    about_quote:"„Knjigovodstvo je stvar povjerenja. Pretvaram ga u vašu mirnu oazu u poslovnoj svakodnevici.\"",
-    about_p1:"Od 2003. godine sam ovlaštena porezna stručnjakinja (IHK) i podržavam poduzetnike, obrte i samozaposlene oko Münchena u svim pitanjima tekućeg knjigovodstva i obračuna plaća.",
-    about_p2:"Ono što me odlikuje: razmišljam s vama, ostajem diskretna i objašnjavam vaše brojeve tako da ih razumijete. Četiri jezika pomažu mi da s vama ili vašim zaposlenicima razgovaram tako da ništa ne ostane neshvaćeno.",
+    about_h2_a:"O Violetti Schröer.", about_h2_b:"Dva desetljeća kod kuće u brojevima.",
+    about_p1:"Od 2003. godine podržavam poduzetnike, obrte i samozaposlene oko Münchena u svim pitanjima tekućeg knjigovodstva i obračuna plaća.",
+    about_p2:"Uredno evidentiram dokumente, usklađujem račune, plaće obračunavam na vrijeme i objašnjavam izvještaje tako da ih razumijete.",
+    about_p3:"Moj stil rada je jasan: slušam, pažljivo provjeravam, držim se rokova – i ostajem diskretna.",
     about_f1:"Porezna stručnjakinja (IHK)", about_f2:"DATEV certificirana",
-    about_f3:"Iskusna sa SOKA-BAU",         about_f4:"DE · EN · PL · HR",
+    about_f3:"Iskusna sa SOKA-BAU", about_f4:"DE · EN · PL · HR",
+    svc_eyebrow:"Usluge",
+    svc_h2_a:"Sve što vašim brojevima treba.", svc_h2_b:"Iz jedne ruke.",
+    svc_intro:"Šest ključnih usluga za male i srednje tvrtke, obrte i samozaposlene.",
+    svc1_t:"Financijsko knjigovodstvo", svc1_s:"Tekuće knjigovodstvo prema DATEV standardu.",
+    svc1_l1:"Evidencija & kontiranje", svc1_l2:"PDV prijave", svc1_l3:"BWA & bruto bilanca",
+    svc2_t:"Obračun plaća", svc2_s:"Mjesečni obračuni plaća uključujući sve prijave.",
+    svc2_l1:"Plaće & SV prijave", svc2_l2:"Porez na plaće", svc2_l3:"Potvrde",
+    svc3_t:"Građevinske plaće", svc3_s:"Specijalizacija: SOKA-BAU, ULAK, zimska pristojba.",
+    svc3_l1:"SOKA-BAU prijave", svc3_l2:"Tarifne plaće", svc3_l3:"Socijalni fondovi",
+    svc4_t:"Pripremno knjigovodstvo", svc4_s:"Uredna priprema za poreznog savjetnika.",
+    svc4_l1:"Sortiranje", svc4_l2:"Usklađivanje računa", svc4_l3:"Predaja savjetniku",
+    svc5_t:"Uredske usluge", svc5_s:"Pohrana, korespondencija, opomene.",
+    svc5_l1:"Opomene & plaćanja", svc5_l2:"Pohrana & dopisivanje", svc5_l3:"Putni troškovi",
+    svc6_t:"Savjetovanje", svc6_s:"Osobni razgovor o vašim brojevima.",
+    svc6_l1:"Razmatranje izvještaja", svc6_l2:"Optimizacija procesa", svc6_l3:"Višejezično DE/EN/PL/HR",
+    quote_text:"Knjigovodstvo je stvar povjerenja. Pretvaram ga u vašu mirnu oazu u poslovnoj svakodnevici.",
+    quote_author:"Violetta Schröer · Porezna stručnjakinja (IHK)",
     proc_eyebrow:"Tijek",
-    proc_h2_a:"Četiri koraka",
-    proc_h2_b:"do urednog knjigovodstva.",
+    proc_h2_a:"Četiri koraka", proc_h2_b:"do urednog knjigovodstva.",
     step1_t:"Upoznavanje", step1_s:"Neobvezujući razgovor – telefonom ili u Grasbrunnu.",
-    step2_t:"Ponuda",      step2_s:"Transparentna paušalna cijena prilagođena vašim potrebama – bez iznenađenja.",
-    step3_t:"Preuzimanje", step3_s:"Sigurno preuzimanje dokumenata – digitalno ili klasično u registratoru.",
-    step4_t:"Stalna briga",step4_s:"Mjesečni izvještaji, uvijek dostupna za pitanja.",
+    step2_t:"Ponuda", step2_s:"Transparentna paušalna cijena – bez iznenađenja.",
+    step3_t:"Preuzimanje", step3_s:"Sigurno preuzimanje dokumenata – digitalno ili klasično.",
+    step4_t:"Stalna briga", step4_s:"Mjesečni izvještaji, uvijek dostupna za pitanja.",
     faq_eyebrow:"FAQ",
-    faq_h2_a:"Jasni odgovori",
-    faq_h2_b:"na uobičajena pitanja.",
+    faq_h2_a:"Jasni odgovori", faq_h2_b:"na uobičajena pitanja.",
     faq1_q:"Koja je razlika između porezne stručnjakinje i poreznog savjetnika?",
-    faq1_a:"Ovlaštena porezna stručnjakinja (Steuerfachwirtin IHK) je kvalificirana stručnjakinja za knjigovodstvo, plaće i pripremne porezne radove. Samostalno obavlja tekuće knjigovodstvo, plaće i pripremne radove za poreznog savjetnika. Završno porezno savjetovanje i izrada godišnjeg obračuna ostaju zadržani za ovlaštene porezne savjetnike.",
+    faq1_a:"Ovlaštena porezna stručnjakinja (Steuerfachwirtin IHK) je kvalificirana stručnjakinja za knjigovodstvo, plaće i pripremne porezne radove. Završno porezno savjetovanje i izrada godišnjeg obračuna ostaju zadržani za ovlaštene porezne savjetnike.",
     faq2_q:"Koje usluge nudite konkretno?",
-    faq2_a:"Šest ključnih usluga: financijsko knjigovodstvo (DATEV), obračun plaća sa svim SV prijavama, građevinske plaće sa SOKA-BAU, pripremno knjigovodstvo za poreznog savjetnika, opće uredske usluge (opomene, korespondencija, putni troškovi) i osobno savjetovanje na njemačkom, engleskom, poljskom i hrvatskom.",
+    faq2_a:"Šest ključnih usluga: financijsko knjigovodstvo (DATEV), obračun plaća, građevinske plaće sa SOKA-BAU, pripremno knjigovodstvo, uredske usluge i osobno savjetovanje na njemačkom, engleskom, poljskom i hrvatskom.",
     faq3_q:"Za koje ste branše posebno specijalizirani?",
-    faq3_a:"Težište su male i srednje tvrtke, obrti i samozaposleni u Münchenu i okolici. Posebno iskustvo u građevinarstvu i obrtu sa SOKA-BAU, ULAK i tarifnim obračunom plaća.",
+    faq3_a:"Težište su male i srednje tvrtke, obrti i samozaposleni u Münchenu i okolici. Posebno iskustvo u građevinarstvu sa SOKA-BAU, ULAK i tarifnim obračunom plaća.",
     faq4_q:"Koju regiju pokrivate?",
-    faq4_a:"Sjedište: Bretonischer Ring 18, 85630 Grasbrunn kraj Münchena. Klijenti u Grasbrunnu, Münchenu, Haar, Vaterstettenu, Putzbrunnu i cijelom okrugu München. Sastanci na licu mjesta ili digitalno.",
+    faq4_a:"Sjedište: Bretonischer Ring 18, 85630 Grasbrunn kraj Münchena. Klijenti u cijelom okrugu München. Sastanci na licu mjesta ili digitalno.",
     faq5_q:"Na kojim jezicima možemo komunicirati?",
-    faq5_a:"Savjetovanje i korespondencija mogući su na njemačkom, engleskom, poljskom i hrvatskom – tako se i zaposlenici i poslovni partneri mogu uslužiti na materinjem jeziku.",
+    faq5_a:"Savjetovanje i korespondencija mogući su na njemačkom, engleskom, poljskom i hrvatskom.",
     faq6_q:"Kako izgleda naša suradnja?",
-    faq6_a:"U četiri koraka: 1. Neobvezujući uvodni razgovor (telefon ili na licu mjesta), 2. Transparentna paušalna ponuda prilagođena vašim potrebama, 3. Sigurno preuzimanje dokumenata digitalno ili u registratoru, 4. Stalna briga s mjesečnim izvještajima.",
+    faq6_a:"U četiri koraka: 1. Neobvezujući uvodni razgovor, 2. Transparentna paušalna ponuda, 3. Sigurno preuzimanje dokumenata, 4. Stalna briga s mjesečnim izvještajima.",
     faq7_q:"Kako mogu dogovoriti termin?",
-    faq7_a:"Telefonom: +49 (0) 89 666 822 01 ili e-mailom: info@violetta-schroeer.de. Odgovor unutar jednog radnog dana. Radno vrijeme: ponedjeljak–petak 09:00–17:00.",
+    faq7_a:"Telefonom: +49 (0) 89 666 822 01 ili e-mailom: info@violetta-schroeer.de. Odgovor unutar jednog radnog dana.",
     contact_eyebrow:"Kontakt",
-    contact_h2_a:"Razgovarajmo",
-    contact_h2_b:"u miru.",
-    contact_intro:"Dovoljan je poziv ili kratki e-mail. Javljam se unutar jednog radnog dana i dogovaramo neobvezujući prvi sastanak.",
+    contact_h2_a:"Javite se.", contact_h2_b:"Razgovarajmo u miru.",
+    contact_intro:"Dovoljan je poziv ili kratki e-mail. Javljam se unutar jednog radnog dana.",
     contact_phone_lbl:"Telefon", contact_mail_lbl:"E-mail",
-    contact_addr_lbl:"Adresa",   contact_hours_lbl:"Radno vrijeme",
+    contact_addr_lbl:"Adresa", contact_hours_lbl:"Radno vrijeme",
     contact_hours_val:"Pon–Pet 09:00–17:00 · Po dogovoru",
     contact_cta_primary:"Pošalji upit", contact_cta_secondary:"Nazovi sada",
-    map_t:"Bretonischer Ring 18, Grasbrunn",
-    map_s:"Karta će biti dodana prije objave",
-    foot_about:"Uredske usluge · Ovlaštena porezna stručnjakinja (IHK) u Grasbrunnu kraj Münchena. Knjigovodstvo, plaće, građevinske plaće & uredske usluge.",
+    map_link_hint:"Izračunaj rutu →",
+    foot_about:"Ovlaštena porezna stručnjakinja (IHK) u Grasbrunnu kraj Münchena.",
     foot_nav:"Navigacija", foot_contact:"Kontakt", foot_legal:"Pravne napomene",
     foot_imprint:"Impressum", foot_privacy:"Zaštita podataka"
   }
@@ -2019,9 +1895,7 @@ function setLang(lang){
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const key = el.dataset.i18n;
     const val = translations[lang]?.[key];
-    if(val !== undefined){
-      el.textContent = val;
-    }
+    if(val !== undefined) el.textContent = val;
   });
   try{ localStorage.setItem('vso-lang', lang); }catch(e){}
   document.querySelectorAll('.lang-sw a').forEach(a=>{
@@ -2030,14 +1904,11 @@ function setLang(lang){
     a.setAttribute('aria-current', isAct ? 'true' : 'false');
   });
 }
-
-// Init: URL param → localStorage → default DE
 const urlLang = new URLSearchParams(location.search).get('lang');
 let savedLang = null;
 try{ savedLang = localStorage.getItem('vso-lang'); }catch(e){}
 setLang(urlLang || savedLang || 'de');
 
-// Lang switch click handler – no full reload
 document.querySelectorAll('.lang-sw a').forEach(a=>{
   a.addEventListener('click', e=>{
     e.preventDefault();
@@ -2048,7 +1919,6 @@ document.querySelectorAll('.lang-sw a').forEach(a=>{
   });
 });
 
-// Mobile nav
 function toggleNav(){
   const nav = document.getElementById('mainnav');
   const btn = document.querySelector('.menu-toggle');
@@ -2056,7 +1926,6 @@ function toggleNav(){
   btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   btn.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
 }
-// Close mobile nav on link click
 document.querySelectorAll('#mainnav a').forEach(a=>{
   a.addEventListener('click', ()=>{
     const nav = document.getElementById('mainnav');
@@ -2067,13 +1936,53 @@ document.querySelectorAll('#mainnav a').forEach(a=>{
   });
 });
 
-// Year
 document.getElementById('yr').textContent = new Date().getFullYear();
 
-// Lucide (init after defer-load)
-window.addEventListener('load', ()=>{
-  if(window.lucide) lucide.createIcons();
-});
+/* ============================================================
+   Hero Slider
+   ============================================================ */
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.hero-dots button');
+let curSlide = 0;
+let slideTimer = null;
+function goToSlide(idx){
+  curSlide = (idx + slides.length) % slides.length;
+  slides.forEach((s,i)=> s.classList.toggle('act', i === curSlide));
+  dots.forEach((d,i)=> d.classList.toggle('act', i === curSlide));
+}
+function nextSlide(){ goToSlide(curSlide + 1); }
+function prevSlide(){ goToSlide(curSlide - 1); }
+function startAuto(){ stopAuto(); slideTimer = setInterval(nextSlide, 6500); }
+function stopAuto(){ if(slideTimer){ clearInterval(slideTimer); slideTimer=null; } }
+dots.forEach(d=> d.addEventListener('click', ()=>{ goToSlide(parseInt(d.dataset.go)); startAuto(); }));
+document.getElementById('hero-prev').addEventListener('click', ()=>{ prevSlide(); startAuto(); });
+document.getElementById('hero-next').addEventListener('click', ()=>{ nextSlide(); startAuto(); });
+const slider = document.getElementById('hero-slider');
+slider.addEventListener('mouseenter', stopAuto);
+slider.addEventListener('mouseleave', startAuto);
+// Reduced motion: kein Auto-Play
+if(!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) startAuto();
+
+window.addEventListener('load', ()=>{ if(window.lucide) lucide.createIcons(); });
+
+/* ============================================================
+   Universal Route-Link (App auf iOS/Android, OpenStreetMap auf Desktop)
+   ============================================================ */
+function openRoute(e){
+  if(e) e.preventDefault();
+  var dest = encodeURIComponent('Bretonischer Ring 18, 85630 Grasbrunn');
+  var ua = navigator.userAgent || '';
+  var url;
+  if(/iPhone|iPad|iPod/i.test(ua)){
+    url = 'maps://?daddr=' + dest + '&dirflg=d';
+  } else if(/Android/i.test(ua)){
+    url = 'geo:0,0?q=' + dest;
+  } else {
+    url = 'https://www.openstreetmap.org/directions?to=' + dest;
+  }
+  window.open(url, '_blank', 'noopener');
+  return false;
+}
 </script>
 
 </body>
