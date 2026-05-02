@@ -43,9 +43,40 @@ http://localhost:8000/?lang=hr
 
 **Texte (alle Sprachen):** im `<script>`-Block am Ende der `index.html`. Suche das `translations`-Objekt. Jede Sprache hat den gleichen Schlüssel-Satz.
 
-**Layout/Farben:** im `<style>`-Block. Custom Properties am Anfang (`:root { --accent:#4a7a55; --accent-dk:#2f5638; ... }`).
+**Layout/Farben:** ab `v2.3.0` ausgelagert in `assets/css/main.css`. Custom Properties am Anfang (`:root { --accent:#4a7a55; --accent-dk:#2f5638; --accent-mid:#8db092; ... }`).
 
 **Bilder:** `assets/img/`. Formate ohne Bedacht ändern – `<img>` hat `width`/`height` für CLS.
+
+## Standard-Workflow nach Inhaltsänderung
+
+> **Wichtig:** Sprach-Subdirs `/en/`, `/pl/`, `/hr/` sind **statisch generiert** aus dem DE-Master. Bei jeder Änderung an `index.html` müssen sie neu gebaut werden — sonst veralten EN/PL/HR und liefern alte Texte aus.
+
+**Ein-Klick-Deploy (empfohlen):**
+```powershell
+cd "C:\Users\mail\Claude_Cowork\04_Kunden\VSO 2026\website"
+.\deploy.ps1 "Commit-Message hier"
+```
+Das Skript erkennt automatisch, ob `index.html` geändert wurde, ruft `build-i18n.ps1` auf, committet alles und pusht.
+
+**Manuell (Schritt für Schritt):**
+```powershell
+cd "C:\Users\mail\Claude_Cowork\04_Kunden\VSO 2026\website"
+.\build-i18n.ps1                 # nur wenn index.html geändert
+git add -A
+git commit -m "Was und warum"
+git push
+# → Pages baut in ~30 s, alle 4 Sprachen + Visitenkarte + Projekt-Doku live
+```
+
+**Wann KEIN Build nötig:**
+- Änderung nur an `assets/css/main.css`, `assets/js/*`, `assets/img/*`
+- Änderung nur an `visitenkarte.html`, `impressum.html`, `datenschutz.html`, `404.html`, `projekt.html`
+- Änderung nur an `sitemap.xml`, `robots.txt`
+
+**Wann Build PFLICHT:**
+- Jede Änderung an `index.html` (Layout/Texte/Translations/Schema)
+
+> Bei Arbeit mit Claude Code: das wird automatisch erledigt — Memory `vso-auto-deploy` ist gesetzt. Du sagst „ändere Hero1-Headline", Claude macht Edit → build → commit → push → URL-Verify in einem Rutsch.
 
 ## Schema.org / GEO-Optimierung
 
