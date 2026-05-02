@@ -165,6 +165,8 @@
 
 <!-- Lokale Schriftarten (DSGVO-konform, kein Google CDN) -->
 <link rel="stylesheet" href="assets/fonts/fonts.css"/>
+<!-- Lenis: smooth-Scroll für Mausrad + Touch (lokal, ~14 KB) -->
+<link rel="stylesheet" href="assets/js/lenis.css"/>
 
 <style>
 /* ============================================================================
@@ -198,6 +200,9 @@
 
 *,*::before,*::after{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
+/* Lenis übernimmt Mausrad-Scrolling. Wenn Lenis aktiv ist, hat <html> die
+   Klasse "lenis lenis-smooth" – CSS scroll-behavior wird dann ignoriert. */
+html.lenis-smooth{ scroll-behavior:auto !important; }
 
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior:auto; }
@@ -1639,11 +1644,13 @@ html, body{ -webkit-overflow-scrolling: touch; }
         <a href="impressum.html" data-i18n="foot_imprint">Impressum</a>
         <a href="datenschutz.html" data-i18n="foot_privacy">Datenschutz</a>
       </div>
-      <div class="ci-note">CI 2026.01 · Grundke IT-Service · <span id="siteVer">v2.1.0</span></div>
+      <div class="ci-note">CI 2026.01 · Grundke IT-Service · <span id="siteVer">v2.1.2</span></div>
     </div>
   </div>
 </footer>
 
+<!-- Lenis: smooth scroll für Mausrad + Touch (lokal, kein CDN) -->
+<script src="assets/js/lenis.min.js" defer></script>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
 <script>
 /* ============================================================
@@ -2152,10 +2159,33 @@ function openRoute(e){
 }
 
 /* ============================================================
+   Lenis Smooth-Scroll Initialisierung
+   – glättet Mausrad + trackpad-Scrolling (Touch bleibt nativ
+     für iOS-Inertia)
+   – respektiert prefers-reduced-motion (a11y)
+   ============================================================ */
+let lenis = null;
+window.addEventListener('load', function(){
+  if (typeof Lenis === 'undefined') return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  lenis = new Lenis({
+    duration: 1.0,
+    easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+    smoothWheel: true,
+    smoothTouch: false,
+    wheelMultiplier: 1.0,
+    touchMultiplier: 1.0
+  });
+  function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+  requestAnimationFrame(raf);
+});
+
+/* ============================================================
    Scroll-to-Top (NICHT 'scrollTop' nennen — kollidiert mit
    Element.scrollTop-Property im inline-onclick-Scope)
    ============================================================ */
 function scrollToTop(){
+  if (lenis) { lenis.scrollTo(0, { duration: 1.4 }); return; }
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
