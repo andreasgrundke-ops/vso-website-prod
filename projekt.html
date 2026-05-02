@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  Titel:        VSO 2026 – Projekt-Übergabe (intern, für Andreas Grundke)
+  Version:      1.0.0  (2026-05-02)
+  Autor:        Andreas Grundke – Grundke IT-Service
+  CI:           CI 2026.01 · Grundke IT (Navy + Cyan, Manrope)
+  Hinweis:      noindex,nofollow – nicht für Kundenaugen, nicht für Crawler.
+                Inhalte (Checkboxen + Notizen) werden lokal im Browser
+                gespeichert (localStorage Schlüssel "vso-projekt-state").
+  ============================================================================
+-->
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#0c4da2"/>
+<title>VSO 2026 – Projekt-Übergabe · Grundke IT-Service</title>
+<meta name="description" content="Internes Projekt-Dokument für VSO 2026 (Violetta Schröer Office Dienstleistungen). Status, Aufwand, Checkliste, Findings."/>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230c4da2'/%3E%3Ctext x='50' y='66' text-anchor='middle' font-family='sans-serif' font-weight='700' font-size='52' fill='%2326bdef'%3EG%3C/text%3E%3C/svg%3E"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ============================================================================
+   Grundke IT-Service · CI 2026.01 · Light Mode
+   ============================================================================ */
+:root{
+  --primary:#0c4da2;
+  --primary-dk:#0a3e83;
+  --accent:#26bdef;
+  --accent-dk:#0e9ed1;
+  --text:#111111;
+  --text-md:#555555;
+  --text-lt:#888888;
+  --border:#d0daea;
+  --bg:#f4f7fc;
+  --bg-card:#ffffff;
+  --bg-accent:#e8f0fb;
+  --bg-soft:#f0f5fb;
+  --danger:#c0392b;
+  --danger-bg:#fdecea;
+  --warning:#cc8800;
+  --warning-bg:#fff5dc;
+  --success:#1a7a5e;
+  --success-bg:#e6f4ef;
+  --font-ui:'Manrope', Arial, sans-serif;
+  --font-data:'JetBrains Mono', Menlo, monospace;
+  --shadow-sm: 0 1px 3px rgba(12,77,162,.06);
+  --shadow-md: 0 6px 20px rgba(12,77,162,.10);
+  --shadow-lg: 0 16px 40px rgba(12,77,162,.14);
+}
+*,*::before,*::after{ box-sizing:border-box; }
+html{ font-size:15px; scroll-behavior:smooth; }
+body{
+  margin:0;
+  font-family:var(--font-ui);
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{ color:var(--primary); text-decoration:none; }
+a:hover{ color:var(--accent-dk); text-decoration:underline; }
+:focus-visible{ outline:3px solid var(--accent); outline-offset:3px; border-radius:4px; }
+img{ max-width:100%; display:block; }
+
+/* ============================================================
+   App-Shell: Sidebar links + Main rechts
+   ============================================================ */
+.app{ display:grid; grid-template-columns:290px 1fr; min-height:100vh; }
+@media (max-width:980px){ .app{ grid-template-columns:1fr; } }
+
+.sidebar{
+  background:var(--primary);
+  color:#fff;
+  padding:32px 22px;
+  position:sticky; top:0;
+  height:100vh;
+  overflow-y:auto;
+  display:flex; flex-direction:column;
+}
+.sidebar::-webkit-scrollbar{ width:6px; }
+.sidebar::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.15); border-radius:3px; }
+@media (max-width:980px){
+  .sidebar{ position:relative; height:auto; padding:22px; }
+}
+.sb-logo{
+  display:flex; align-items:center; gap:12px;
+  margin-bottom:32px; color:#fff;
+}
+.sb-logo .mark{
+  width:42px; height:42px; border-radius:8px;
+  background:#fff; color:var(--primary);
+  display:grid; place-items:center;
+  font-weight:800; font-size:22px;
+  letter-spacing:-.02em;
+}
+.sb-logo .name{ font-weight:700; font-size:16px; line-height:1.2; }
+.sb-logo .tag{ font-size:11px; opacity:.7; letter-spacing:.04em; margin-top:2px; }
+
+.sb-project{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  padding:14px 16px; border-radius:8px;
+  margin-bottom:24px;
+}
+.sb-project .lbl{ font-size:10px; letter-spacing:.16em; text-transform:uppercase; opacity:.6; margin-bottom:4px; }
+.sb-project .val{ font-weight:600; font-size:14px; line-height:1.3; }
+.sb-project .ver{ font-family:var(--font-data); font-size:11px; opacity:.7; margin-top:6px; }
+
+.sb-nav{ flex:1; }
+.sb-nav h4{
+  font-size:10px; letter-spacing:.16em; text-transform:uppercase;
+  opacity:.55; margin:18px 0 10px; font-weight:600;
+}
+.sb-nav h4:first-child{ margin-top:0; }
+.sb-nav a{
+  display:flex; align-items:center; gap:10px;
+  color:#fff; text-decoration:none;
+  padding:8px 12px; border-radius:6px;
+  font-size:13.5px; font-weight:500;
+  transition:background .18s, color .18s;
+  margin-bottom:2px;
+}
+.sb-nav a:hover{ background:rgba(255,255,255,.1); text-decoration:none; }
+.sb-nav a i{ width:16px; height:16px; opacity:.85; flex-shrink:0; }
+.sb-nav .num{ font-family:var(--font-data); font-size:11px; opacity:.55; min-width:18px; }
+
+.sb-actions{
+  padding-top:16px; margin-top:18px;
+  border-top:1px solid rgba(255,255,255,.12);
+  display:flex; flex-direction:column; gap:6px;
+}
+.sb-btn{
+  background:rgba(255,255,255,.1);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.15);
+  padding:8px 12px; border-radius:6px;
+  font-family:var(--font-ui); font-size:12.5px; font-weight:500;
+  cursor:pointer;
+  display:flex; align-items:center; gap:8px;
+  transition:all .18s;
+}
+.sb-btn:hover{ background:rgba(255,255,255,.18); }
+.sb-btn i{ width:14px; height:14px; }
+.sb-btn.danger{ background:rgba(192,57,43,.2); border-color:rgba(192,57,43,.4); }
+.sb-btn.danger:hover{ background:rgba(192,57,43,.35); }
+
+.sb-foot{
+  margin-top:18px; padding-top:16px;
+  border-top:1px solid rgba(255,255,255,.1);
+  font-size:11px; opacity:.6; line-height:1.5;
+}
+.sb-foot a{ color:#fff; opacity:.85; }
+
+/* ============================================================
+   Main Content
+   ============================================================ */
+.main{ padding:48px 56px; max-width:1180px; }
+@media (max-width:780px){ .main{ padding:32px 22px; } }
+
+.hero{ margin-bottom:48px; }
+.hero .eyebrow{
+  font-size:11px; font-weight:600; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--accent-dk);
+  display:inline-flex; align-items:center; gap:10px;
+  margin-bottom:14px;
+}
+.hero .eyebrow::before{
+  content:""; width:24px; height:1px; background:var(--accent-dk); display:inline-block;
+}
+.hero h1{
+  font-size:clamp(2rem, 4vw, 2.8rem);
+  font-weight:700; letter-spacing:-.02em;
+  margin:0 0 14px; line-height:1.15;
+  color:var(--primary);
+}
+.hero h1 .sub-italic{ color:var(--accent-dk); font-weight:300; font-style:italic; }
+.hero .lead{
+  font-size:17px; color:var(--text-md); max-width:62ch; margin:0;
+}
+
+.status-row{
+  display:flex; flex-wrap:wrap; gap:8px;
+  margin-top:22px;
+}
+.badge{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:12px; font-weight:600;
+  padding:5px 11px; border-radius:999px;
+  background:var(--bg-accent); color:var(--primary);
+  letter-spacing:.02em;
+}
+.badge.success{ background:var(--success-bg); color:var(--success); }
+.badge.warn{ background:var(--warning-bg); color:var(--warning); }
+.badge.danger{ background:var(--danger-bg); color:var(--danger); }
+.badge i{ width:13px; height:13px; }
+
+section.block{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:32px 36px;
+  margin-bottom:24px;
+  box-shadow:var(--shadow-sm);
+}
+section.block h2{
+  font-size:1.5rem; font-weight:700; color:var(--primary);
+  margin:0 0 8px; letter-spacing:-.01em;
+  display:flex; align-items:center; gap:12px;
+}
+section.block h2 .num{
+  font-family:var(--font-data);
+  background:var(--bg-accent);
+  color:var(--primary);
+  font-size:14px; font-weight:600;
+  padding:5px 9px; border-radius:6px;
+  letter-spacing:0;
+}
+section.block .sec-lead{
+  font-size:14px; color:var(--text-md);
+  margin:0 0 24px; max-width:70ch;
+}
+section.block h3{
+  font-size:1.1rem; font-weight:600;
+  margin:24px 0 10px; color:var(--text);
+}
+@media (max-width:600px){
+  section.block{ padding:22px 22px; }
+}
+
+/* ============================================================
+   Live-URL-Karten
+   ============================================================ */
+.url-cards{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:16px;
+}
+.url-card{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:22px;
+  text-decoration:none;
+  color:var(--text);
+  transition:all .25s;
+  display:flex; flex-direction:column; gap:10px;
+}
+.url-card:hover{
+  text-decoration:none;
+  border-color:var(--accent);
+  box-shadow:var(--shadow-md);
+  transform:translateY(-2px);
+}
+.url-card .ico-wrap{
+  width:42px; height:42px; border-radius:8px;
+  background:var(--bg-accent); color:var(--primary);
+  display:grid; place-items:center;
+}
+.url-card .ico-wrap i{ width:22px; height:22px; }
+.url-card .lbl{
+  font-size:10px; font-weight:600; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--text-lt);
+}
+.url-card .title{
+  font-weight:700; font-size:16px;
+  color:var(--primary);
+}
+.url-card .url-text{
+  font-family:var(--font-data); font-size:11px;
+  color:var(--text-md);
+  word-break:break-all;
+  background:var(--bg-soft);
+  padding:7px 9px; border-radius:5px;
+  border:1px solid var(--border);
+}
+.url-card .desc{
+  font-size:13px; color:var(--text-md); line-height:1.5;
+  margin-top:auto;
+}
+
+/* ============================================================
+   Tabellen
+   ============================================================ */
+table.t{
+  width:100%; border-collapse:collapse;
+  font-size:13.5px;
+}
+table.t th, table.t td{
+  text-align:left; padding:11px 12px;
+  border-bottom:1px solid var(--border);
+}
+table.t th{
+  background:var(--bg-soft);
+  font-weight:600; font-size:12px;
+  letter-spacing:.04em; color:var(--text-md);
+  text-transform:uppercase;
+}
+table.t td.num{ font-family:var(--font-data); text-align:right; font-variant-numeric:tabular-nums; }
+table.t tr.total td{
+  font-weight:700; background:var(--bg-accent); color:var(--primary);
+  border-top:2px solid var(--primary);
+}
+table.t tr.total td.num{ color:var(--primary); }
+table.t .hi{ color:var(--success); font-weight:700; }
+table.t .lo{ color:var(--danger); font-weight:700; }
+table.t small{ color:var(--text-lt); font-size:11px; }
+
+/* ============================================================
+   Aufwands-Box
+   ============================================================ */
+.kpi-row{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+  gap:14px; margin:18px 0;
+}
+.kpi{
+  background:var(--bg-soft);
+  border-left:4px solid var(--primary);
+  padding:14px 18px; border-radius:0 8px 8px 0;
+}
+.kpi.success{ border-color:var(--success); }
+.kpi.warn{ border-color:var(--warning); }
+.kpi .lbl{
+  font-size:10px; font-weight:600; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--text-lt); margin-bottom:4px;
+}
+.kpi .val{
+  font-family:var(--font-data); font-weight:700;
+  font-size:24px; color:var(--primary);
+  font-variant-numeric:tabular-nums;
+}
+.kpi.success .val{ color:var(--success); }
+.kpi .sub{ font-size:11.5px; color:var(--text-md); margin-top:2px; }
+
+/* ============================================================
+   Tech-Stack-Liste
+   ============================================================ */
+.stack{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:12px;
+}
+.stack-item{
+  background:var(--bg-soft);
+  border:1px solid var(--border);
+  padding:12px 14px; border-radius:8px;
+  display:flex; align-items:flex-start; gap:10px;
+}
+.stack-item .ico{
+  width:30px; height:30px; border-radius:6px;
+  background:var(--bg-accent); color:var(--primary);
+  display:grid; place-items:center; flex-shrink:0;
+}
+.stack-item .ico i{ width:16px; height:16px; }
+.stack-item .t{ font-weight:600; font-size:13px; line-height:1.3; }
+.stack-item .v{
+  font-family:var(--font-data); font-size:11px;
+  color:var(--text-lt); margin-top:2px;
+}
+
+/* ============================================================
+   Interaktive Checkliste
+   ============================================================ */
+.phase{
+  background:var(--bg-soft);
+  border:1px solid var(--border);
+  border-radius:10px;
+  margin-bottom:14px;
+  overflow:hidden;
+}
+.phase-head{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:14px 18px;
+  cursor:pointer;
+  background:var(--bg-card);
+  border-bottom:1px solid transparent;
+  user-select:none;
+  transition:background .15s;
+}
+.phase-head:hover{ background:var(--bg-soft); }
+.phase[open] > .phase-head{ border-bottom-color:var(--border); background:var(--bg-soft); }
+.phase-head h3{
+  margin:0; font-size:15px; font-weight:700; color:var(--primary);
+  display:flex; align-items:center; gap:10px;
+}
+.phase-head h3 .num{
+  font-family:var(--font-data); font-size:12px; font-weight:600;
+  background:var(--primary); color:#fff;
+  padding:3px 8px; border-radius:5px;
+  min-width:32px; text-align:center;
+}
+.phase-progress{
+  display:flex; align-items:center; gap:10px;
+  font-family:var(--font-data); font-size:12px;
+  color:var(--text-md); font-weight:600;
+}
+.phase-progress .bar{
+  width:80px; height:6px; border-radius:3px;
+  background:var(--border); overflow:hidden;
+}
+.phase-progress .bar > span{
+  display:block; height:100%;
+  background:var(--accent);
+  transition:width .25s;
+}
+.phase-progress.full .bar > span{ background:var(--success); }
+.phase-progress .arr{
+  width:14px; height:14px;
+  border-right:2px solid var(--text-lt);
+  border-bottom:2px solid var(--text-lt);
+  transform:rotate(45deg);
+  transition:transform .2s;
+}
+.phase[open] > .phase-head .phase-progress .arr{ transform:rotate(-135deg); }
+.phase-head::-webkit-details-marker{ display:none; }
+
+.phase-body{ padding:14px 22px 18px; }
+.task{
+  display:grid; grid-template-columns:24px 1fr;
+  gap:12px; padding:7px 0;
+  border-bottom:1px dashed var(--border);
+}
+.task:last-of-type{ border-bottom:0; }
+.task input[type="checkbox"]{
+  width:18px; height:18px;
+  margin-top:3px;
+  accent-color:var(--primary);
+  cursor:pointer;
+}
+.task label{
+  font-size:13.5px; line-height:1.55; color:var(--text);
+  cursor:pointer;
+}
+.task input[type="checkbox"]:checked + label{
+  color:var(--text-lt); text-decoration:line-through;
+}
+.task code{
+  font-family:var(--font-data); font-size:11px;
+  background:var(--bg-accent); color:var(--primary);
+  padding:1px 5px; border-radius:3px;
+}
+.task .meta{ font-size:11px; color:var(--text-lt); margin-top:2px; }
+
+.notes{
+  margin-top:14px;
+  display:flex; flex-direction:column; gap:6px;
+}
+.notes label{
+  font-size:11px; font-weight:600; letter-spacing:.06em;
+  color:var(--text-lt); text-transform:uppercase;
+}
+.notes textarea{
+  font-family:var(--font-ui); font-size:13px;
+  padding:10px 12px; border-radius:6px;
+  border:1px solid var(--border);
+  background:var(--bg-card);
+  resize:vertical;
+  min-height:60px; line-height:1.5;
+  color:var(--text);
+}
+.notes textarea:focus{ border-color:var(--accent); outline:none; box-shadow:0 0 0 3px rgba(38,189,239,.15); }
+
+/* Globaler Progress oben */
+.global-progress{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px 22px;
+  margin-bottom:22px;
+  display:flex; align-items:center; gap:18px;
+  box-shadow:var(--shadow-sm);
+}
+.global-progress .ico-wrap{
+  width:42px; height:42px; border-radius:8px;
+  background:var(--bg-accent); color:var(--primary);
+  display:grid; place-items:center; flex-shrink:0;
+}
+.global-progress .ico-wrap i{ width:20px; height:20px; }
+.global-progress .lbl{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--text-lt); font-weight:600; }
+.global-progress .val{
+  font-family:var(--font-data); font-weight:700;
+  font-size:18px; color:var(--primary);
+}
+.global-progress .bar{
+  flex:1; height:8px; border-radius:4px;
+  background:var(--border); overflow:hidden;
+}
+.global-progress .bar > span{
+  display:block; height:100%;
+  background:linear-gradient(90deg, var(--accent), var(--primary));
+  transition:width .35s;
+}
+
+/* ============================================================
+   Findings (Reviews)
+   ============================================================ */
+.findings-tabs{
+  display:flex; gap:4px;
+  border-bottom:2px solid var(--border);
+  margin-bottom:18px;
+  overflow-x:auto;
+}
+.findings-tabs button{
+  font-family:var(--font-ui);
+  background:none; border:0;
+  padding:11px 16px;
+  font-size:13px; font-weight:600;
+  color:var(--text-md); cursor:pointer;
+  border-bottom:2px solid transparent;
+  margin-bottom:-2px;
+  transition:all .18s;
+  display:inline-flex; align-items:center; gap:6px;
+}
+.findings-tabs button:hover{ color:var(--primary); }
+.findings-tabs button.act{
+  color:var(--primary);
+  border-bottom-color:var(--primary);
+}
+.findings-tabs button .badge-mini{
+  background:var(--bg-accent); color:var(--primary);
+  font-family:var(--font-data); font-size:10px;
+  padding:1px 6px; border-radius:8px;
+}
+.findings-pane{ display:none; }
+.findings-pane.act{ display:block; }
+.finding{
+  background:var(--bg-soft);
+  border-left:4px solid var(--text-lt);
+  border-radius:0 8px 8px 0;
+  padding:14px 18px; margin-bottom:10px;
+}
+.finding.p1{ border-left-color:var(--danger); }
+.finding.p2{ border-left-color:var(--warning); }
+.finding.p3{ border-left-color:var(--success); }
+.finding-head{
+  display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+  margin-bottom:6px;
+}
+.finding-head .pri{
+  font-family:var(--font-data); font-size:10px; font-weight:700;
+  padding:2px 7px; border-radius:4px;
+  background:var(--text-lt); color:#fff;
+  letter-spacing:.04em;
+}
+.finding.p1 .finding-head .pri{ background:var(--danger); }
+.finding.p2 .finding-head .pri{ background:var(--warning); }
+.finding.p3 .finding-head .pri{ background:var(--success); }
+.finding-head .title{ font-weight:600; font-size:14px; color:var(--text); }
+.finding-body{ font-size:13px; color:var(--text-md); line-height:1.6; }
+.finding-body .where{
+  font-family:var(--font-data); font-size:11px;
+  color:var(--text-lt); display:block; margin-top:4px;
+}
+.finding-body .fix{
+  display:block; margin-top:6px;
+  padding:8px 10px; border-radius:5px;
+  background:var(--bg-accent); color:var(--primary);
+  font-size:12.5px; font-weight:500;
+}
+.finding-body .fix::before{ content:"→ "; font-weight:700; }
+
+/* ============================================================
+   Master-Template Box
+   ============================================================ */
+.master-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:14px;
+}
+@media (max-width:680px){ .master-grid{ grid-template-columns:1fr; } }
+.master-box{
+  background:var(--bg-soft);
+  border:1px solid var(--border);
+  border-radius:8px; padding:16px 18px;
+}
+.master-box h4{
+  font-size:13px; font-weight:700; color:var(--primary);
+  margin:0 0 8px;
+  display:flex; align-items:center; gap:8px;
+}
+.master-box h4 i{ width:16px; height:16px; }
+.master-box ul{
+  list-style:none; padding:0; margin:0;
+  font-size:13px; color:var(--text-md);
+}
+.master-box li{
+  padding:4px 0 4px 20px; position:relative;
+  line-height:1.5;
+}
+.master-box li::before{
+  content:"";
+  position:absolute; left:0; top:11px;
+  width:8px; height:8px;
+  background:var(--accent);
+  border-radius:50%;
+}
+
+/* ============================================================
+   Alert-Box (für Hinweise)
+   ============================================================ */
+.alert{
+  display:flex; align-items:flex-start; gap:12px;
+  padding:14px 18px; border-radius:8px;
+  margin:14px 0;
+}
+.alert i{ width:18px; height:18px; flex-shrink:0; margin-top:2px; }
+.alert.info{ background:var(--bg-accent); color:var(--primary); border:1px solid #b6d3f0; }
+.alert.warn{ background:var(--warning-bg); color:var(--warning); border:1px solid #f0d68b; }
+.alert.success{ background:var(--success-bg); color:var(--success); border:1px solid #a4d8c2; }
+.alert .body{ font-size:13.5px; line-height:1.55; }
+.alert .body strong{ display:block; margin-bottom:2px; }
+
+footer.foot{
+  padding:32px 56px; color:var(--text-lt);
+  font-size:12px; text-align:center;
+  border-top:1px solid var(--border);
+  background:var(--bg-card);
+}
+
+/* Print: Sidebar weg, alles linear */
+@media print{
+  .app{ grid-template-columns:1fr; }
+  .sidebar{ display:none; }
+  .main{ padding:0; max-width:100%; }
+  section.block{ break-inside:avoid; box-shadow:none; }
+  .phase{ break-inside:avoid; }
+  details.phase{ open:true; }
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" role="navigation" aria-label="Projekt-Navigation">
+    <div class="sb-logo">
+      <div class="mark">G</div>
+      <div>
+        <div class="name">Grundke IT-Service</div>
+        <div class="tag">CI 2026.01</div>
+      </div>
+    </div>
+
+    <div class="sb-project">
+      <div class="lbl">Projekt</div>
+      <div class="val">VSO 2026<br/>Violetta Schröer</div>
+      <div class="ver">Doku v1.0.0 · Web v2.1.2</div>
+    </div>
+
+    <nav class="sb-nav">
+      <h4>Übersicht</h4>
+      <a href="#uebersicht"><span class="num">01</span><span>Status</span></a>
+      <a href="#urls"><span class="num">02</span><span>Live-URLs</span></a>
+      <a href="#aufwand"><span class="num">03</span><span>Aufwand &amp; Wert</span></a>
+
+      <h4>Umsetzung</h4>
+      <a href="#stack"><span class="num">04</span><span>Tech-Stack</span></a>
+      <a href="#checkliste"><span class="num">05</span><span>Checkliste</span></a>
+      <a href="#findings"><span class="num">06</span><span>Review-Findings</span></a>
+
+      <h4>Folge-Projekte</h4>
+      <a href="#master"><span class="num">07</span><span>Master-Template</span></a>
+    </nav>
+
+    <div class="sb-actions">
+      <button class="sb-btn" onclick="exportState()" type="button">
+        <i data-lucide="download"></i><span>Stand exportieren (JSON)</span>
+      </button>
+      <button class="sb-btn" onclick="importState()" type="button">
+        <i data-lucide="upload"></i><span>Stand importieren</span>
+      </button>
+      <button class="sb-btn danger" onclick="resetState()" type="button">
+        <i data-lucide="rotate-ccw"></i><span>Alles zurücksetzen</span>
+      </button>
+      <input type="file" id="importFile" accept="application/json" style="display:none" onchange="handleImport(event)"/>
+    </div>
+
+    <div class="sb-foot">
+      Status wird lokal im Browser gespeichert.<br/>
+      <a href="https://grundke-it.de" target="_blank" rel="noopener">grundke-it.de</a>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+
+    <!-- Hero -->
+    <div class="hero">
+      <span class="eyebrow">Projekt-Übergabe · Intern</span>
+      <h1>VSO 2026.<br/><span class="sub-italic">Violetta Schröer Office Dienstleistungen.</span></h1>
+      <p class="lead">Statischer mehrsprachiger OnePager + Visitenkarten-Set für Steuerfachwirtin in Grasbrunn b. München. Auf GitHub Pages live, Cloud-Design grün, DSGVO-konform, Mobile-First.</p>
+      <div class="status-row">
+        <span class="badge success"><i data-lucide="check-circle"></i>Website live (Vorschau)</span>
+        <span class="badge success"><i data-lucide="check-circle"></i>Visitenkarte live (Mockup)</span>
+        <span class="badge"><i data-lucide="git-branch"></i>v2.1.2</span>
+        <span class="badge warn"><i data-lucide="clock"></i>Wartet auf Kunden-Freigabe</span>
+        <span class="badge"><i data-lucide="languages"></i>DE · EN · PL · HR</span>
+      </div>
+    </div>
+
+    <!-- Globaler Progress (gesamte Checkliste) -->
+    <div class="global-progress">
+      <div class="ico-wrap"><i data-lucide="list-checks"></i></div>
+      <div style="flex:1">
+        <div class="lbl">Gesamtfortschritt Checkliste</div>
+        <div class="val"><span id="globalDone">0</span> / <span id="globalTotal">0</span> Tasks abgehakt</div>
+      </div>
+      <div class="bar"><span id="globalBar" style="width:0%"></span></div>
+    </div>
+
+    <!-- ===== 01 Übersicht ===== -->
+    <section class="block" id="uebersicht">
+      <h2><span class="num">01</span> Status &amp; Eckdaten</h2>
+      <p class="sec-lead">Aktueller Stand des Projekts auf einen Blick.</p>
+
+      <table class="t">
+        <thead>
+          <tr><th>Bereich</th><th>Inhalt</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Kundin</td><td>Violetta Schröer · Steuerfachwirtin (IHK), seit 2003</td></tr>
+          <tr><td>Firma</td><td>Schröer Office Dienstleistungen</td></tr>
+          <tr><td>Standort</td><td>Bretonischer Ring 18, 85630 Grasbrunn</td></tr>
+          <tr><td>Telefon</td><td><a href="tel:+498966682201">+49 (0) 89 666 822 01</a></td></tr>
+          <tr><td>Mobil</td><td><a href="tel:+4917910442092">+49 (0) 179 104 42 92</a></td></tr>
+          <tr><td>E-Mail</td><td><a href="mailto:info@violetta-schroeer.de">info@violetta-schroeer.de</a></td></tr>
+          <tr><td>Domain</td><td>violetta-schroeer.de · derzeit IONOS Managed WP, Migration auf GitHub Pages</td></tr>
+          <tr><td>Mail-Postfach</td><td>bleibt bei IONOS (kein Wechsel)</td></tr>
+          <tr><td>Sprachen</td><td>DE · EN · PL · HR (vollständig übersetzt, client-seitig)</td></tr>
+          <tr><td>GitHub-Account</td><td><code>andreasgrundke-ops</code> · Repo <code>vso-website-prod</code> (public)</td></tr>
+          <tr><td>Aktueller Tag</td><td><code>v2.1.2</code> · 2026-05-02</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ===== 02 Live-URLs ===== -->
+    <section class="block" id="urls">
+      <h2><span class="num">02</span> Live-URLs</h2>
+      <p class="sec-lead">Direkt klickbar. Die Website + Visitenkarte gehen an die Kundin, dieses Dokument ist intern (noindex).</p>
+
+      <div class="url-cards">
+        <a href="https://andreasgrundke-ops.github.io/vso-website-prod/" target="_blank" rel="noopener" class="url-card">
+          <div class="ico-wrap"><i data-lucide="globe"></i></div>
+          <div class="lbl">Für die Kundin</div>
+          <div class="title">Website (OnePager)</div>
+          <div class="url-text">andreasgrundke-ops.github.io/vso-website-prod/</div>
+          <div class="desc">Hero-Slider, FAQ, DSGVO-Maps-Consent, Mobile-First. Sprachen via <code>?lang=de/en/pl/hr</code>.</div>
+        </a>
+        <a href="https://andreasgrundke-ops.github.io/vso-website-prod/visitenkarte.html" target="_blank" rel="noopener" class="url-card">
+          <div class="ico-wrap"><i data-lucide="credit-card"></i></div>
+          <div class="lbl">Für die Kundin</div>
+          <div class="title">Visitenkarte (Mockup)</div>
+          <div class="url-text">…/vso-website-prod/visitenkarte.html</div>
+          <div class="desc">Vorder + Rückseite + Spec-Panel mit CI/Schriften/Farben. Druck-PDFs lokal über <code>build-pdf.ps1</code>.</div>
+        </a>
+        <a href="https://github.com/andreasgrundke-ops/vso-website-prod" target="_blank" rel="noopener" class="url-card">
+          <div class="ico-wrap"><i data-lucide="github"></i></div>
+          <div class="lbl">Intern</div>
+          <div class="title">Source &amp; Versionierung</div>
+          <div class="url-text">github.com/andreasgrundke-ops/vso-website-prod</div>
+          <div class="desc">Tags: v1.0.0, v2.0.0, v2.1.0, v2.1.1, v2.1.2 — Rollback per <code>git checkout</code>.</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== 03 Aufwand & Wert ===== -->
+    <section class="block" id="aufwand">
+      <h2><span class="num">03</span> Aufwand &amp; Marktwert</h2>
+      <p class="sec-lead">Realistische Bewertung: Was hätte ein:e Webentwickler:in / mittlere Agentur gebraucht — und was hat der Andreas-mit-Claude-Code-Pfad gekostet?</p>
+
+      <h3>Mensch (Brancheneinschätzung, ohne KI-Tools)</h3>
+      <table class="t">
+        <thead><tr><th>Posten</th><th style="width:90px">Stunden</th><th style="width:110px">Kosten à 90 €</th></tr></thead>
+        <tbody>
+          <tr><td>Projekt-Setup, Repo, Hosting-Konzept</td><td class="num">3</td><td class="num">270 €</td></tr>
+          <tr><td>Konzeption + Wireframes (3 Iterationen)</td><td class="num">12</td><td class="num">1.080 €</td></tr>
+          <tr><td>Design-Mockup HTML (3 Varianten – v1/v2/v3)</td><td class="num">16</td><td class="num">1.440 €</td></tr>
+          <tr><td>HTML/CSS Frontend Production</td><td class="num">24</td><td class="num">2.160 €</td></tr>
+          <tr><td>JavaScript (i18n, Slider, Maps-Consent, Floating-CTAs, Lenis-Smooth-Scroll)</td><td class="num">12</td><td class="num">1.080 €</td></tr>
+          <tr><td>Übersetzungen DE/EN/PL/HR (Native-Speaker oder Lektorat)</td><td class="num">8</td><td class="num">720 €</td></tr>
+          <tr><td>SEO + Schema.org + GEO + FAQ-Aufbau</td><td class="num">6</td><td class="num">540 €</td></tr>
+          <tr><td>DSGVO-Hardening (Maps-Consent, lokale Fonts, Impressum, Datenschutz)</td><td class="num">6</td><td class="num">540 €</td></tr>
+          <tr><td>A11y (Skip-Link, ARIA, Focus, prefers-reduced-motion)</td><td class="num">3</td><td class="num">270 €</td></tr>
+          <tr><td>Mobile-First-Optimierung + Cross-Browser-Tests</td><td class="num">4</td><td class="num">360 €</td></tr>
+          <tr><td>Visitenkarten-Mockup + Druckdateien (CMYK-ready, Print-PDF-Workflow)</td><td class="num">6</td><td class="num">540 €</td></tr>
+          <tr><td>Iteration mit Kundin (3 Runden)</td><td class="num">8</td><td class="num">720 €</td></tr>
+          <tr><td>Doku (README, DEPLOY, SEO-Checkliste, UEBERGABE, Projekt-Doku)</td><td class="num">6</td><td class="num">540 €</td></tr>
+          <tr><td>Quality-Check + Lighthouse + Accessibility-Audit</td><td class="num">4</td><td class="num">360 €</td></tr>
+          <tr class="total"><td>Gesamt Mensch</td><td class="num">118 h</td><td class="num">10.620 €</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Andreas mit Claude Code</h3>
+      <table class="t">
+        <thead><tr><th>Posten</th><th style="width:90px">Stunden</th><th style="width:110px">Kosten à 90 €</th></tr></thead>
+        <tbody>
+          <tr><td>Anforderungen formulieren + Cloud-Design-Handoff</td><td class="num">1,0</td><td class="num">90 €</td></tr>
+          <tr><td>Iterations-Runden mit Claude Code (Eigenarbeit)</td><td class="num">4,0</td><td class="num">360 €</td></tr>
+          <tr><td>Inhalts-Reviews + Freigaben + Browser-Checks</td><td class="num">1,5</td><td class="num">135 €</td></tr>
+          <tr><td>Kunden-Termine + Abstimmungsgespräche</td><td class="num">1,5</td><td class="num">135 €</td></tr>
+          <tr class="total"><td>Gesamt Eigenarbeit</td><td class="num">8 h</td><td class="num">720 €</td></tr>
+        </tbody>
+      </table>
+
+      <div class="kpi-row">
+        <div class="kpi"><div class="lbl">Mensch-Vollkosten</div><div class="val">10.620 €</div><div class="sub">118 h × 90 €</div></div>
+        <div class="kpi warn"><div class="lbl">Claude-Code-Pfad</div><div class="val">720 €</div><div class="sub">8 h Eigenarbeit + Tool-Kosten</div></div>
+        <div class="kpi success"><div class="lbl">Eingesparte Stunden</div><div class="val">110 h</div><div class="sub">~93 % weniger Eigenarbeit</div></div>
+        <div class="kpi success"><div class="lbl">Eingesparter Wert</div><div class="val">9.900 €</div><div class="sub">gegenüber 90-€-Stunden-Kalkulation</div></div>
+      </div>
+
+      <h3>Marktpreis-Vergleich (KMU-Website mit i18n + Visitenkarte)</h3>
+      <table class="t">
+        <thead><tr><th>Anbieter-Typ</th><th>Preis-Range</th><th>Realistisch für diese Komplexität</th></tr></thead>
+        <tbody>
+          <tr><td>Lokaler Solo-Webdesigner</td><td class="num">2.500 – 5.000 €</td><td>Eher unteres Ende, oft ohne i18n + DSGVO-Hardening</td></tr>
+          <tr><td>Mittelständische Agentur</td><td class="num">6.000 – 12.000 €</td><td><span class="hi">8.000 – 10.000 €</span> (Cloud-Design v3 + Mobile + DSGVO + i18n + VC)</td></tr>
+          <tr><td>Premium-Agentur (Brand Studio)</td><td class="num">15.000 – 30.000 €</td><td>Mit Brand-Identity-Workshop + Lokal-SEO-Konzept</td></tr>
+          <tr><td>Visitenkarte separat (nur Druckvorstufe)</td><td class="num">200 – 600 €</td><td>~400 € Aufpreis bei Agentur</td></tr>
+        </tbody>
+      </table>
+
+      <div class="alert info">
+        <i data-lucide="lightbulb"></i>
+        <div class="body">
+          <strong>Fazit für die Andreas-MSP-Argumentation</strong>
+          Der Pfad „mittlere Agentur" hätte für VSO realistisch <strong>8.000 – 10.000 €</strong> gekostet. Andreas bietet das gleiche Ergebnis bei massiv weniger Eigenaufwand — Spielraum für faire Pauschalpreise (z. B. <strong>2.500 – 4.000 €</strong> netto pro Projekt) bei trotzdem deutlich besseren Margen.
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 04 Tech-Stack ===== -->
+    <section class="block" id="stack">
+      <h2><span class="num">04</span> Tech-Stack</h2>
+      <p class="sec-lead">Was unter der Haube läuft. Diese Architektur wird für künftige Kunden 1:1 wiederverwendet.</p>
+
+      <div class="stack">
+        <div class="stack-item"><div class="ico"><i data-lucide="file-code"></i></div><div><div class="t">Vanilla HTML/CSS/JS</div><div class="v">kein Build-Tool, kein npm</div></div></div>
+        <div class="stack-item"><div class="ico"><i data-lucide="cloud"></i></div><div><div class="t">GitHub Pages</div><div class="v">main branch, Auto-Deploy</div></div></div>
+        <div class="stack-item"><div class="ico"><i data-lucide="languages"></i></div><div><div class="t">i18n DE/EN/PL/HR</div><div class="v">data-i18n + localStorage</div></div></div>
+        <div class="stack-item"><div class="ico"><i data-lucide="search"></i></div><div><div class="t">Schema.org JSON-LD</div><div class="v">AccountingService + LocalBusiness + Person + FAQPage</div></div></div>
+        <div class="stack-item"><div class="ico"><i data-lucide="image"></i></div><div><div class="t">Hero-Slider</div><div class="v">5 lokale Bilder + dots/arrows</div></div></div>
+        <div class="stack-item"><div class="ico"><i data-lucide="phone-call"></i></div><div><div class="t">Sticky Floating-CTAs</div><div class="v">IntersectionObserver, Tel/Mail/Top</div></div></div>
+        <div class="stack-item"><div class="ico"><i data-lucide="mouse-pointer-2"></i></div><div><div class="t">Lenis Smooth-Scroll</div><div class="v">lokal, ~14 KB, mit reduced-motion</div></div></div>
+        <div class="stack-item"><div class="ico"><i data-lucide="map-pin"></i></div><div><div class="t">Google Maps 2-Klick</div><div class="v">DSGVO-Consent, Cookie-frei</div></div></div>
+        <div class="stack-item"><div class="ico"><i data-lucide="type"></i></div><div><div class="t">Lokale Schriftarten</div><div class="v">Cormorant Garamond + Inter, woff2</div></div></div>
+        <div class="stack-item"><div class="ico"><i data-lucide="accessibility"></i></div><div><div class="t">A11y (WCAG 2.2 AA)</div><div class="v">Skip-Link, ARIA, Focus-Visible</div></div></div>
+        <div class="stack-item"><div class="ico"><i data-lucide="smartphone"></i></div><div><div class="t">Mobile-First</div><div class="v">Touch ≥ 44 px, Burger, responsive</div></div></div>
+        <div class="stack-item"><div class="ico"><i data-lucide="shield-check"></i></div><div><div class="t">DSGVO-Hardening</div><div class="v">keine Cookies, kein Tracking</div></div></div>
+        <div class="stack-item"><div class="ico"><i data-lucide="credit-card"></i></div><div><div class="t">Visitenkarte</div><div class="v">91×61 mm Print, Vistaprint-ready</div></div></div>
+        <div class="stack-item"><div class="ico"><i data-lucide="git-branch"></i></div><div><div class="t">Git-Tags Versionierung</div><div class="v">Rollback per checkout</div></div></div>
+      </div>
+    </section>
+
+    <!-- ===== 05 Checkliste ===== -->
+    <section class="block" id="checkliste">
+      <h2><span class="num">05</span> Checkliste bis zum Abschluss</h2>
+      <p class="sec-lead">Status wird automatisch im Browser gespeichert — du kannst jederzeit weiterarbeiten. Sidebar bietet Export/Import als JSON.</p>
+
+      <!-- Phase A: Pre-Go-Live mit Kundin -->
+      <details class="phase" data-phase="A" open>
+        <summary class="phase-head">
+          <h3><span class="num">A</span>Pre-Go-Live mit Kundin</h3>
+          <div class="phase-progress" data-phase-progress="A"><span class="bar"><span></span></span><span class="txt">0/0</span><span class="arr"></span></div>
+        </summary>
+        <div class="phase-body">
+          <div class="task"><input type="checkbox" id="A1"/><label for="A1">Vorschau-URL der Kundin geschickt (Mail-Vorlage in <code>DEPLOY.md</code>)</label></div>
+          <div class="task"><input type="checkbox" id="A2"/><label for="A2">Feedback-Runde 1 eingearbeitet (Texte, Foto, Logo)</label></div>
+          <div class="task"><input type="checkbox" id="A3"/><label for="A3">Feedback-Runde 2 (falls nötig)</label></div>
+          <div class="task"><input type="checkbox" id="A4"/><label for="A4"><code>og-image.jpg</code> 1200×630 erstellt + in <code>assets/img/</code> abgelegt (Social-Sharing-Vorschau)</label></div>
+          <div class="task"><input type="checkbox" id="A5"/><label for="A5">Favicon-Set ergänzt (16/32/180 px für Apple Touch) — aktuell nur SVG-Icon</label></div>
+          <div class="task"><input type="checkbox" id="A6"/><label for="A6">Cross-Browser-Test (Chrome, Firefox, Safari, Edge)</label></div>
+          <div class="task"><input type="checkbox" id="A7"/><label for="A7">Mobile-Test echtes iPhone + echtes Android-Gerät</label></div>
+          <div class="task"><input type="checkbox" id="A8"/><label for="A8">Lighthouse-Audit ≥ 95 in allen 4 Kategorien (Perf/A11y/BP/SEO)</label></div>
+          <div class="task"><input type="checkbox" id="A9"/><label for="A9">Tippfehler-Check + Korrekturlesen <strong>aller 4 Sprachen</strong></label></div>
+          <div class="task"><input type="checkbox" id="A10"/><label for="A10">Texte gegen die <a href="#findings">Copy-Findings</a> aus dem Review iteriert</label></div>
+          <div class="task"><input type="checkbox" id="A11"/><label for="A11">Kunden-Freigabe schriftlich eingeholt (E-Mail)</label></div>
+          <div class="notes"><label for="notesA">Notizen Phase A</label><textarea id="notesA" placeholder="z. B. Termin mit Kundin am … / Feedback war …"></textarea></div>
+        </div>
+      </details>
+
+      <!-- Phase B: Visitenkarte -->
+      <details class="phase" data-phase="B">
+        <summary class="phase-head">
+          <h3><span class="num">B</span>Visitenkarte (Vistaprint)</h3>
+          <div class="phase-progress" data-phase-progress="B"><span class="bar"><span></span></span><span class="txt">0/0</span><span class="arr"></span></div>
+        </summary>
+        <div class="phase-body">
+          <div class="task"><input type="checkbox" id="B1"/><label for="B1">Mockup mit Kundin freigegeben</label></div>
+          <div class="task"><input type="checkbox" id="B2"/><label for="B2">Logo-Variante final (grünes SVG aus Cloud-Design oder bestehendes blaues PNG?)</label></div>
+          <div class="task"><input type="checkbox" id="B3"/><label for="B3">Tagline „Ihre Zahlen. Meine Stärke." final (oder Alternativvorschlag)</label></div>
+          <div class="task"><input type="checkbox" id="B4"/><label for="B4">PDFs erzeugt: <code>visitenkarte\build-pdf.ps1</code> ausgeführt</label></div>
+          <div class="task"><input type="checkbox" id="B5"/><label for="B5">PDFs in PDF-Reader auf <strong>91 × 61 mm</strong> visuell geprüft</label></div>
+          <div class="task"><input type="checkbox" id="B6"/><label for="B6">Bei Vistaprint hochgeladen — Vorschau mit Beschnitt-/Sicherheitslinie geprüft</label></div>
+          <div class="task"><input type="checkbox" id="B7"/><label for="B7">Papier gewählt: 350 g matt oder Naturpapier</label></div>
+          <div class="task"><input type="checkbox" id="B8"/><label for="B8">Bestellt (Erstauflage <strong>250 Stück</strong>, ~30 €)</label></div>
+          <div class="task"><input type="checkbox" id="B9"/><label for="B9">Liefer-ETA notiert (~5–10 Werktage)</label></div>
+          <div class="notes"><label for="notesB">Notizen Phase B</label><textarea id="notesB" placeholder="z. B. Bestellnummer / ETA …"></textarea></div>
+        </div>
+      </details>
+
+      <!-- Phase C: Go-Live (DNS + IONOS) -->
+      <details class="phase" data-phase="C">
+        <summary class="phase-head">
+          <h3><span class="num">C</span>Go-Live: DNS-Migration IONOS → GitHub Pages</h3>
+          <div class="phase-progress" data-phase-progress="C"><span class="bar"><span></span></span><span class="txt">0/0</span><span class="arr"></span></div>
+        </summary>
+        <div class="phase-body">
+          <div class="task"><input type="checkbox" id="C1"/><label for="C1"><code>CNAME</code>-Datei mit <code>violetta-schroeer.de</code> erstellt + gepusht</label></div>
+          <div class="task"><input type="checkbox" id="C2"/><label for="C2">Custom Domain in GitHub Pages aktiviert: <code>gh api -X PUT repos/.../pages -F "cname=violetta-schroeer.de"</code></label></div>
+          <div class="task"><input type="checkbox" id="C3"/><label for="C3">Bei IONOS DNS-Verwaltung: <strong>4 A-Records</strong> für <code>@</code> auf <code>185.199.108.153</code> bis <code>.111.153</code></label></div>
+          <div class="task"><input type="checkbox" id="C4"/><label for="C4">Bei IONOS: CNAME für <code>www</code> auf <code>andreasgrundke-ops.github.io.</code></label></div>
+          <div class="task"><input type="checkbox" id="C5"/><label for="C5">Alte WordPress-A-Records bei IONOS gelöscht</label></div>
+          <div class="task"><input type="checkbox" id="C6"/><label for="C6"><strong>MX-Records UNANGETASTET</strong> — Mail-Postfach <code>info@violetta-schroeer.de</code> bleibt IONOS</label></div>
+          <div class="task"><input type="checkbox" id="C7"/><label for="C7">DNS-Propagation gewartet (~15 Min) und mit <code>nslookup violetta-schroeer.de</code> auf 185.199.x.x verifiziert</label></div>
+          <div class="task"><input type="checkbox" id="C8"/><label for="C8">In GitHub Pages „Enforce HTTPS" angekreuzt + Let's-Encrypt-Zertifikat ausgestellt</label></div>
+          <div class="task"><input type="checkbox" id="C9"/><label for="C9">Live-URL <a href="https://violetta-schroeer.de" target="_blank" rel="noopener">https://violetta-schroeer.de</a> getestet (kein SSL-Warning)</label></div>
+          <div class="task"><input type="checkbox" id="C10"/><label for="C10">Maps-Consent + Karte funktional auf der Live-Domain getestet</label></div>
+          <div class="task"><input type="checkbox" id="C11"/><label for="C11">Sprachversionen <code>?lang=de/en/pl/hr</code> auf der Live-Domain getestet</label></div>
+          <div class="notes"><label for="notesC">Notizen Phase C</label><textarea id="notesC" placeholder="z. B. DNS-TTL bei IONOS / Datum der Umstellung …"></textarea></div>
+        </div>
+      </details>
+
+      <!-- Phase D: WordPress-Kündigung -->
+      <details class="phase" data-phase="D">
+        <summary class="phase-head">
+          <h3><span class="num">D</span>WordPress bei IONOS kündigen</h3>
+          <div class="phase-progress" data-phase-progress="D"><span class="bar"><span></span></span><span class="txt">0/0</span><span class="arr"></span></div>
+        </summary>
+        <div class="phase-body">
+          <div class="task"><input type="checkbox" id="D1"/><label for="D1">~3 Tage nach DNS-Umstellung: alles stabil geblieben, keine Mail-Issues</label></div>
+          <div class="task"><input type="checkbox" id="D2"/><label for="D2">Im IONOS-Kundenmenü: Vertrag „Managed WordPress" suchen + kündigen</label></div>
+          <div class="task"><input type="checkbox" id="D3"/><label for="D3"><strong>Domain</strong> NICHT kündigen — die bleibt</label></div>
+          <div class="task"><input type="checkbox" id="D4"/><label for="D4"><strong>Mail-Postfach</strong> NICHT kündigen — bleibt produktiv</label></div>
+          <div class="task"><input type="checkbox" id="D5"/><label for="D5">Kündigungsbestätigung erhalten + abgelegt</label></div>
+          <div class="task"><input type="checkbox" id="D6"/><label for="D6">Erste Rechnung nach Kündigung geprüft (nur Domain ~12 €/J + Mail ~2 €/M)</label></div>
+          <div class="notes"><label for="notesD">Notizen Phase D</label><textarea id="notesD" placeholder="z. B. Kündigungsfrist, Vertrags-Endtermin …"></textarea></div>
+        </div>
+      </details>
+
+      <!-- Phase E: Maps + Search Engines -->
+      <details class="phase" data-phase="E">
+        <summary class="phase-head">
+          <h3><span class="num">E</span>Suchmaschinen + Karten-Embeds</h3>
+          <div class="phase-progress" data-phase-progress="E"><span class="bar"><span></span></span><span class="txt">0/0</span><span class="arr"></span></div>
+        </summary>
+        <div class="phase-body">
+          <div class="task"><input type="checkbox" id="E1"/><label for="E1">Google Maps Embed-Code für <strong>Bretonischer Ring 18</strong> erzeugt + <strong>Adresse korrekt verifiziert</strong> (alte Koordinaten waren falsch!)</label></div>
+          <div class="task"><input type="checkbox" id="E2"/><label for="E2">Echter <code>iframe</code> in <code>loadMap()</code>-Funktion eingebaut (statt <code>maps.google.com?output=embed</code>)</label></div>
+          <div class="task"><input type="checkbox" id="E3"/><label for="E3"><a href="https://search.google.com/search-console" target="_blank" rel="noopener">Google Search Console</a>: Domain-Property hinzugefügt, DNS-TXT bei IONOS verifiziert</label></div>
+          <div class="task"><input type="checkbox" id="E4"/><label for="E4">In GSC: Sitemap eingereicht (<code>https://violetta-schroeer.de/sitemap.xml</code>)</label></div>
+          <div class="task"><input type="checkbox" id="E5"/><label for="E5">In GSC: URL-Inspection für Startseite → „Indexierung beantragen"</label></div>
+          <div class="task"><input type="checkbox" id="E6"/><label for="E6"><a href="https://www.bing.com/webmasters" target="_blank" rel="noopener">Bing Webmaster Tools</a>: Site hinzugefügt (Import aus GSC möglich)</label></div>
+          <div class="task"><input type="checkbox" id="E7"/><label for="E7"><a href="https://businessconnect.apple.com" target="_blank" rel="noopener">Apple Business Connect</a> (für iPhone-Maps-User)</label></div>
+          <div class="notes"><label for="notesE">Notizen Phase E</label><textarea id="notesE" placeholder="z. B. echte Maps-pb-URL …"></textarea></div>
+        </div>
+      </details>
+
+      <!-- Phase F: Google Business Profile -->
+      <details class="phase" data-phase="F">
+        <summary class="phase-head">
+          <h3><span class="num">F</span>Google Business Profile</h3>
+          <div class="phase-progress" data-phase-progress="F"><span class="bar"><span></span></span><span class="txt">0/0</span><span class="arr"></span></div>
+        </summary>
+        <div class="phase-body">
+          <div class="task"><input type="checkbox" id="F1"/><label for="F1"><a href="https://business.google.com" target="_blank" rel="noopener">business.google.com</a>: Account angelegt oder bestehendes Profil beansprucht</label></div>
+          <div class="task"><input type="checkbox" id="F2"/><label for="F2">Unternehmensname: <code>Violetta Schröer – Office Dienstleistungen</code></label></div>
+          <div class="task"><input type="checkbox" id="F3"/><label for="F3">Kategorien gesetzt: <strong>Steuerberatung</strong> (primär) · Buchhaltungsbüro · Lohnbuchhaltung · Bürodienstleistung</label></div>
+          <div class="task"><input type="checkbox" id="F4"/><label for="F4">Adresse + Servicebereich (Grasbrunn, München, Haar, Vaterstetten, Putzbrunn, Ottobrunn, Landkreis München)</label></div>
+          <div class="task"><input type="checkbox" id="F5"/><label for="F5">Öffnungszeiten Mo–Fr 09:00–17:00 + Telefon +49 89 666 822 01</label></div>
+          <div class="task"><input type="checkbox" id="F6"/><label for="F6">Website-URL <code>https://violetta-schroeer.de</code></label></div>
+          <div class="task"><input type="checkbox" id="F7"/><label for="F7">Logo + Cover-Bild hochgeladen + mind. 5 Fotos (Portrait, Büro, Schreibtisch, Bauunterlagen, Tor)</label></div>
+          <div class="task"><input type="checkbox" id="F8"/><label for="F8">Beschreibung 750 Zeichen ausgefüllt (Mehrsprachigkeit, Spezialisierung Bau, IHK, seit 2003)</label></div>
+          <div class="task"><input type="checkbox" id="F9"/><label for="F9">Verifizierungs-Postkarte angefordert (Lieferzeit ~5–7 Tage)</label></div>
+          <div class="task"><input type="checkbox" id="F10"/><label for="F10">Postkarten-Code eingegeben → Profil verifiziert</label></div>
+          <div class="task"><input type="checkbox" id="F11"/><label for="F11">Q&amp;A vorbefüllt mit den 7 FAQ aus der Website</label></div>
+          <div class="task"><input type="checkbox" id="F12"/><label for="F12">Erster Google-Post abgesetzt (z. B. „Lohnsteuer-Stichtag 10.6. — Unterlagen rechtzeitig…")</label></div>
+          <div class="notes"><label for="notesF">Notizen Phase F</label><textarea id="notesF" placeholder="z. B. Postkarte angekommen am …"></textarea></div>
+        </div>
+      </details>
+
+      <!-- Phase G: Lokale Branchenverzeichnisse -->
+      <details class="phase" data-phase="G">
+        <summary class="phase-head">
+          <h3><span class="num">G</span>Lokale Branchenverzeichnisse</h3>
+          <div class="phase-progress" data-phase-progress="G"><span class="bar"><span></span></span><span class="txt">0/0</span><span class="arr"></span></div>
+        </summary>
+        <div class="phase-body">
+          <div class="task"><input type="checkbox" id="G1"/><label for="G1"><strong>grasbrunn.de Branchenverzeichnis</strong>: Eintrag bei <a href="mailto:rathaus@grasbrunn.de">rathaus@grasbrunn.de</a> beantragt (lokaler Bezug = hoher Trust + .de-Backlink)</label></div>
+          <div class="task"><input type="checkbox" id="G2"/><label for="G2"><a href="https://www.ihk-muenchen.de" target="_blank" rel="noopener">IHK München-Oberbayern</a>: Mitgliederliste prüfen, Service-Tags ergänzen</label></div>
+          <div class="task"><input type="checkbox" id="G3"/><label for="G3">Gewerberegister-Eintrag prüfen (Gemeindeverwaltung Grasbrunn) — alle Daten aktuell?</label></div>
+          <div class="task"><input type="checkbox" id="G4"/><label for="G4"><a href="https://www.gelbeseiten.de" target="_blank" rel="noopener">Gelbe Seiten</a> – Basiseintrag (kostenlos)</label></div>
+          <div class="task"><input type="checkbox" id="G5"/><label for="G5"><a href="https://www.dasoertliche.de" target="_blank" rel="noopener">Das Örtliche</a> – kostenlos</label></div>
+          <div class="task"><input type="checkbox" id="G6"/><label for="G6"><a href="https://www.11880.com" target="_blank" rel="noopener">11880.com</a> – kostenlos</label></div>
+          <div class="task"><input type="checkbox" id="G7"/><label for="G7"><a href="https://www.meinestadt.de/grasbrunn" target="_blank" rel="noopener">meinestadt.de/grasbrunn</a></label></div>
+          <div class="task"><input type="checkbox" id="G8"/><label for="G8"><a href="https://www.yelp.de" target="_blank" rel="noopener">Yelp.de</a> (für ausländische Kunden)</label></div>
+          <div class="task"><input type="checkbox" id="G9"/><label for="G9"><a href="https://firmenabc.de" target="_blank" rel="noopener">FirmenABC</a> – Backlink-Wert</label></div>
+          <div class="task"><input type="checkbox" id="G10"/><label for="G10"><strong>NAP-Konsistenz</strong> bei allen Einträgen geprüft (Name + Adresse + Phone identisch zur Website)</label></div>
+          <div class="notes"><label for="notesG">Notizen Phase G</label><textarea id="notesG" placeholder="z. B. Gemeinde-Antwort am … / IHK-Member-ID …"></textarea></div>
+        </div>
+      </details>
+
+      <!-- Phase H: Reputation + Marketing -->
+      <details class="phase" data-phase="H">
+        <summary class="phase-head">
+          <h3><span class="num">H</span>Reputation + Erste Bewertungen</h3>
+          <div class="phase-progress" data-phase-progress="H"><span class="bar"><span></span></span><span class="txt">0/0</span><span class="arr"></span></div>
+        </summary>
+        <div class="phase-body">
+          <div class="task"><input type="checkbox" id="H1"/><label for="H1">Mail-Vorlage „Bitte um Google-Bewertung" für die Kundin erstellt</label></div>
+          <div class="task"><input type="checkbox" id="H2"/><label for="H2">Erste 5 Bestandskunden mit Bewertungs-Link angeschrieben</label></div>
+          <div class="task"><input type="checkbox" id="H3"/><label for="H3">Mail-Footer der Kundin um Bewertungs-Link erweitert</label></div>
+          <div class="task"><input type="checkbox" id="H4"/><label for="H4">QR-Code für Bewertungs-Link generiert (für VC-Rückseite Auflage 2 / Türaufkleber Büro)</label></div>
+          <div class="notes"><label for="notesH">Notizen Phase H</label><textarea id="notesH" placeholder="z. B. erste Bewertung am …"></textarea></div>
+        </div>
+      </details>
+
+      <!-- Phase I: Monitoring -->
+      <details class="phase" data-phase="I">
+        <summary class="phase-head">
+          <h3><span class="num">I</span>Monitoring (laufend)</h3>
+          <div class="phase-progress" data-phase-progress="I"><span class="bar"><span></span></span><span class="txt">0/0</span><span class="arr"></span></div>
+        </summary>
+        <div class="phase-body">
+          <div class="task"><input type="checkbox" id="I1"/><label for="I1">Google Search Console wöchentlich gecheckt (Klicks, Top-Keywords, Indexierungs-Errors)</label></div>
+          <div class="task"><input type="checkbox" id="I2"/><label for="I2">Lokale Such-Tests Privat-Browser: <code>"Steuerfachwirtin Grasbrunn"</code> + Variants — Position notieren</label></div>
+          <div class="task"><input type="checkbox" id="I3"/><label for="I3">AI-Such-Tests alle 4 Wochen: ChatGPT + Perplexity → wird die Seite zitiert?</label></div>
+          <div class="task"><input type="checkbox" id="I4"/><label for="I4">Google-Business-Insights monatlich (Aufrufe, Anrufe, Routen-Anfragen)</label></div>
+          <div class="task"><input type="checkbox" id="I5"/><label for="I5">Lighthouse-Score quartalsweise nachgemessen (Performance-Regression?)</label></div>
+          <div class="notes"><label for="notesI">Notizen Phase I</label><textarea id="notesI" placeholder="z. B. Top-Keyword X / aktuelle Position Y"></textarea></div>
+        </div>
+      </details>
+
+      <!-- Phase J: Master-Template Polish -->
+      <details class="phase" data-phase="J">
+        <summary class="phase-head">
+          <h3><span class="num">J</span>Master-Template Polish (für Folge-Projekte)</h3>
+          <div class="phase-progress" data-phase-progress="J"><span class="bar"><span></span></span><span class="txt">0/0</span><span class="arr"></span></div>
+        </summary>
+        <div class="phase-body">
+          <div class="task"><input type="checkbox" id="J1"/><label for="J1">Lessons Learned aus VSO 2026 dokumentiert (was lief gut, was nicht)</label></div>
+          <div class="task"><input type="checkbox" id="J2"/><label for="J2">Master-Template-Repo aufgesetzt (z. B. <code>github.com/andreasgrundke-ops/website-kmu-template</code>)</label></div>
+          <div class="task"><input type="checkbox" id="J3"/><label for="J3">Inhalts-Variablen extrahiert: Name, Adresse, Tel, Mail, USPs, Services, Sprachen</label></div>
+          <div class="task"><input type="checkbox" id="J4"/><label for="J4">Quick-Replace-Skript geschrieben (PowerShell oder Node) — search/replace pro Kundenprojekt</label></div>
+          <div class="task"><input type="checkbox" id="J5"/><label for="J5">Tech-Stack-Template eingefroren auf v2.1.x (oder höher) — als Stable Release getaggt</label></div>
+          <div class="task"><input type="checkbox" id="J6"/><label for="J6">Pauschalpreis-Modell für KMU-Webseiten kalkuliert (z. B. 2.500 € / 3.500 € / 5.000 € Tier-Modell)</label></div>
+          <div class="notes"><label for="notesJ">Notizen Phase J</label><textarea id="notesJ" placeholder="z. B. Lessons / Pauschalpreise …"></textarea></div>
+        </div>
+      </details>
+
+    </section>
+
+    <!-- ===== 06 Findings ===== -->
+    <section class="block" id="findings">
+      <h2><span class="num">06</span> Review-Findings</h2>
+      <p class="sec-lead">Drei parallele Audits durch spezialisierte Agents — UI/Code-Quality, Copywriting (DE), SEO + GEO. Priorisiert: <span class="badge danger">P1 kritisch</span> <span class="badge warn">P2 wichtig</span> <span class="badge success">P3 nice-to-have</span></p>
+
+      <div class="findings-tabs" role="tablist">
+        <button class="act" type="button" data-tab="ui" onclick="switchTab('ui')"><i data-lucide="layout"></i>UI / Code <span class="badge-mini">14</span></button>
+        <button type="button" data-tab="copy" onclick="switchTab('copy')"><i data-lucide="pen-tool"></i>Copywriting <span class="badge-mini">12</span></button>
+        <button type="button" data-tab="seo" onclick="switchTab('seo')"><i data-lucide="search"></i>SEO / GEO <span class="badge-mini" id="seoCount">12</span></button>
+      </div>
+
+      <!-- UI/Code Findings -->
+      <div class="findings-pane act" id="pane-ui">
+        <div class="finding p1"><div class="finding-head"><span class="pri">P1</span><span class="title">Hero-Slider: 5× &lt;h1&gt; auf einer Seite + inaktive Slides für Screenreader sichtbar</span></div>
+          <div class="finding-body">
+            Inaktive Slides sind nur per <code>opacity:0</code> ausgeblendet, bleiben aber im Accessibility-Tree → SR-User hören 5× „Herzlich willkommen…" und 5 H1.
+            <span class="where">.hero-slide · index.html Z. 1089/1120/1147/1174/1201</span>
+            <span class="fix">Nur Slide 0 als &lt;h1&gt;, Rest als &lt;h2&gt; / &lt;p class="h1-look"&gt;; inaktive Slides <code>aria-hidden="true"</code> + <code>inert</code></span>
+          </div>
+        </div>
+        <div class="finding p1"><div class="finding-head"><span class="pri">P1</span><span class="title">Lenis bricht Anker-Navigation + Sticky-Header verdeckt Anker-Targets</span></div>
+          <div class="finding-body">
+            Lenis fängt CSS-Scroll, aber Anker-Klicks werden nicht über <code>lenis.scrollTo()</code> umgeleitet → wirken hart. Außerdem fehlt <code>scroll-margin-top</code> für den 92 px Sticky-Header.
+            <span class="where">section[id] / nav.main a / Z. 2103–2111 + 2167</span>
+            <span class="fix"><code>section[id]{ scroll-margin-top: 100px; }</code> + Anker-Klicks via Lenis.scrollTo(target) umleiten</span>
+          </div>
+        </div>
+        <div class="finding p1"><div class="finding-head"><span class="pri">P1</span><span class="title">Inline <code>onclick=&quot;…&quot;</code> in 4 Stellen — bricht bei strengem CSP</span></div>
+          <div class="finding-body">
+            <code>toggleNav()</code>, <code>loadMap()</code>, <code>openRoute()</code>, <code>scrollToTop()</code> — alle inline.
+            <span class="where">Z. 1067, 1574, 1261/1540, 1591</span>
+            <span class="fix">Handler im &lt;script&gt;-Block via addEventListener registrieren</span>
+          </div>
+        </div>
+        <div class="finding p1"><div class="finding-head"><span class="pri">P1</span><span class="title"><code>aria-current="false"</code> ist invalid — ARIA erwartet Token oder weglassen</span></div>
+          <div class="finding-body">
+            <span class="where">setLang() · Z. 2078</span>
+            <span class="fix">Bei Aktiv: <code>setAttribute('aria-current','true')</code>, sonst <code>removeAttribute('aria-current')</code></span>
+          </div>
+        </div>
+        <div class="finding p1"><div class="finding-head"><span class="pri">P1</span><span class="title">Hero-Slider-Bilder als <code>background-image</code> statt <code>&lt;img&gt;</code> → keine fetchpriority/lazy/srcset</span></div>
+          <div class="finding-body">
+            LCP-Bild lädt verzögert, kein Alt-Text, kein srcset für Mobile.
+            <span class="where">.hero-slide .img · Z. 1081/1111/1138/1165/1192</span>
+            <span class="fix">Echte &lt;img&gt;-Tags mit width/height, fetchpriority="high" für Slide 0, loading="lazy" für Rest, alt-Texte je Bild</span>
+          </div>
+        </div>
+        <div class="finding p2"><div class="finding-head"><span class="pri">P2</span><span class="title"><code>transition: all</code> mehrfach — triggert Layout/Paint, ruckelt auf Mobile</span></div>
+          <div class="finding-body">
+            <span class="where">.btn, .lang-sw a, .contact-row, .float-btn, .map-overlay-cta</span>
+            <span class="fix">Konkret listen: <code>transition: background .25s, color .25s, transform .25s, box-shadow .25s</code></span>
+          </div>
+        </div>
+        <div class="finding p2"><div class="finding-head"><span class="pri">P2</span><span class="title">Drop-Cap (<code>::first-letter</code>) bricht bei Q/J + langem ersten Wort</span></div>
+          <div class="finding-body">
+            <code>font-size:3.6em</code> + <code>line-height:.85</code> overlappt; bei i18n nicht durchgängig schön.
+            <span class="where">.about-text p:first-of-type::first-letter · Z. 628</span>
+            <span class="fix">Auf 3em reduzieren, <code>margin-top:.05em</code>, im Mobile-MQ deaktivieren</span>
+          </div>
+        </div>
+        <div class="finding p2"><div class="finding-head"><span class="pri">P2</span><span class="title">Hero-Höhe 680 px + 130 px Bars verschluckt 13"-Notebook-Viewport</span></div>
+          <div class="finding-body">
+            Auf 768 px hoch keine Sicht auf Trust-Bar/USP, Slider-Dots/Arrows direkt am Fold.
+            <span class="where">.hero-grid min-height · Z. 400</span>
+            <span class="fix"><code>min-height: calc(100vh - 134px)</code> oder fixed 580 px, Dots/Arrows weiter nach oben</span>
+          </div>
+        </div>
+        <div class="finding p2"><div class="finding-head"><span class="pri">P2</span><span class="title">Map-Consent: gerade <code>"…"</code> statt typografischer „…" / „…"</span></div>
+          <div class="finding-body">
+            <span class="where">map_consent_text in DE/EN/PL/HR i18n-Block</span>
+            <span class="fix">DE: <code>„Karte laden"</code>, EN: <code>"Load map"</code>, PL/HR analog typografisch</span>
+          </div>
+        </div>
+        <div class="finding p3"><div class="finding-head"><span class="pri">P3</span><span class="title">Lucide via CDN <code>unpkg.com/lucide@latest</code> — DSGVO-Inkonsistenz + instabil</span></div>
+          <div class="finding-body">
+            Alles andere ist lokal, aber Icons noch CDN. <code>@latest</code> lädt bei jedem Release neu.
+            <span class="where">Z. 1654</span>
+            <span class="fix">Lucide nach <code>assets/js/lucide.min.js</code> legen (~20 KB) + im Datenschutz-Eintrag entfernen</span>
+          </div>
+        </div>
+        <div class="finding p3"><div class="finding-head"><span class="pri">P3</span><span class="title"><code>font-variant-numeric: tabular-nums</code> fehlt für Telefonnummern</span></div>
+          <div class="finding-body">
+            Cormorant Garamond rendert Ziffern proportional → Telefonnummer wirkt wackelig.
+            <span class="where">.cta-block .val, .contact-row .val, Footer-Tel</span>
+            <span class="fix"><code>font-variant-numeric: tabular-nums;</code> auf den Selectors</span>
+          </div>
+        </div>
+        <div class="finding p3"><div class="finding-head"><span class="pri">P3</span><span class="title">PL-Übersetzung: Tippfehler „zaobilaznica" in <code>usp3_s</code></span></div>
+          <div class="finding-body">
+            Sollte „bez zbędnych dróg / objazdów" sein.
+            <span class="where">i18n pl-Block, Zeile ~1897</span>
+            <span class="fix">Native-Speaker-Lektorat für PL und HR (auch andere Subtilitäten)</span>
+          </div>
+        </div>
+        <div class="finding p3"><div class="finding-head"><span class="pri">P3</span><span class="title">CSS-Variable <code>--gold</code> ist tatsächlich Grün — verwirrt Wartung</span></div>
+          <div class="finding-body">
+            Heißt <code>--gold:#4a7a55</code> — semantisch falsch nach Wechsel zu Grün.
+            <span class="where">:root · Z. 188-189, 229</span>
+            <span class="fix">Rename zu <code>--accent</code>/<code>--accent-lt</code> mit globalem Search/Replace</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copy Findings -->
+      <div class="findings-pane" id="pane-copy">
+        <div class="finding p2"><div class="finding-head"><span class="pri">P2</span><span class="title">Hero 1 – Sub konkretisieren</span></div>
+          <div class="finding-body">
+            Aktuell: „Buchhaltung in vier Sprachen – Deutsch, Englisch, Polnisch, Kroatisch. Persönlich, diskret und mit über 20 Jahren Erfahrung."
+            <span class="fix">„Buchhaltung, Lohn und Baulöhne in vier Sprachen – DE, EN, PL, HR. Seit über 20 Jahren für Handwerk und Mittelstand im Raum München." (Trust + SEO durch Konkretion)</span>
+          </div>
+        </div>
+        <div class="finding p2"><div class="finding-head"><span class="pri">P2</span><span class="title">Hero 3 – Headline „hält, was sie verspricht" → Floskel</span></div>
+          <div class="finding-body">
+            <span class="fix">„Lohnabrechnung. Pünktlich. Auch beim Bau." — konkret + ruhig + benennt Spezialisierung</span>
+          </div>
+        </div>
+        <div class="finding p2"><div class="finding-head"><span class="pri">P2</span><span class="title">Hero 5 – Adresse doppelt</span></div>
+          <div class="finding-body">
+            Adresse steht direkt darunter im CTA-Block.
+            <span class="fix">„Persönlicher Termin in Grasbrunn oder digitale Belegübergabe – Sie entscheiden, was zu Ihrem Alltag passt." (Fokus auf Wahlfreiheit)</span>
+          </div>
+        </div>
+        <div class="finding p2"><div class="finding-head"><span class="pri">P2</span><span class="title">CTA-Headline „Lassen Sie uns in Ruhe reden." zu blumig</span></div>
+          <div class="finding-body">
+            <span class="fix">„Sprechen Sie direkt mit mir." — direkter, betont das USP „eine Ansprechpartnerin"</span>
+          </div>
+        </div>
+        <div class="finding p1"><div class="finding-head"><span class="pri">P1</span><span class="title">USP 1 inhaltsleer („Vielseitige Expertise")</span></div>
+          <div class="finding-body">
+            Aktuell: „Vielseitige Expertise / Fachwissen, das Ihre Buchhaltung wirklich weiterbringt."
+            <span class="fix">„20 Jahre Praxis / Fibu, Lohn und Baulöhne aus einer Hand – seit 2003 für KMU im Raum München." (spezifische Zahlen, kein Buzzword)</span>
+          </div>
+        </div>
+        <div class="finding p2"><div class="finding-head"><span class="pri">P2</span><span class="title">USP-Headline „Eine ruhige Hand" weichgespült</span></div>
+          <div class="finding-body">
+            <span class="fix">„Mehr als nur Buchungen. Ein verlässlicher Partner." — trifft den B2B-Trustnerv</span>
+          </div>
+        </div>
+        <div class="finding p3"><div class="finding-head"><span class="pri">P3</span><span class="title">Service Büroservice: „Rücken freihalten" abgenutzt</span></div>
+          <div class="finding-body">
+            <span class="fix">„… damit Sie sich auf Ihr Kerngeschäft konzentrieren können statt auf Papierkram."</span>
+          </div>
+        </div>
+        <div class="finding p2"><div class="finding-head"><span class="pri">P2</span><span class="title">About P3 – „Keine Floskeln" als Floskel</span></div>
+          <div class="finding-body">
+            <span class="fix">„Keine Standardpakete, keine versteckten Aufschläge – nur saubere Arbeit zu einem klaren Pauschalpreis." (Preisklarheit als KMU-Sorge)</span>
+          </div>
+        </div>
+        <div class="finding p2"><div class="finding-head"><span class="pri">P2</span><span class="title">Quote-Band „Ruheinsel" zu Wellness</span></div>
+          <div class="finding-body">
+            <span class="fix">„Buchhaltung ist Vertrauenssache. Bei mir wissen Sie, woran Sie sind – Monat für Monat." (Verlässlichkeit + Transparenz)</span>
+          </div>
+        </div>
+        <div class="finding p2"><div class="finding-head"><span class="pri">P2</span><span class="title">Process Step 2 – Negativ-Framing („keine Überraschungen")</span></div>
+          <div class="finding-body">
+            <span class="fix">„Festpreis-Pauschale auf Ihren Bedarf zugeschnitten – Sie wissen vorher, was es kostet." (positives Framing)</span>
+          </div>
+        </div>
+        <div class="finding p2"><div class="finding-head"><span class="pri">P2</span><span class="title">Contact CTAs ohne Mehrwert</span></div>
+          <div class="finding-body">
+            Aktuell: „Anfrage senden" / „Direkt anrufen"
+            <span class="fix">„Erstgespräch anfragen" / „Jetzt anrufen: 089 666 822 01" — Telefonnummer im Button erhöht messbar die Anrufrate auf Mobile</span>
+          </div>
+        </div>
+        <div class="finding p2"><div class="finding-head"><span class="pri">P2</span><span class="title">FAQ 1 – Antwort beginnt definitorisch statt mit Kundennutzen</span></div>
+          <div class="finding-body">
+            <span class="fix">„Kurz gesagt: Ich übernehme Ihre laufende Buchhaltung, Lohnabrechnung und alle Vorbereitungsarbeiten – den Jahresabschluss und die finale Steuerberatung übernimmt Ihr Steuerberater. Das ist gesetzlich klar geregelt (§ 6 StBerG) und für viele KMU die kostengünstigere Lösung." (Nutzen + Kostenargument + GEO-relevant)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO + GEO Findings -->
+      <div class="findings-pane" id="pane-seo">
+        <div class="alert success">
+          <i data-lucide="trophy"></i>
+          <div class="body">
+            <strong>Gesamtnote: solide Basis</strong>
+            Schema, hreflang, FAQ, A11y sauber. Drei harte Blocker fürs Ranking. AI-Search-Sichtbarkeit (ChatGPT/Perplexity) bereits stark dank FAQPage + Person-Schema mit IHK-Credential.
+          </div>
+        </div>
+
+        <div class="finding p1"><div class="finding-head"><span class="pri">P1</span><span class="title">Fünf H1-Tags im Hero-Slider — Google + AI erwarten EINE Themen-H1</span></div>
+          <div class="finding-body">
+            5 Slogan-H1s konkurrieren („Wir sprechen…", „Saubere Bücher…", etc.). Keine enthält das Kern-Keyword <strong>„Steuerfachwirtin Grasbrunn"</strong>.
+            <span class="where">.hero-slide h1 · index.html Z. 1089/1120/1147/1174/1201</span>
+            <span class="fix">Slide 1 als einzige H1: „Steuerfachwirtin in Grasbrunn b. München – Buchhaltung, Lohn, Baulöhne". Slides 2–5 als H2 oder visuell-gleich gestyltes &lt;p&gt;</span>
+          </div>
+        </div>
+        <div class="finding p1"><div class="finding-head"><span class="pri">P1</span><span class="title">hreflang verweist auf identische Query-URLs — Duplicate Content + verworfene Sprach-Cluster</span></div>
+          <div class="finding-body">
+            Alle 4 Locale-URLs (?lang=de/en/pl/hr) sind identisches HTML — i18n erfolgt erst clientseitig per JS. Googlebot wertet sie als Duplikate, hreflang-Cluster wird verworfen, EN/PL/HR werden NICHT in den jeweiligen Märkten ausgeliefert.
+            <span class="where">index.html Z. 40-44 + sitemap.xml Z. 10-14</span>
+            <span class="fix">Entweder echte statische Sprach-Subdirs <code>/en/</code>, <code>/pl/</code>, <code>/hr/</code> per GitHub-Actions-Build, ODER hreflang/Sitemap-Einträge entfernen bis das gegeben ist</span>
+          </div>
+        </div>
+        <div class="finding p1"><div class="finding-head"><span class="pri">P1</span><span class="title">Hero-Bilder als CSS-background-image — 0 echte &lt;img&gt;-Tags auf der Seite</span></div>
+          <div class="finding-body">
+            Keine Alt-Texte, keine Image-Search-Indexierung, kein LCP-Optimierungspfad (fetchpriority/srcset). Google-Image und Perplexity können kein einziges Bild zuordnen.
+            <span class="where">.hero-slide .img · Z. 1081/1111/1138/1165/1192 + about-photos Z. 1325/1327 + quote-band Z. 1427</span>
+            <span class="fix">Hero-LCP-Bild als &lt;img alt="Büro Violetta Schröer Grasbrunn" fetchpriority="high" decoding="async" width="1920" height="1080"&gt;, Slider via CSS+JS umschalten. Portrait analog</span>
+          </div>
+        </div>
+        <div class="finding p2"><div class="finding-head"><span class="pri">P2</span><span class="title">og-image.jpg fehlt im Repo — Social-Preview broken</span></div>
+          <div class="finding-body">
+            Verweis in Z. 54 auf <code>/assets/img/og-image.jpg</code>, Datei existiert nicht. LinkedIn/Facebook/WhatsApp-Vorschauen zeigen Default-Browser-Icon.
+            <span class="where">assets/img/ — fehlt</span>
+            <span class="fix">1200×630 og-image.jpg erzeugen (Portrait + Logo + Tagline „Steuerfachwirtin Grasbrunn") und ablegen</span>
+          </div>
+        </div>
+        <div class="finding p2"><div class="finding-head"><span class="pri">P2</span><span class="title">Sitemap unvollständig — visitenkarte.html fehlt, lastmod statisch</span></div>
+          <div class="finding-body">
+            Visitenkarte ist Subpage und nicht gelistet. Alle 3 Einträge tragen denselben statischen lastmod 2026-05-02.
+            <span class="where">sitemap.xml</span>
+            <span class="fix">visitenkarte.html aufnehmen (oder bewusst noindex bestätigen). Build-Schritt für lastmod automatisieren</span>
+          </div>
+        </div>
+        <div class="finding p2"><div class="finding-head"><span class="pri">P2</span><span class="title">NAP-Inkonsistenz: Telefonformat unterscheidet sich</span></div>
+          <div class="finding-body">
+            Schema: <code>+498966682201</code> · Sichtbar: <code>+49 (0) 89 666 822 01</code> · Footer: <code>+49 (0)89 666 822 01</code> (ohne Leerzeichen). Für Local-SEO + GMB-Abgleich muss NAP byte-genau identisch sein.
+            <span class="where">Schema Z. 74, sichtbar Z. 1026/1244, Footer Z. 1627</span>
+            <span class="fix">Eine kanonische Schreibweise festlegen (empf.: <code>+49 89 666 822 01</code>) und überall replizieren. Mobil-Nr. ggf. als zweiter contactPoint im Schema</span>
+          </div>
+        </div>
+        <div class="finding p2"><div class="finding-head"><span class="pri">P2</span><span class="title">GeoCoordinates ungenau — zeigt auf Grasbrunn-Zentrum, nicht Bretonischer Ring 18</span></div>
+          <div class="finding-body">
+            <span class="where">index.html Z. 85: <code>48.0833, 11.7333</code></span>
+            <span class="fix">Korrekt: <code>48.0703, 11.7406</code> für Bretonischer Ring 18 (auf Google Maps verifizieren!)</span>
+          </div>
+        </div>
+        <div class="finding p2"><div class="finding-head"><span class="pri">P2</span><span class="title">&lt;html lang&gt; wird beim JS-Sprachwechsel nicht aktualisiert</span></div>
+          <div class="finding-body">
+            Beim clientseitigen Wechsel (?lang=en) wird wahrscheinlich nur Inhalt umgesetzt, nicht das lang-Attribut. Bing/Yandex werten <code>&lt;html lang&gt;</code> als primäres Sprachsignal.
+            <span class="where">index.html Z. 28, impressum.html Z. 9</span>
+            <span class="fix"><code>document.documentElement.lang = lang</code> im setLang() (ist drin, aber prüfen). Bei statischem Build (siehe P1-#2) automatisch korrekt</span>
+          </div>
+        </div>
+        <div class="finding p3"><div class="finding-head"><span class="pri">P3</span><span class="title">Kein BreadcrumbList- / WebSite-Schema</span></div>
+          <div class="finding-body">
+            <span class="where">index.html Schema-Block</span>
+            <span class="fix"><code>WebSite</code>-Entity mit <code>@id</code>, <code>inLanguage</code>, <code>publisher</code>-Verknüpfung zu <code>#business</code> ergänzen. BreadcrumbList für OnePager optional</span>
+          </div>
+        </div>
+        <div class="finding p3"><div class="finding-head"><span class="pri">P3</span><span class="title">Internes Linking dünn — keine Service-Subpages für Long-Tail</span></div>
+          <div class="finding-body">
+            Footer wiederholt nur Hash-Anker. Themen-Cluster wie „Baulöhne SOKA-BAU München" haben keine eigene Landingpage.
+            <span class="where">gesamte index.html</span>
+            <span class="fix">Mittelfristig: <code>/leistungen/baulohn-soka-bau.html</code>, <code>/leistungen/lohnbuchhaltung-muenchen.html</code> als Static-Subseiten + interne Links aus den Service-Cards</span>
+          </div>
+        </div>
+        <div class="finding p3"><div class="finding-head"><span class="pri">P3</span><span class="title">Person-Authority schwach — keine sameAs-Links für E-E-A-T</span></div>
+          <div class="finding-body">
+            AI-Engines (Perplexity, ChatGPT) gewichten externe Bestätigungen stark.
+            <span class="where">Person-Schema Z. 118-134</span>
+            <span class="fix"><code>"sameAs": ["https://linkedin.com/in/...", "https://xing.com/...", "https://g.page/..."]</code> ergänzen, sobald Profile existieren (auch GMB-URL nach Verifizierung)</span>
+          </div>
+        </div>
+        <div class="finding p3"><div class="finding-head"><span class="pri">P3</span><span class="title">CSS inline ~860 Zeilen — blockiert Render, LCP-Risiko</span></div>
+          <div class="finding-body">
+            HTML-Dokument ist ~80 KB+ vor Bildern. Critical-CSS inline OK, Rest sollte ausgelagert sein.
+            <span class="where">index.html Z. 171-1018 (Style-Block)</span>
+            <span class="fix">CSS in <code>assets/css/main.css</code> auslagern, nur Above-the-Fold-CSS (~6 KB) inline halten</span>
+          </div>
+        </div>
+
+        <div class="alert info" style="margin-top:18px">
+          <i data-lucide="zap"></i>
+          <div class="body">
+            <strong>Quick-Wins Reihenfolge für Go-Live</strong>
+            #4 og-image erzeugen → #6 NAP vereinheitlichen → #7 Geo-Koordinaten korrigieren → #1 H1 reduzieren → #3 Hero-LCP als &lt;img&gt; → dann Entscheidung zu #2 (statische Locale-Builds vs. hreflang entfernen).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 07 Master-Template ===== -->
+    <section class="block" id="master">
+      <h2><span class="num">07</span> Master-Template (für Folge-Projekte)</h2>
+      <p class="sec-lead">Diese Architektur wird auf andere Kunden übertragen — technisch identisch, inhaltlich pro Branche/Firma austauschbar.</p>
+
+      <div class="master-grid">
+        <div class="master-box">
+          <h4><i data-lucide="lock"></i>Bleibt gleich (technisch)</h4>
+          <ul>
+            <li>Vanilla HTML/CSS/JS Stack</li>
+            <li>GitHub Pages Hosting</li>
+            <li>Git-Tag-Versionierung</li>
+            <li>i18n-Architektur (data-i18n + JS-Object)</li>
+            <li>Schema.org-Skelett (Service + Person + FAQPage)</li>
+            <li>Mobile-First-Patterns</li>
+            <li>Lenis Smooth-Scroll</li>
+            <li>DSGVO-Maps-Two-Click</li>
+            <li>Lokale Fonts</li>
+            <li>Floating-CTAs (Tel + Mail + Top)</li>
+            <li>FAQ als Detail/Summary</li>
+            <li>Visitenkarten-Print-Workflow (91×61 mm + build-pdf.ps1)</li>
+            <li>Doku-Set: README · DEPLOY · SEO-Checkliste · Projekt-HTML</li>
+          </ul>
+        </div>
+        <div class="master-box">
+          <h4><i data-lucide="repeat"></i>Tauscht sich pro Kunde</h4>
+          <ul>
+            <li>Kunde-NAP (Name/Address/Phone/Mail/Domain)</li>
+            <li>Logo + Portrait + Hero-Bilder</li>
+            <li>Branchenspezifische Texte (Hero/Services/About)</li>
+            <li>Schema.org @type (AccountingService → ggf. ProfessionalService, Plumber, …)</li>
+            <li>Sprachen (statt 4 vielleicht 1-2 — i18n-JS einfach reduzieren)</li>
+            <li>FAQ-Inhalte (branchenspezifisch)</li>
+            <li>Farbsystem (CSS Custom Properties am Anfang)</li>
+            <li>Service-Catalog</li>
+            <li>Branchenverzeichnisse (lokale .de-Domain je Standort)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="alert success">
+        <i data-lucide="repeat-2"></i>
+        <div class="body">
+          <strong>Re-Use-Aufwand pro Folgekunde: ~3–5 h Eigenarbeit</strong>
+          Repo forken → Inhalts-Variablen ersetzen → Bilder tauschen → 1 Iterationsrunde mit Kunde → Push → Live. Bei <strong>2.500–3.500 €</strong> Pauschalpreis pro Projekt = sehr gute Marge bei niedrigem Eigenaufwand.
+        </div>
+      </div>
+
+      <h3>Quick-Replace-Variablen (für Search/Replace pro Kunde)</h3>
+      <table class="t">
+        <thead><tr><th>Variable</th><th>VSO-Wert (zum Ersetzen)</th></tr></thead>
+        <tbody>
+          <tr><td>Firma</td><td><code>Violetta Schröer</code> / <code>Schröer</code> / <code>Schröer Office Dienstleistungen</code></td></tr>
+          <tr><td>Domain</td><td><code>violetta-schroeer.de</code></td></tr>
+          <tr><td>Adresse</td><td><code>Bretonischer Ring 18, 85630 Grasbrunn</code></td></tr>
+          <tr><td>Telefon</td><td><code>+49 (0) 89 666 822 01</code> / <code>+498966682201</code></td></tr>
+          <tr><td>Mail</td><td><code>info@violetta-schroeer.de</code></td></tr>
+          <tr><td>Geo</td><td><code>48.0833, 11.7333</code> (Achtung: zu prüfen!)</td></tr>
+          <tr><td>Logo-SVG</td><td>Inline am Header — Hex-Farbe + Path/Form anpassen</td></tr>
+          <tr><td>CSS-Akzent</td><td><code>--accent: #4a7a55</code> / <code>--accent-dk: #2f5638</code></td></tr>
+          <tr><td>Branchenverzeichnis-Hook</td><td><code>grasbrunn.de</code> → Stadt-Domain</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+</div>
+
+<footer class="foot">
+  © 2026 Grundke IT-Service · Andreas Grundke · CI 2026.01 · Projekt-Doku v1.0.0 · <a href="https://grundke-it.de" target="_blank" rel="noopener">grundke-it.de</a>
+</footer>
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+<script>
+/* ============================================================================
+   localStorage-Persistierung: Checkboxen + Notiz-Felder
+   ============================================================================ */
+const STORAGE_KEY = 'vso-projekt-state';
+
+function loadState(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return;
+    const state = JSON.parse(raw);
+    Object.entries(state.checkboxes || {}).forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (el && el.type === 'checkbox') el.checked = !!val;
+    });
+    Object.entries(state.notes || {}).forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (el) el.value = val || '';
+    });
+  } catch(e){ console.warn('Lade-Fehler:', e); }
+}
+
+function saveState(){
+  try{
+    const state = { checkboxes:{}, notes:{}, savedAt: new Date().toISOString() };
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      state.checkboxes[cb.id] = cb.checked;
+    });
+    document.querySelectorAll('textarea').forEach(ta => {
+      state.notes[ta.id] = ta.value;
+    });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch(e){ console.warn('Speicher-Fehler:', e); }
+}
+
+function exportState(){
+  const raw = localStorage.getItem(STORAGE_KEY) || '{}';
+  const blob = new Blob([raw], { type:'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'vso-projekt-state-' + new Date().toISOString().slice(0,10) + '.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function importState(){
+  document.getElementById('importFile').click();
+}
+function handleImport(e){
+  const f = e.target.files[0];
+  if(!f) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      loadState();
+      updateAllProgress();
+      alert('Stand erfolgreich importiert.');
+    } catch(err){ alert('Fehler beim Import: ' + err.message); }
+  };
+  reader.readAsText(f);
+}
+
+function resetState(){
+  if(!confirm('Wirklich alle Checkboxen und Notizen zurücksetzen? Empfehlung: vorher exportieren.')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+  document.querySelectorAll('textarea').forEach(ta => ta.value = '');
+  updateAllProgress();
+}
+
+/* ============================================================
+   Progress-Berechnung pro Phase + global
+   ============================================================ */
+function updatePhaseProgress(phase){
+  const wrap = document.querySelector('details.phase[data-phase="' + phase + '"]');
+  if(!wrap) return { done:0, total:0 };
+  const cbs = wrap.querySelectorAll('input[type="checkbox"]');
+  const total = cbs.length;
+  let done = 0;
+  cbs.forEach(cb => { if (cb.checked) done++; });
+  const indicator = wrap.querySelector('[data-phase-progress="' + phase + '"]');
+  if (indicator){
+    const bar = indicator.querySelector('.bar > span');
+    const txt = indicator.querySelector('.txt');
+    const pct = total ? (done/total*100) : 0;
+    if (bar) bar.style.width = pct + '%';
+    if (txt) txt.textContent = done + '/' + total;
+    indicator.classList.toggle('full', done === total && total > 0);
+  }
+  return { done, total };
+}
+
+function updateAllProgress(){
+  let totalDone = 0, totalAll = 0;
+  document.querySelectorAll('details.phase').forEach(p => {
+    const phase = p.dataset.phase;
+    const r = updatePhaseProgress(phase);
+    totalDone += r.done; totalAll += r.total;
+  });
+  document.getElementById('globalDone').textContent = totalDone;
+  document.getElementById('globalTotal').textContent = totalAll;
+  const pct = totalAll ? (totalDone/totalAll*100) : 0;
+  document.getElementById('globalBar').style.width = pct.toFixed(1) + '%';
+}
+
+/* ============================================================
+   Findings-Tabs
+   ============================================================ */
+function switchTab(name){
+  document.querySelectorAll('.findings-tabs button').forEach(b => {
+    b.classList.toggle('act', b.dataset.tab === name);
+  });
+  document.querySelectorAll('.findings-pane').forEach(p => {
+    p.classList.toggle('act', p.id === 'pane-' + name);
+  });
+}
+
+/* ============================================================
+   Init
+   ============================================================ */
+window.addEventListener('DOMContentLoaded', () => {
+  loadState();
+  updateAllProgress();
+  document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      saveState();
+      const phase = cb.closest('details.phase')?.dataset.phase;
+      if (phase) updatePhaseProgress(phase);
+      updateAllProgress();
+    });
+  });
+  document.querySelectorAll('textarea').forEach(ta => {
+    let timer = null;
+    ta.addEventListener('input', () => {
+      clearTimeout(timer);
+      timer = setTimeout(saveState, 400);
+    });
+  });
+});
+
+// Lucide Icons
+window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
+</script>
+
+</body>
+</html>
