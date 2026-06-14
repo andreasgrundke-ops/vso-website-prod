@@ -379,10 +379,14 @@ body{
   color:var(--ink-md);
   line-height:1.45;
   display:flex;
-  align-items:center;
+  align-items:flex-end;
   justify-content:space-between;
   gap:14px;
 }
+.bf-txt{ display:flex; flex-direction:column; gap:2px; }
+.bf-qr{ display:flex; flex-direction:column; align-items:center; gap:5px; flex-shrink:0; }
+.bf-qr img{ width:62px; height:62px; display:block; border-radius:4px; }
+.bf-qr-cap{ font-family:var(--sans); font-style:normal; font-size:8px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--green); white-space:nowrap; }
 .back-foot .url{
   font-family:var(--sans);
   font-style:normal;
@@ -556,11 +560,11 @@ body{
           </div>
           <div class="line">
             <span class="lbl">E-Mail</span>
-            <span class="val">info@violetta-schroeer.de</span>
+            <span class="val">info@schroeer-office.de</span>
           </div>
           <div class="line">
             <span class="lbl">Web</span>
-            <span class="val">violetta-schroeer.de</span>
+            <span class="val">schroeer-office.de</span>
           </div>
         </div>
       </div>
@@ -596,8 +600,14 @@ body{
       </div>
 
       <div class="back-foot">
-        <span>Wir sprechen Ihre Sprache.</span>
-        <span class="url">violetta-schroeer.de</span>
+        <div class="bf-txt">
+          <span>Wir sprechen Ihre Sprache.</span>
+          <span class="url">schroeer-office.de</span>
+        </div>
+        <div class="bf-qr">
+          <img src="assets/img/qr-start.svg" alt="QR-Code: schroeer-office.de/start"/>
+          <span class="bf-qr-cap">Scan: Sofort-Kontakt</span>
+        </div>
       </div>
     </div>
     <div class="card-label">Rückseite</div>
@@ -635,7 +645,7 @@ body{
   </div>
   <div class="spec">
     <span class="lbl">Version</span>
-    <span class="val">v3.1.0<small>2026-05-02 · Grundke IT-Service</small></span>
+    <span class="val">v3.2.0<small>2026-06-14 · QR-Code ergänzt · Grundke IT-Service</small></span>
   </div>
 </div>
 

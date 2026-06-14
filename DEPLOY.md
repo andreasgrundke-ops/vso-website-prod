@@ -58,7 +58,7 @@ Bitte prüfen Sie:
   - Sprachversionen DE/EN/PL/HR
 
 Anmerkungen gerne als Liste zurück, dann arbeite ich sie ein.
-Sobald wir freigegeben sind, schalten wir auf violetta-schroeer.de um.
+Sobald wir freigegeben sind, schalten wir auf schroeer-office.de um.
 
 Viele Grüße,
 Andreas
@@ -112,23 +112,23 @@ Aus der lokalen Konsole (im `website/`-Ordner):
 
 ```powershell
 # CNAME-Datei mit der Custom Domain anlegen
-'violetta-schroeer.de' | Set-Content CNAME
+'schroeer-office.de' | Set-Content CNAME
 
 # Pages-API: Custom Domain setzen
-gh api -X PUT repos/andreasgrundke-ops/vso-website-prod/pages -F "cname=violetta-schroeer.de"
+gh api -X PUT repos/andreasgrundke-ops/vso-website-prod/pages -F "cname=schroeer-office.de"
 
 git add CNAME
-git commit -m "Go-Live: CNAME für violetta-schroeer.de aktivieren"
+git commit -m "Go-Live: CNAME für schroeer-office.de aktivieren"
 git push
 ```
 
-> **Warum CNAME erst jetzt?** Während der Preview-Phase würde GitHub Pages sonst von `andreasgrundke-ops.github.io/vso-website-prod` auf `violetta-schroeer.de` redirecten. Solange die DNS dort noch auf das alte WordPress zeigt, wäre die Vorschau nicht erreichbar.
+> **Warum CNAME erst jetzt?** Während der Preview-Phase würde GitHub Pages sonst von `andreasgrundke-ops.github.io/vso-website-prod` auf `schroeer-office.de` redirecten. Solange die DNS dort noch auf das alte WordPress zeigt, wäre die Vorschau nicht erreichbar.
 
 ### 3.3 DNS bei IONOS umstellen
 
-Bei IONOS einloggen → Domain `violetta-schroeer.de` → DNS-Verwaltung. Folgende Records setzen:
+Bei IONOS einloggen → Domain `schroeer-office.de` → DNS-Verwaltung. Folgende Records setzen:
 
-**A-Records (für `violetta-schroeer.de` ohne www):**
+**A-Records (für `schroeer-office.de` ohne www):**
 ```
 @   A   185.199.108.153
 @   A   185.199.109.153
@@ -136,23 +136,23 @@ Bei IONOS einloggen → Domain `violetta-schroeer.de` → DNS-Verwaltung. Folgen
 @   A   185.199.111.153
 ```
 
-**CNAME (für `www.violetta-schroeer.de`):**
+**CNAME (für `www.schroeer-office.de`):**
 ```
 www   CNAME   andreasgrundke-ops.github.io.
 ```
 
 **Bestehende A/CNAME-Records, die auf das WordPress-Hosting zeigen, LÖSCHEN.**
 
-⚠️ **MX- und TXT-Records für E-Mail UNANGETASTET LASSEN.** Das E-Mail-Postfach `info@violetta-schroeer.de` läuft weiter über IONOS – die MX-Records dafür sind separat.
+⚠️ **MX- und TXT-Records für E-Mail UNANGETASTET LASSEN.** Das E-Mail-Postfach `info@schroeer-office.de` läuft weiter über IONOS – die MX-Records dafür sind separat.
 
 ### 3.4 SSL-Zertifikat warten
 
 Nach DNS-Umstellung:
-1. ~10–15 Min warten, bis DNS propagiert ist (Test: `nslookup violetta-schroeer.de` zeigt 185.199.x.x)
+1. ~10–15 Min warten, bis DNS propagiert ist (Test: `nslookup schroeer-office.de` zeigt 185.199.x.x)
 2. GitHub-Pages Settings öffnen → "Enforce HTTPS" sollte ankreuzbar sein → ankreuzen
 3. Zertifikat wird automatisch via Let's Encrypt ausgestellt (~5 Min)
 
-Test: https://violetta-schroeer.de → muss ohne SSL-Warnung laden, Inhalt der neuen Seite zeigen.
+Test: https://schroeer-office.de → muss ohne SSL-Warnung laden, Inhalt der neuen Seite zeigen.
 
 ### 3.5 Maps-Embed einbauen (kommt nach Go-Live)
 
@@ -184,7 +184,7 @@ Nach erfolgreicher DNS-Umstellung (Phase 3) und 2–3 Tagen Beobachtung:
 
 1. IONOS-Kundenmenü → Verträge
 2. "Managed WordPress" suchen → Kündigen
-3. **Domain `violetta-schroeer.de` NICHT kündigen** – die bleibt
+3. **Domain `schroeer-office.de` NICHT kündigen** – die bleibt
 4. **E-Mail-Postfach NICHT kündigen** – das bleibt
 5. Bestätigungsmail abwarten
 
@@ -207,8 +207,8 @@ Nach erfolgreicher DNS-Umstellung (Phase 3) und 2–3 Tagen Beobachtung:
 | Problem | Lösung |
 |---|---|
 | "Pages wurde nicht aktiviert" | Repo Settings → Pages → Branch auswählen, "Save" klicken |
-| 404 nach DNS-Umstellung | DNS noch nicht propagiert – `nslookup violetta-schroeer.de` checken, 15 Min warten |
+| 404 nach DNS-Umstellung | DNS noch nicht propagiert – `nslookup schroeer-office.de` checken, 15 Min warten |
 | "Not Secure" / SSL-Warnung | "Enforce HTTPS" im Pages-Setting aktivieren, 5 Min warten |
-| Custom Domain wird nicht akzeptiert | `CNAME`-Datei im Repo prüfen, muss nur `violetta-schroeer.de` enthalten (eine Zeile) |
+| Custom Domain wird nicht akzeptiert | `CNAME`-Datei im Repo prüfen, muss nur `schroeer-office.de` enthalten (eine Zeile) |
 | Sprachen funktionieren nicht | Browser-Konsole checken – `localStorage`-Block? Inkognito-Tab testen |
 | `_archiv`-Folder wird nicht gefunden | `.nojekyll`-Datei muss im Repo-Root sein – Jekyll filtert sonst `_*`-Verzeichnisse raus |

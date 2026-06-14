@@ -1,7 +1,7 @@
 # Violetta Schröer – Website (Produktion)
 
 Statischer OnePager mit i18n DE/EN/PL/HR. Vanilla HTML/CSS/JS, kein Build-Tool.
-Deployed auf **GitHub Pages**, Custom Domain `violetta-schroeer.de` via IONOS-DNS.
+Deployed auf **GitHub Pages**, Custom Domain `schroeer-office.de` via IONOS-DNS.
 
 CI 2026.01 · Grün (Cloud-Design v3) · Cormorant Garamond + Inter
 
@@ -16,7 +16,7 @@ CI 2026.01 · Grün (Cloud-Design v3) · Cormorant Garamond + Inter
 | `robots.txt` | Erlaubt alle Crawler inkl. AI (GPTBot, Google-Extended, ClaudeBot, PerplexityBot). |
 | `sitemap.xml` | URL-Karte für Search Engines, mit hreflang. |
 | `.nojekyll` | Schaltet Jekyll auf GitHub Pages aus (verhindert Probleme mit `_`-Verzeichnissen). |
-| `CNAME` (nicht im Repo während Preview) | wird zum Go-Live mit `violetta-schroeer.de` angelegt – siehe DEPLOY.md Abschnitt 3.2. |
+| `CNAME` (nicht im Repo während Preview) | wird zum Go-Live mit `schroeer-office.de` angelegt – siehe DEPLOY.md Abschnitt 3.2. |
 | `assets/img/` | Logo, Portrait, Hero-Bilder. |
 | `DEPLOY.md` | Deploy-Anleitung Schritt-für-Schritt (GitHub Pages + IONOS-DNS). |
 
@@ -108,4 +108,4 @@ Tags werden vor jedem produktiven Push gesetzt (siehe DEPLOY.md).
 1. Änderungswunsch in HTML/CSS umsetzen
 2. Lokal testen (`python -m http.server 8000`)
 3. `git commit -m "..."` + `git push` → Live nach ~30 s
-4. Kundin checkt unter https://andreasgrundke-ops.github.io/vso-website-prod/ (vor DNS-Umstellung) bzw. https://violetta-schroeer.de/ (nach DNS-Umstellung)
+4. Kundin checkt unter https://andreasgrundke-ops.github.io/vso-website-prod/ (vor DNS-Umstellung) bzw. https://schroeer-office.de/ (nach DNS-Umstellung)

@@ -83,10 +83,10 @@ foreach ($lang in 'en','pl','hr') {
   $c = $c -replace '<html lang="de">', "<html lang=""$lang"">"
 
   # 2) canonical (nur erste Stelle, sicher mit Backreference)
-  $c = $c -replace '<link rel="canonical" href="https://violetta-schroeer\.de/"\s*/>', "<link rel=""canonical"" href=""https://violetta-schroeer.de/$lang/""/>"
+  $c = $c -replace '<link rel="canonical" href="https://schroeer-office\.de/"\s*/>', "<link rel=""canonical"" href=""https://schroeer-office.de/$lang/""/>"
 
   # 3) og:url
-  $c = $c -replace '<meta property="og:url" content="https://violetta-schroeer\.de/"\s*/>', "<meta property=""og:url"" content=""https://violetta-schroeer.de/$lang/""/>"
+  $c = $c -replace '<meta property="og:url" content="https://schroeer-office\.de/"\s*/>', "<meta property=""og:url"" content=""https://schroeer-office.de/$lang/""/>"
 
   # 4) og:locale
   $c = $c -replace '<meta property="og:locale" content="de_DE"\s*/>', "<meta property=""og:locale"" content=""$($ogLocaleByLang[$lang])""/>"

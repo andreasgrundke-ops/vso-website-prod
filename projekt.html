@@ -723,8 +723,8 @@ footer.foot{
           <tr><td>Standort</td><td>Bretonischer Ring 18, 85630 Grasbrunn</td></tr>
           <tr><td>Telefon</td><td><a href="tel:+498966682201">+49 (0) 89 666 822 01</a></td></tr>
           <tr><td>Mobil</td><td><a href="tel:+4917910442092">+49 (0) 179 104 42 92</a></td></tr>
-          <tr><td>E-Mail</td><td><a href="mailto:info@violetta-schroeer.de">info@violetta-schroeer.de</a></td></tr>
-          <tr><td>Domain</td><td>violetta-schroeer.de · derzeit IONOS Managed WP, Migration auf GitHub Pages</td></tr>
+          <tr><td>E-Mail</td><td><a href="mailto:info@schroeer-office.de">info@schroeer-office.de</a></td></tr>
+          <tr><td>Domain</td><td>schroeer-office.de · derzeit IONOS Managed WP, Migration auf GitHub Pages</td></tr>
           <tr><td>Mail-Postfach</td><td>bleibt bei IONOS (kein Wechsel)</td></tr>
           <tr><td>Sprachen</td><td>DE · EN · PL · HR (vollständig übersetzt, client-seitig)</td></tr>
           <tr><td>GitHub-Account</td><td><code>andreasgrundke-ops</code> · Repo <code>vso-website-prod</code> (public)</td></tr>
@@ -906,15 +906,15 @@ footer.foot{
           <div class="phase-progress" data-phase-progress="C"><span class="bar"><span></span></span><span class="txt">0/0</span><span class="arr"></span></div>
         </summary>
         <div class="phase-body">
-          <div class="task"><input type="checkbox" id="C1"/><label for="C1"><code>CNAME</code>-Datei mit <code>violetta-schroeer.de</code> erstellt + gepusht</label></div>
-          <div class="task"><input type="checkbox" id="C2"/><label for="C2">Custom Domain in GitHub Pages aktiviert: <code>gh api -X PUT repos/.../pages -F "cname=violetta-schroeer.de"</code></label></div>
+          <div class="task"><input type="checkbox" id="C1"/><label for="C1"><code>CNAME</code>-Datei mit <code>schroeer-office.de</code> erstellt + gepusht</label></div>
+          <div class="task"><input type="checkbox" id="C2"/><label for="C2">Custom Domain in GitHub Pages aktiviert: <code>gh api -X PUT repos/.../pages -F "cname=schroeer-office.de"</code></label></div>
           <div class="task"><input type="checkbox" id="C3"/><label for="C3">Bei IONOS DNS-Verwaltung: <strong>4 A-Records</strong> für <code>@</code> auf <code>185.199.108.153</code> bis <code>.111.153</code></label></div>
           <div class="task"><input type="checkbox" id="C4"/><label for="C4">Bei IONOS: CNAME für <code>www</code> auf <code>andreasgrundke-ops.github.io.</code></label></div>
           <div class="task"><input type="checkbox" id="C5"/><label for="C5">Alte WordPress-A-Records bei IONOS gelöscht</label></div>
-          <div class="task"><input type="checkbox" id="C6"/><label for="C6"><strong>MX-Records UNANGETASTET</strong> — Mail-Postfach <code>info@violetta-schroeer.de</code> bleibt IONOS</label></div>
-          <div class="task"><input type="checkbox" id="C7"/><label for="C7">DNS-Propagation gewartet (~15 Min) und mit <code>nslookup violetta-schroeer.de</code> auf 185.199.x.x verifiziert</label></div>
+          <div class="task"><input type="checkbox" id="C6"/><label for="C6"><strong>MX-Records UNANGETASTET</strong> — Mail-Postfach <code>info@schroeer-office.de</code> bleibt IONOS</label></div>
+          <div class="task"><input type="checkbox" id="C7"/><label for="C7">DNS-Propagation gewartet (~15 Min) und mit <code>nslookup schroeer-office.de</code> auf 185.199.x.x verifiziert</label></div>
           <div class="task"><input type="checkbox" id="C8"/><label for="C8">In GitHub Pages „Enforce HTTPS" angekreuzt + Let's-Encrypt-Zertifikat ausgestellt</label></div>
-          <div class="task"><input type="checkbox" id="C9"/><label for="C9">Live-URL <a href="https://violetta-schroeer.de" target="_blank" rel="noopener">https://violetta-schroeer.de</a> getestet (kein SSL-Warning)</label></div>
+          <div class="task"><input type="checkbox" id="C9"/><label for="C9">Live-URL <a href="https://schroeer-office.de" target="_blank" rel="noopener">https://schroeer-office.de</a> getestet (kein SSL-Warning)</label></div>
           <div class="task"><input type="checkbox" id="C10"/><label for="C10">Maps-Consent + Karte funktional auf der Live-Domain getestet</label></div>
           <div class="task"><input type="checkbox" id="C11"/><label for="C11">Sprachversionen <code>?lang=de/en/pl/hr</code> auf der Live-Domain getestet</label></div>
           <div class="notes"><label for="notesC">Notizen Phase C</label><textarea id="notesC" placeholder="z. B. DNS-TTL bei IONOS / Datum der Umstellung …"></textarea></div>
@@ -948,7 +948,7 @@ footer.foot{
           <div class="task"><input type="checkbox" id="E1"/><label for="E1">Google Maps Embed-Code für <strong>Bretonischer Ring 18</strong> erzeugt + <strong>Adresse korrekt verifiziert</strong> (alte Koordinaten waren falsch!)</label></div>
           <div class="task"><input type="checkbox" id="E2"/><label for="E2">Echter <code>iframe</code> in <code>loadMap()</code>-Funktion eingebaut (statt <code>maps.google.com?output=embed</code>)</label></div>
           <div class="task"><input type="checkbox" id="E3"/><label for="E3"><a href="https://search.google.com/search-console" target="_blank" rel="noopener">Google Search Console</a>: Domain-Property hinzugefügt, DNS-TXT bei IONOS verifiziert</label></div>
-          <div class="task"><input type="checkbox" id="E4"/><label for="E4">In GSC: Sitemap eingereicht (<code>https://violetta-schroeer.de/sitemap.xml</code>)</label></div>
+          <div class="task"><input type="checkbox" id="E4"/><label for="E4">In GSC: Sitemap eingereicht (<code>https://schroeer-office.de/sitemap.xml</code>)</label></div>
           <div class="task"><input type="checkbox" id="E5"/><label for="E5">In GSC: URL-Inspection für Startseite → „Indexierung beantragen"</label></div>
           <div class="task"><input type="checkbox" id="E6"/><label for="E6"><a href="https://www.bing.com/webmasters" target="_blank" rel="noopener">Bing Webmaster Tools</a>: Site hinzugefügt (Import aus GSC möglich)</label></div>
           <div class="task"><input type="checkbox" id="E7"/><label for="E7"><a href="https://businessconnect.apple.com" target="_blank" rel="noopener">Apple Business Connect</a> (für iPhone-Maps-User)</label></div>
@@ -968,7 +968,7 @@ footer.foot{
           <div class="task"><input type="checkbox" id="F3"/><label for="F3">Kategorien gesetzt: <strong>Steuerberatung</strong> (primär) · Buchhaltungsbüro · Lohnbuchhaltung · Bürodienstleistung</label></div>
           <div class="task"><input type="checkbox" id="F4"/><label for="F4">Adresse + Servicebereich (Grasbrunn, München, Haar, Vaterstetten, Putzbrunn, Ottobrunn, Landkreis München)</label></div>
           <div class="task"><input type="checkbox" id="F5"/><label for="F5">Öffnungszeiten Mo–Fr 09:00–17:00 + Telefon +49 89 666 822 01</label></div>
-          <div class="task"><input type="checkbox" id="F6"/><label for="F6">Website-URL <code>https://violetta-schroeer.de</code></label></div>
+          <div class="task"><input type="checkbox" id="F6"/><label for="F6">Website-URL <code>https://schroeer-office.de</code></label></div>
           <div class="task"><input type="checkbox" id="F7"/><label for="F7">Logo + Cover-Bild hochgeladen + mind. 5 Fotos (Portrait, Büro, Schreibtisch, Bauunterlagen, Tor)</label></div>
           <div class="task"><input type="checkbox" id="F8"/><label for="F8">Beschreibung 750 Zeichen ausgefüllt (Mehrsprachigkeit, Spezialisierung Bau, IHK, seit 2003)</label></div>
           <div class="task"><input type="checkbox" id="F9"/><label for="F9">Verifizierungs-Postkarte angefordert (Lieferzeit ~5–7 Tage)</label></div>
@@ -1377,10 +1377,10 @@ footer.foot{
         <thead><tr><th>Variable</th><th>VSO-Wert (zum Ersetzen)</th></tr></thead>
         <tbody>
           <tr><td>Firma</td><td><code>Violetta Schröer</code> / <code>Schröer</code> / <code>Schröer Office Dienstleistungen</code></td></tr>
-          <tr><td>Domain</td><td><code>violetta-schroeer.de</code></td></tr>
+          <tr><td>Domain</td><td><code>schroeer-office.de</code></td></tr>
           <tr><td>Adresse</td><td><code>Bretonischer Ring 18, 85630 Grasbrunn</code></td></tr>
           <tr><td>Telefon</td><td><code>+49 (0) 89 666 822 01</code> / <code>+498966682201</code></td></tr>
-          <tr><td>Mail</td><td><code>info@violetta-schroeer.de</code></td></tr>
+          <tr><td>Mail</td><td><code>info@schroeer-office.de</code></td></tr>
           <tr><td>Geo</td><td><code>48.0833, 11.7333</code> (Achtung: zu prüfen!)</td></tr>
           <tr><td>Logo-SVG</td><td>Inline am Header — Hex-Farbe + Path/Form anpassen</td></tr>
           <tr><td>CSS-Akzent</td><td><code>--accent: #4a7a55</code> / <code>--accent-dk: #2f5638</code></td></tr>
