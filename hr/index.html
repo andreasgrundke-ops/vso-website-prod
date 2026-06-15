@@ -233,6 +233,11 @@
         <a href="/pl/" data-lang="pl" hreflang="pl" rel="alternate">PL</a>
         <a href="/hr/" data-lang="hr" class="act" hreflang="hr" rel="alternate">HR</a>
       </div>
+      <!-- TEMP: interner Schnellzugriff Visitenkarte (vor Go-Live entfernen) -->
+      <a href="/visitenkarte.html" id="temp-vk-btn" title="Visitenkarte ansehen (intern, temporaer)" style="display:inline-flex;align-items:center;gap:6px;margin-left:14px;padding:5px 11px;background:#2f5638;color:#fff;border-radius:7px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="11" r="2"/><path d="M14 9h4M14 13h4M6 16h7"/></svg>
+        <span>Visitenkarte</span>
+      </a>
     </div>
   </div>
 </div>
@@ -467,7 +472,7 @@
   <div class="wrap">
     <div class="trust-item"><i data-lucide="award" aria-hidden="true"></i><span data-i18n="trust1">Porezna stručnjakinja (IHK)</span></div>
     <span class="sep" aria-hidden="true">·</span>
-    <div class="trust-item"><i data-lucide="shield-check" aria-hidden="true"></i><span data-i18n="trust2">DATEV certificirana</span></div>
+    <div class="trust-item"><i data-lucide="shield-check" aria-hidden="true"></i><span data-i18n="trust2">DATEV-Standard</span></div>
     <span class="sep" aria-hidden="true">·</span>
     <div class="trust-item"><i data-lucide="hard-hat" aria-hidden="true"></i><span data-i18n="trust3">Iskusna sa SOKA-BAU</span></div>
     <span class="sep" aria-hidden="true">·</span>
@@ -518,9 +523,9 @@
     <div class="about-grid">
       <div class="about-photos">
         <div class="frame" aria-hidden="true"></div>
-        <div class="main-photo" style="background-image:url('assets/img/Frau-Schröer.png');"
-             role="img" aria-label="Portrait Violetta Schröer"></div>
-        <div class="small-photo" style="background-image:url('assets/img/hero/slide2-schreibtisch.jpg');" aria-hidden="true"></div>
+        <div class="main-photo" style="background:linear-gradient(135deg,#eef2ee,#d9e4dc);display:flex;align-items:center;justify-content:center;text-align:center;"
+             role="img" aria-label="Portrait Violetta Schröer (Platzhalter, Foto folgt)"><span style="color:#5b6b60;font:600 14px/1.5 'Inter',sans-serif;letter-spacing:.04em;">Foto folgt</span></div>
+        <div class="small-photo" style="background-image:url('assets/img/hero/slide5-buero.jpg');" aria-hidden="true"></div>
       </div>
       <div class="about-text">
         <span class="eyebrow-c" data-i18n="about_eyebrow">O meni</span>
@@ -533,7 +538,7 @@
         <p data-i18n="about_p3">Moj stil rada je jasan: slušam, pažljivo provjeravam, držim se rokova – i ostajem diskretna. Bez standardnih paketa, bez skrivenih dodataka – samo uredan rad uz jasnu paušalnu cijenu.</p>
         <div class="about-features">
           <div class="f"><i data-lucide="check" aria-hidden="true"></i><span data-i18n="about_f1">Porezna stručnjakinja (IHK)</span></div>
-          <div class="f"><i data-lucide="check" aria-hidden="true"></i><span data-i18n="about_f2">DATEV certificirana</span></div>
+          <div class="f"><i data-lucide="check" aria-hidden="true"></i><span data-i18n="about_f2">DATEV-Standard</span></div>
           <div class="f"><i data-lucide="check" aria-hidden="true"></i><span data-i18n="about_f3">Iskusna sa SOKA-BAU</span></div>
           <div class="f"><i data-lucide="check" aria-hidden="true"></i><span data-i18n="about_f4">DE · EN · PL · HR</span></div>
         </div>
@@ -902,7 +907,7 @@ const translations = {
     cta_sub:"Erstgespräch unverbindlich – Antwort innerhalb eines Werktags.",
     cta_phone_lbl:"Telefon", cta_phone_hint:"Mo–Fr 09:00–17:00",
     cta_mail_lbl:"E-Mail",   cta_mail_hint:"Antwort binnen 1 Werktag",
-    trust1:"Steuerfachwirtin (IHK)", trust2:"DATEV-zertifiziert",
+    trust1:"Steuerfachwirtin (IHK)", trust2:"DATEV-Standard",
     trust3:"SOKA-BAU erfahren", trust4:"DE · EN · PL · HR", trust5:"DSGVO-konform",
     usp_eyebrow:"Was Sie erwartet",
     usp_h2_a:"Mehr als nur Buchungen.", usp_h2_b:"Ein verlässlicher Partner.",
@@ -915,7 +920,7 @@ const translations = {
     about_p1:"Seit 2003 begleite ich Unternehmer:innen, Handwerksbetriebe und Selbstständige rund um München bei allen Fragen der laufenden Buchhaltung und Lohnabrechnung. Als geprüfte Steuerfachwirtin (IHK) verbinde ich präzises Fachwissen mit einem ruhigen, persönlichen Stil – auf Basis aktueller Gesetzeslage und digitaler Prozesse.",
     about_p2:"Ich erfasse Belege sauber, stimme Konten ab, rechne Löhne pünktlich ab und erkläre Ihre Auswertungen so, dass Sie sie verstehen. Bauunternehmen unterstütze ich bei SOKA-BAU und Tariflohnfragen, Selbstständigen helfe ich, ihre Zahlen jederzeit im Griff zu haben.",
     about_p3:"Meine Arbeitsweise ist klar: Ich höre zu, prüfe sorgfältig, halte Fristen ein – und bleibe verschwiegen. Keine Standardpakete, keine versteckten Aufschläge – nur saubere Arbeit zu einem klaren Pauschalpreis.",
-    about_f1:"Steuerfachwirtin (IHK)", about_f2:"DATEV-zertifiziert",
+    about_f1:"Steuerfachwirtin (IHK)", about_f2:"DATEV-Standard",
     about_f3:"SOKA-BAU erfahren", about_f4:"DE · EN · PL · HR",
     svc_eyebrow:"Leistungen",
     svc_h2_a:"Alles, was Ihre Zahlen brauchen.", svc_h2_b:"Aus einer Hand.",
@@ -1004,7 +1009,7 @@ const translations = {
     cta_sub:"No-obligation first call – reply within one business day.",
     cta_phone_lbl:"Phone", cta_phone_hint:"Mon–Fri 9 am–5 pm",
     cta_mail_lbl:"E-mail", cta_mail_hint:"Reply within 1 business day",
-    trust1:"Tax Specialist (IHK)", trust2:"DATEV certified",
+    trust1:"Tax Specialist (IHK)", trust2:"DATEV-Standard",
     trust3:"SOKA-BAU experienced", trust4:"DE · EN · PL · HR", trust5:"GDPR compliant",
     usp_eyebrow:"What to expect",
     usp_h2_a:"More than just bookings.", usp_h2_b:"A reliable partner.",
@@ -1017,7 +1022,7 @@ const translations = {
     about_p1:"Since 2003 I have supported entrepreneurs, trades and self-employed professionals in and around Munich with all questions of ongoing accounting and payroll. As a certified tax specialist (IHK) I combine precise expertise with a calm, personal style – always grounded in current law and digital processes.",
     about_p2:"I record receipts cleanly, reconcile accounts, run payroll on time, and explain your reports so that you actually understand them. I support construction firms with SOKA-BAU and wage-scale questions, and help self-employed professionals stay on top of their numbers.",
     about_p3:"My way of working is clear: I listen, I check carefully, I meet deadlines – and I stay discreet. No standard packages, no hidden fees – just clean work at a clear flat fee.",
-    about_f1:"Tax Specialist (IHK)", about_f2:"DATEV certified",
+    about_f1:"Tax Specialist (IHK)", about_f2:"DATEV-Standard",
     about_f3:"SOKA-BAU experienced", about_f4:"DE · EN · PL · HR",
     svc_eyebrow:"Services",
     svc_h2_a:"Everything your numbers need.", svc_h2_b:"From one trusted source.",
@@ -1106,7 +1111,7 @@ const translations = {
     cta_sub:"Niezobowiązująca rozmowa – odpowiedź w ciągu jednego dnia roboczego.",
     cta_phone_lbl:"Telefon", cta_phone_hint:"Pn–Pt 09:00–17:00",
     cta_mail_lbl:"E-mail",   cta_mail_hint:"Odpowiedź w ciągu 1 dnia roboczego",
-    trust1:"Specjalistka podatkowa (IHK)", trust2:"Certyfikat DATEV",
+    trust1:"Specjalistka podatkowa (IHK)", trust2:"DATEV-Standard",
     trust3:"Doświadczenie SOKA-BAU", trust4:"DE · EN · PL · HR", trust5:"Zgodność z RODO",
     usp_eyebrow:"Czego się spodziewać",
     usp_h2_a:"Coś więcej niż księgowanie.", usp_h2_b:"Niezawodny partner.",
@@ -1119,7 +1124,7 @@ const translations = {
     about_p1:"Od 2003 roku wspieram przedsiębiorców, zakłady rzemieślnicze i osoby samozatrudnione w Monachium i okolicy we wszystkich kwestiach bieżącej księgowości i płac.",
     about_p2:"Starannie ewidencjonuję dokumenty, uzgadniam konta, rozliczam płace na czas i wyjaśniam raporty tak, byś je rozumiał.",
     about_p3:"Mój sposób pracy jest jasny: słucham, sprawdzam dokładnie, dotrzymuję terminów – i zachowuję dyskrecję. Bez standardowych pakietów, bez ukrytych dopłat – tylko rzetelna praca w przejrzystej cenie ryczałtowej.",
-    about_f1:"Specjalistka podatkowa (IHK)", about_f2:"Certyfikat DATEV",
+    about_f1:"Specjalistka podatkowa (IHK)", about_f2:"DATEV-Standard",
     about_f3:"Doświadczenie SOKA-BAU", about_f4:"DE · EN · PL · HR",
     svc_eyebrow:"Usługi",
     svc_h2_a:"Wszystko, czego potrzebują Twoje liczby.", svc_h2_b:"Z jednej ręki.",
@@ -1208,7 +1213,7 @@ const translations = {
     cta_sub:"Neobvezujući razgovor – odgovor unutar jednog radnog dana.",
     cta_phone_lbl:"Telefon", cta_phone_hint:"Pon–Pet 09:00–17:00",
     cta_mail_lbl:"E-mail", cta_mail_hint:"Odgovor unutar 1 radnog dana",
-    trust1:"Porezna stručnjakinja (IHK)", trust2:"DATEV certificirana",
+    trust1:"Porezna stručnjakinja (IHK)", trust2:"DATEV-Standard",
     trust3:"Iskusna sa SOKA-BAU", trust4:"DE · EN · PL · HR", trust5:"Sukladno GDPR-u",
     usp_eyebrow:"Što možete očekivati",
     usp_h2_a:"Više od samog knjiženja.", usp_h2_b:"Pouzdan partner.",
@@ -1221,7 +1226,7 @@ const translations = {
     about_p1:"Od 2003. godine podržavam poduzetnike, obrte i samozaposlene oko Münchena u svim pitanjima tekućeg knjigovodstva i obračuna plaća.",
     about_p2:"Uredno evidentiram dokumente, usklađujem račune, plaće obračunavam na vrijeme i objašnjavam izvještaje tako da ih razumijete.",
     about_p3:"Moj stil rada je jasan: slušam, pažljivo provjeravam, držim se rokova – i ostajem diskretna. Bez standardnih paketa, bez skrivenih dodataka – samo uredan rad uz jasnu paušalnu cijenu.",
-    about_f1:"Porezna stručnjakinja (IHK)", about_f2:"DATEV certificirana",
+    about_f1:"Porezna stručnjakinja (IHK)", about_f2:"DATEV-Standard",
     about_f3:"Iskusna sa SOKA-BAU", about_f4:"DE · EN · PL · HR",
     svc_eyebrow:"Usluge",
     svc_h2_a:"Sve što vašim brojevima treba.", svc_h2_b:"Iz jedne ruke.",
