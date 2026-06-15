@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+<!--
+  ============================================================================
+  Titel:    Visitenkarte – Mockup (Web) · Schröer Office Dienstleistungen
+  Version:  3.3.0  (2026-06-15)
+  Autor:    Andreas Grundke – Grundke IT-Service
+  CI:       Schröer-Grün · Cormorant Garamond + Inter
+  Stand:    Kundin-Mail eingearbeitet — Kontakt auf Rückseite (rechts),
+            Leistungen links (§ 6 Nr. 3 u. 4 StBerG), Mobilnummer ergänzt,
+            QR-Code integriert. Vorderseite = Identität (ohne Kontakt).
+  ============================================================================
+-->
 <html lang="de">
 <head>
 <meta charset="UTF-8"/>
@@ -10,605 +21,184 @@
 <link rel="stylesheet" href="assets/fonts/fonts.css"/>
 <style>
 :root{
-  --ink:        #14202a;
-  --ink-md:     #3a4854;
-  --ink-lt:     #6c7884;
-  --line:       #e4e7ea;
-  --line-md:    #d3dae0;
-  --bg:         #ffffff;
-  --bg-soft:    #f5f7f4;
-  --green:      #4a7a55;
-  --green-dk:   #2f5638;
-  --green-lt:   #8db092;
-  --serif: "Cormorant Garamond", "Times New Roman", serif;
-  --sans:  "Inter", system-ui, sans-serif;
+  --ink:#14202a; --ink-md:#3a4854; --ink-lt:#6c7884;
+  --line:#e4e7ea; --line-md:#d3dae0; --bg:#ffffff;
+  --green:#4a7a55; --green-dk:#2f5638; --green-lt:#8db092;
+  --serif:"Cormorant Garamond","Times New Roman",serif; --sans:"Inter",system-ui,sans-serif;
 }
 *,*::before,*::after{ box-sizing:border-box; }
-body{
-  margin:0;
-  font-family:var(--sans);
-  background:#eceae3;
-  color:var(--ink);
-  padding:60px 32px 80px;
-  -webkit-font-smoothing:antialiased;
-}
-.page-head{
-  text-align:center;
-  max-width:760px;
-  margin:0 auto 48px;
-}
-.page-head .eyebrow{
-  font-size:11px;
-  font-weight:600;
-  letter-spacing:.24em;
-  text-transform:uppercase;
-  color:var(--green);
-  display:inline-flex;
-  align-items:center;
-  gap:14px;
-  margin-bottom:18px;
-}
-.page-head .eyebrow::before, .page-head .eyebrow::after{
-  content:"";
-  width:36px; height:1px;
-  background:var(--green);
-}
-.page-head h1{
-  font-family:var(--serif);
-  font-weight:400;
-  font-size:2.4rem;
-  margin:0 0 14px;
-  color:var(--ink);
-  letter-spacing:-.005em;
-}
-.page-head h1 .italic{
-  font-style:italic;
-  font-weight:300;
-  color:var(--green);
-}
-.page-head p{
-  font-size:14px;
-  color:var(--ink-md);
-  line-height:1.65;
-  margin:0;
-}
+body{ margin:0; font-family:var(--sans); background:#eceae3; color:var(--ink); padding:48px 32px 80px; -webkit-font-smoothing:antialiased; }
 
-/* ===== Logo (SVG) ===== */
-.logo-svg{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-}
-.logo-svg .circle-mark{
-  width:42px; height:42px;
-  flex-shrink:0;
-}
-.logo-svg .word{
-  display:flex;
-  flex-direction:column;
-  line-height:1;
-}
-.logo-svg .word .name{
-  font-family:var(--sans);
-  font-weight:500;
-  font-size:24px;
-  color:var(--green);
-  letter-spacing:-.005em;
-}
-.logo-svg .word .sub{
-  font-family:var(--sans);
-  font-weight:400;
-  font-size:9.5px;
-  letter-spacing:.04em;
-  color:var(--green);
-  margin-top:3px;
-}
+.page-head{ text-align:center; max-width:760px; margin:0 auto 40px; }
+.page-head .eyebrow{ font-size:11px; font-weight:600; letter-spacing:.24em; text-transform:uppercase; color:var(--green); display:inline-flex; align-items:center; gap:14px; margin-bottom:16px; }
+.page-head .eyebrow::before,.page-head .eyebrow::after{ content:""; width:36px; height:1px; background:var(--green); }
+.page-head h1{ font-family:var(--serif); font-weight:400; font-size:2.4rem; margin:0 0 12px; color:var(--ink); }
+.page-head h1 .italic{ font-style:italic; font-weight:300; color:var(--green); }
+.page-head p{ font-size:14px; color:var(--ink-md); line-height:1.65; margin:0; }
+.back-link{ text-align:center; padding:0 0 22px; }
+.back-link a{ display:inline-flex; align-items:center; gap:8px; color:#3a4854; font-size:13px; letter-spacing:.04em; text-decoration:none; padding:8px 14px; background:rgba(255,255,255,.7); border-radius:6px; border:1px solid #d3dae0; }
 
-/* ===== Karten-Bühne ===== */
-.cards-stage{
-  display:grid;
-  grid-template-columns:repeat(2, max-content);
-  gap:60px 80px;
-  justify-content:center;
-  align-items:start;
-  margin:0 auto 56px;
-}
-.card-wrap{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  align-items:center;
-}
-.card-label{
-  font-size:11px;
-  font-weight:600;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:var(--ink-lt);
-}
+.cards-stage{ display:grid; grid-template-columns:repeat(2,max-content); gap:60px 80px; justify-content:center; align-items:start; margin:0 auto 50px; }
+.card-wrap{ display:flex; flex-direction:column; gap:14px; align-items:center; }
+.card-label{ font-size:11px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-lt); }
 
-.card{
-  width:510px;
-  height:330px;
-  background:#fff;
-  position:relative;
-  overflow:hidden;
-  box-shadow:
-    0 1px 2px rgba(20,32,42,.08),
-    0 22px 50px rgba(20,32,42,.18);
-  border-radius:4px;
-}
+.card{ width:510px; height:330px; background:#fff; position:relative; overflow:hidden; box-shadow:0 1px 2px rgba(20,32,42,.08),0 22px 50px rgba(20,32,42,.18); border-radius:4px; }
+.card::before{ content:""; position:absolute; left:0; right:0; bottom:0; height:4px; background:var(--green); }
 
-/* ============== VORDERSEITE ============== */
-.card.front{
-  background:#fff;
-  display:grid;
-  grid-template-rows:auto 1fr auto;
-  padding:28px 32px 26px;
-}
-.card.front .top-row{
-  display:flex;
-  align-items:flex-start;
-  justify-content:flex-end;
-  margin-bottom:18px;
-}
+/* ===== Logo ===== */
+.logo-svg{ display:inline-flex; align-items:center; gap:10px; }
+.logo-svg .circle-mark{ width:42px; height:42px; flex-shrink:0; }
+.logo-svg .word{ display:flex; flex-direction:column; line-height:1; }
+.logo-svg .word .name{ font-weight:500; font-size:24px; color:var(--green); letter-spacing:-.005em; }
+.logo-svg .word .sub{ font-weight:400; font-size:9.5px; letter-spacing:.04em; color:var(--green); margin-top:3px; }
 
-/* Mittelzone: links Person, rechts Kontakt – tiefer angesetzt, näher an der Hello-Zeile */
-.front-body{
-  display:grid;
-  grid-template-columns:1fr 1.1fr;
-  gap:24px;
-  align-items:start;
-  margin-top:32px;
-}
-.front-person{
-  display:flex;
-  flex-direction:column;
-  gap:4px;
-}
-.front-person .name{
-  font-family:var(--serif);
-  font-size:25px;
-  font-weight:500;
-  color:var(--ink);
-  line-height:1.05;
-  letter-spacing:-.005em;
-}
-.front-person .role{
-  font-size:10.5px;
-  font-weight:600;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:var(--green);
-  margin-top:6px;
-}
-.front-person .qual{
-  font-family:var(--serif);
-  font-style:italic;
-  font-size:14px;
-  font-size:12.5px;
-  color:var(--ink-md);
-  margin-top:8px;
-  line-height:1.3;
-}
-.front-person .langs{
-  display:flex;
-  gap:5px;
-  margin-top:14px;
-}
-.front-person .lang-pill{
-  font-size:9.5px;
-  font-weight:600;
-  letter-spacing:.14em;
-  padding:3px 7px;
-  border:1px solid var(--line-md);
-  border-radius:2px;
-  color:var(--ink-md);
-  background:#fff;
-}
-.front-person .lang-pill.act{
-  background:var(--green-dk);
-  color:#fff;
-  border-color:var(--green-dk);
-}
+/* ============== VORDERSEITE – Identität ============== */
+.card.front{ display:grid; grid-template-rows:auto 1fr auto; padding:30px 34px 28px; }
+.card.front .top-row{ display:flex; justify-content:flex-end; }
+.front-body{ align-self:center; margin-top:6px; }
+.front-person .name{ font-family:var(--serif); font-size:30px; font-weight:500; color:var(--ink); line-height:1.04; }
+.front-person .role{ font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--green); margin-top:9px; }
+.front-person .qual{ font-family:var(--serif); font-style:italic; font-size:15px; color:var(--ink-md); margin-top:7px; }
+.front-person .langs{ display:flex; gap:5px; margin-top:16px; }
+.front-person .lang-pill{ font-size:9.5px; font-weight:600; letter-spacing:.14em; padding:3px 8px; border:1px solid var(--line-md); border-radius:2px; color:var(--ink-md); }
+.front-person .lang-pill.act{ background:var(--green-dk); color:#fff; border-color:var(--green-dk); }
+.front-person .tagline{ font-family:var(--serif); font-style:italic; font-size:16px; color:var(--green-dk); margin-top:18px; }
+.front-person .tagline em{ color:var(--green); }
 
-/* Kontaktblock rechts */
-.front-contact{
-  display:flex;
-  flex-direction:column;
-  gap:9px;
-  font-size:11.5px;
-  color:var(--ink);
-  line-height:1.4;
-}
-.front-contact .line{
-  display:grid;
-  grid-template-columns:54px 1fr;
-  gap:10px;
-  align-items:baseline;
-}
-.front-contact .lbl{
-  font-size:9.5px;
-  font-weight:600;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:var(--green);
-  padding-top:1px;
-}
-.front-contact .val{
-  font-family:var(--serif);
-  font-size:14.5px;
-  color:var(--ink);
-  font-weight:500;
-  letter-spacing:.005em;
-}
-.front-contact .val.address{
-  font-size:13.5px;
-  line-height:1.45;
-}
-.front-contact .val a{ color:inherit; text-decoration:none; }
+.front-hello{ display:flex; align-items:center; gap:8px; padding-top:14px; border-top:1px solid var(--line); flex-wrap:wrap; }
+.front-hello .hi{ font-family:var(--serif); font-style:italic; font-size:14px; color:var(--ink-md); white-space:nowrap; }
+.front-hello .hi:nth-child(1){ color:var(--ink); } .front-hello .hi:nth-child(3){ color:var(--green); } .front-hello .hi:nth-child(5){ color:var(--green-dk); }
+.front-hello .sep{ width:4px; height:4px; border-radius:50%; background:var(--green-lt); }
 
-/* Mehrsprachiger Willkommens-Streifen unten */
-.front-hello{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:8px;
-  padding-top:14px;
-  margin-top:14px;
-  border-top:1px solid var(--line);
-}
-.front-hello .hi{
-  font-family:var(--serif);
-  font-style:italic;
-  font-weight:400;
-  font-size:14.5px;
-  letter-spacing:-.005em;
-  color:var(--ink-md);
-  white-space:nowrap;
-}
-.front-hello .hi:nth-child(1){ color:var(--ink); }
-.front-hello .hi:nth-child(2){ color:var(--green); }
-.front-hello .hi:nth-child(3){ color:var(--green-dk); }
-.front-hello .hi:nth-child(4){ color:var(--ink-md); }
-.front-hello .sep{
-  width:4px; height:4px; border-radius:50%;
-  background:var(--green-lt);
-  flex-shrink:0;
-}
+/* ============== RÜCKSEITE – Leistungen links · Kontakt rechts ============== */
+.card.back{ padding:24px 28px 26px; }
+.back-grid{ display:grid; grid-template-columns:1.32fr 1fr; gap:24px; height:100%; }
+.col-eyebrow{ font-size:9.5px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--green); display:inline-flex; align-items:center; gap:8px; margin-bottom:3px; }
+.col-eyebrow::before{ content:""; width:18px; height:1px; background:var(--green); }
 
-/* unten Balken: NUR grün, kein Verlauf */
-.card.front::before{
-  content:"";
-  position:absolute;
-  left:0; right:0; bottom:0;
-  height:4px;
-  background:var(--green);
-}
+/* Leistungen */
+.svc-note{ font-size:8.5px; color:var(--ink-lt); font-style:italic; margin-bottom:9px; }
+.svc-block{ margin-bottom:7px; }
+.svc-block h4{ font-size:10.5px; font-weight:600; color:var(--green-dk); margin:0 0 2px; }
+.svc-block ul{ list-style:none; margin:0; padding:0; }
+.svc-block li{ font-size:8.4px; line-height:1.32; color:var(--ink-md); padding-left:8px; position:relative; }
+.svc-block li::before{ content:""; position:absolute; left:0; top:5px; width:4px; height:1px; background:var(--green-lt); }
 
-/* ============== RÜCKSEITE – weiß, Begrüßung + Leistungen ============== */
-.card.back{
-  background:#fff;
-  color:var(--ink);
-  padding:30px 32px 28px;
-  display:flex;
-  flex-direction:column;
-}
-.card.back::before{
-  content:"";
-  position:absolute;
-  left:0; right:0; bottom:0;
-  height:4px;
-  background:var(--green);
-}
+/* Kontakt */
+.contact-col{ display:flex; flex-direction:column; }
+.c-line{ margin-bottom:6px; }
+.c-line .lbl{ font-size:8px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--green); display:block; }
+.c-line .val{ font-family:var(--serif); font-size:12.5px; color:var(--ink); font-weight:500; line-height:1.25; }
+.c-qr{ margin-top:auto; display:flex; align-items:center; gap:10px; padding-top:8px; }
+.c-qr img{ width:58px; height:58px; display:block; }
+.c-qr .cap{ font-size:8px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--green); line-height:1.3; }
 
-.back-hello{
-  display:flex;
-  flex-direction:column;
-  gap:3px;
-  margin-bottom:14px;
-}
-.back-hello .hello{
-  font-family:var(--serif);
-  font-style:italic;
-  font-weight:400;
-  font-size:17px;
-  line-height:1.2;
-  letter-spacing:-.005em;
-}
-.back-hello .hello:nth-child(1){ color:var(--ink); }
-.back-hello .hello:nth-child(2){ color:var(--green); }
-.back-hello .hello:nth-child(3){ color:var(--green-dk); }
-.back-hello .hello:nth-child(4){ color:var(--ink-md); }
+/* ===== Specs ===== */
+.specs{ max-width:1100px; margin:48px auto 0; background:#fff; border:1px solid var(--line); padding:28px 32px; display:grid; grid-template-columns:repeat(4,1fr); gap:22px 28px; }
+.specs .lbl{ font-size:10px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-lt); margin-bottom:3px; display:block; }
+.specs .val{ font-family:var(--serif); font-size:16px; color:var(--ink); font-weight:500; }
+.specs .val small{ display:block; font-family:var(--sans); font-size:11px; color:var(--ink-md); font-weight:400; margin-top:2px; }
 
-.back-eyebrow{
-  font-size:9.5px;
-  font-weight:600;
-  letter-spacing:.24em;
-  text-transform:uppercase;
-  color:var(--green);
-  margin:8px 0 8px;
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding-top:12px;
-  border-top:1px solid var(--line);
-}
-.back-eyebrow::before{
-  content:"";
-  width:24px; height:1px;
-  background:var(--green);
-}
-.svc-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:7px 20px;
-  margin-top:4px;
-}
-.svc-item{
-  font-size:12px;
-  color:var(--ink);
-  letter-spacing:.005em;
-  padding-left:11px;
-  position:relative;
-  line-height:1.35;
-  font-weight:500;
-}
-.svc-item::before{
-  content:"";
-  position:absolute;
-  left:0; top:7px;
-  width:6px; height:1px;
-  background:var(--green);
-}
-.svc-item small{
-  display:block;
-  color:var(--ink-lt);
-  font-weight:400;
-  font-size:9.5px;
-  letter-spacing:.01em;
-  margin-top:1px;
-}
-
-.back-foot{
-  margin-top:auto;
-  padding-top:14px;
-  font-family:var(--serif);
-  font-style:italic;
-  font-size:12.5px;
-  color:var(--ink-md);
-  line-height:1.45;
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:14px;
-}
-.bf-txt{ display:flex; flex-direction:column; gap:2px; }
-.bf-qr{ display:flex; flex-direction:column; align-items:center; gap:5px; flex-shrink:0; }
-.bf-qr img{ width:62px; height:62px; display:block; border-radius:4px; }
-.bf-qr-cap{ font-family:var(--sans); font-style:normal; font-size:8px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--green); white-space:nowrap; }
-.back-foot .url{
-  font-family:var(--sans);
-  font-style:normal;
-  font-size:10px;
-  font-weight:600;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:var(--green);
-}
-
-/* ============== Spezifikations-Panel ============== */
-.specs{
-  max-width:1100px;
-  margin:48px auto 0;
-  background:#fff;
-  border:1px solid var(--line);
-  padding:32px 32px;
-  display:grid;
-  grid-template-columns:repeat(5, 1fr);
-  gap:24px 28px;
-}
-.specs .spec{
-  display:flex;
-  flex-direction:column;
-  gap:4px;
-}
-.specs .lbl{
-  font-size:10px;
-  font-weight:600;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:var(--ink-lt);
-  margin-bottom:2px;
-}
-.specs .val{
-  font-family:var(--serif);
-  font-size:17px;
-  color:var(--ink);
-  font-weight:500;
-}
-.specs .val small{
-  display:block;
-  font-family:var(--sans);
-  font-size:11px;
-  color:var(--ink-md);
-  font-weight:400;
-  letter-spacing:0;
-  margin-top:2px;
-}
-
-/* CI-Block: Fonts + Größen + Farb-Swatches */
-.specs .ci-block{ display:flex; flex-direction:column; gap:6px; }
-.specs .ci-fonts{
-  font-family:var(--serif); font-size:14px;
-  color:var(--ink); line-height:1.25; font-weight:500;
-}
-.specs .ci-fonts em{ font-style:italic; color:var(--green-dk); font-weight:400; }
-.specs .ci-sizes{
-  font-family:var(--sans); font-size:10.5px;
-  color:var(--ink-md); letter-spacing:.01em; line-height:1.45;
-}
-.specs .ci-colors{ display:flex; gap:5px; margin-top:4px; flex-wrap:wrap; }
-.specs .ci-swatch{
-  width:18px; height:18px;
-  border-radius:50%;
-  border:1px solid rgba(0,0,0,.08);
-  position:relative;
-  cursor:help;
-}
-.specs .ci-swatch::after{
-  content: attr(data-hex);
-  position:absolute; bottom:130%; left:50%;
-  transform:translateX(-50%);
-  background:var(--ink); color:#fff;
-  font:600 10px/1.2 var(--sans);
-  padding:4px 7px; border-radius:3px;
-  letter-spacing:.04em; white-space:nowrap;
-  opacity:0; pointer-events:none;
-  transition:opacity .15s; z-index:5;
-}
-.specs .ci-swatch:hover::after{ opacity:1; }
-
-@media (max-width: 1180px){
-  .cards-stage{
-    grid-template-columns:1fr;
-    justify-items:center;
-    gap:48px;
-  }
-  .specs{ grid-template-columns:repeat(2, 1fr); max-width:760px; }
-}
-@media (max-width: 560px){
-  .specs{ grid-template-columns:1fr; padding:24px 22px; }
-}
-@media (max-width: 560px){
-  .card{
-    width:100%;
-    max-width:440px;
-    height:auto;
-    aspect-ratio:85/55;
-  }
-  body{ padding:32px 16px 48px; }
-}
+@media (max-width:1180px){ .cards-stage{ grid-template-columns:1fr; justify-items:center; gap:48px; } .specs{ grid-template-columns:repeat(2,1fr); max-width:560px; } }
+@media (max-width:560px){ .card{ width:100%; max-width:460px; height:auto; aspect-ratio:85/55; } body{ padding:28px 14px 48px; } }
 </style>
-  <link rel="stylesheet" href="assets/js/lenis.css"/>
 </head>
 <body>
 
-<div style="text-align:center;padding:8px 0 24px;">
-  <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;color:#3a4854;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:.04em;text-decoration:none;padding:8px 14px;background:rgba(255,255,255,.7);border-radius:6px;border:1px solid #d3dae0;">&larr; Zurück zur Website</a>
-</div>
+<div class="back-link"><a href="index.html">&larr; Zurück zur Website</a></div>
 
 <div class="page-head">
   <span class="eyebrow">Visitenkarte – Mockup</span>
-  <h1>
-    Violetta Schröer.
-    <span class="italic">85 × 55 mm.</span>
-  </h1>
-  <p>Vorder- und Rückseite, weiß mit grünem Akzent. Mehrsprachige Begrüßung vorne, Leistungen und Kontakt hinten.<br/><em style="font-size:12.5px;color:#6c7884;">Diese Seite dient nur der Abstimmung mit der Kundin – nicht im Hauptmenü verlinkt.</em></p>
+  <h1>Violetta Schröer. <span class="italic">85 × 55 mm.</span></h1>
+  <p>Vorderseite = Identität. Rückseite: Leistungen (links) &amp; Kontakt mit QR-Code (rechts).<br/><em style="font-size:12.5px;color:#6c7884;">Diese Seite dient nur der Abstimmung mit der Kundin – nicht im Hauptmenü verlinkt.</em></p>
 </div>
 
-<!-- Reusable SVG-Logo Definition -->
-<svg width="0" height="0" style="position:absolute;" aria-hidden="true">
-  <defs>
-    <symbol id="vso-mark" viewBox="0 0 100 100">
-      <!-- Kreis -->
-      <circle cx="50" cy="50" r="46" fill="#4a7a55"/>
-      <!-- Drei horizontale Linien -->
-      <rect x="6"  y="40" width="62" height="3.2" fill="#fff"/>
-      <rect x="6"  y="50" width="62" height="3.2" fill="#fff"/>
-      <rect x="6"  y="60" width="62" height="3.2" fill="#fff"/>
-    </symbol>
-  </defs>
-</svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="vso-mark" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#4a7a55"/><rect x="6" y="40" width="62" height="3.2" fill="#fff"/><rect x="6" y="50" width="62" height="3.2" fill="#fff"/><rect x="6" y="60" width="62" height="3.2" fill="#fff"/></symbol>
+</defs></svg>
 
 <div class="cards-stage">
 
-  <!-- ========== VORDERSEITE ========== -->
+  <!-- ===== VORDERSEITE ===== -->
   <div class="card-wrap">
     <div class="card front">
-
       <div class="top-row">
         <div class="logo-svg">
           <svg class="circle-mark"><use href="#vso-mark"/></svg>
-          <div class="word">
-            <span class="name">Schröer</span>
-            <span class="sub">Office Dienstleistungen</span>
-          </div>
+          <div class="word"><span class="name">Schröer</span><span class="sub">Office Dienstleistungen</span></div>
         </div>
       </div>
-
       <div class="front-body">
         <div class="front-person">
           <span class="name">Violetta Schröer</span>
-          <span class="role">Geschäftsführerin</span>
-          <span class="qual">Steuerfachwirtin (IHK)</span>
+          <div class="role">Geschäftsführerin</div>
+          <div class="qual">Steuerfachwirtin (IHK)</div>
           <div class="langs">
-            <span class="lang-pill act">DE</span>
-            <span class="lang-pill">EN</span>
-            <span class="lang-pill">PL</span>
-            <span class="lang-pill">HR</span>
+            <span class="lang-pill act">DE</span><span class="lang-pill">EN</span><span class="lang-pill">PL</span><span class="lang-pill">HR</span>
           </div>
-        </div>
-
-        <div class="front-contact">
-          <div class="line">
-            <span class="lbl">Adresse</span>
-            <span class="val address">Bretonischer Ring 18<br/>85630 Grasbrunn</span>
-          </div>
-          <div class="line">
-            <span class="lbl">Telefon</span>
-            <span class="val">+49 89 666 822 01</span>
-          </div>
-          <div class="line">
-            <span class="lbl">E-Mail</span>
-            <span class="val">info@schroeer-office.de</span>
-          </div>
-          <div class="line">
-            <span class="lbl">Web</span>
-            <span class="val">schroeer-office.de</span>
-          </div>
+          <div class="tagline">Ihre Zahlen. <em>Meine Stärke.</em></div>
         </div>
       </div>
-
       <div class="front-hello" aria-hidden="true">
-        <span class="hi">Herzlich willkommen.</span>
-        <span class="sep"></span>
-        <span class="hi">Welcome.</span>
-        <span class="sep"></span>
-        <span class="hi">Witamy.</span>
-        <span class="sep"></span>
+        <span class="hi">Herzlich willkommen.</span><span class="sep"></span>
+        <span class="hi">Welcome.</span><span class="sep"></span>
+        <span class="hi">Witamy.</span><span class="sep"></span>
         <span class="hi">Dobrodošli.</span>
       </div>
     </div>
     <div class="card-label">Vorderseite</div>
   </div>
 
-  <!-- ========== RÜCKSEITE ========== -->
+  <!-- ===== RÜCKSEITE ===== -->
   <div class="card-wrap">
     <div class="card back">
+      <div class="back-grid">
 
+        <!-- Leistungen links -->
+        <div class="svc-col">
+          <span class="col-eyebrow">Leistungen</span>
+          <div class="svc-note">gemäß § 6 Nr. 3 u. 4 StBerG</div>
 
-
-      <span class="back-eyebrow">Leistungen</span>
-
-      <div class="svc-grid">
-        <div class="svc-item">Finanzbuchhaltung<small>Belege · BWA · USt</small></div>
-        <div class="svc-item">Lohnbuchhaltung<small>SV · LSt · Bescheinigungen</small></div>
-        <div class="svc-item">Baulöhne<small>SOKA-BAU · Tariflöhne</small></div>
-        <div class="svc-item">Vorbereitende Buchh.<small>Übergabe an Steuerberater</small></div>
-        <div class="svc-item">Büroservice<small>Mahnwesen · Korrespondenz</small></div>
-        <div class="svc-item">Beratung<small>DE · EN · PL · HR</small></div>
-      </div>
-
-      <div class="back-foot">
-        <div class="bf-txt">
-          <span>Wir sprechen Ihre Sprache.</span>
-          <span class="url">schroeer-office.de</span>
+          <div class="svc-block">
+            <h4>Finanzbuchhaltung</h4>
+            <ul>
+              <li>Buchen laufender Geschäftsvorfälle</li>
+              <li>Debitoren- &amp; Kreditorenerfassung, OPOS-Pflege</li>
+              <li>Betriebswirtschaftliche Auswertungen (BWA)</li>
+              <li>Anlagenbuchhaltung &amp; Kostenstellenrechnung</li>
+            </ul>
+          </div>
+          <div class="svc-block">
+            <h4>Lohn- &amp; Baulohnbuchhaltung</h4>
+            <ul>
+              <li>Laufende Lohn- &amp; Baulohnbuchhaltung</li>
+              <li>Lohnabrechnungen inkl. LSt- &amp; SV-Meldungen</li>
+              <li>SOKA-BAU, Tariflöhne &amp; Schlechtwettergeld</li>
+              <li>Meldewesen (Lohnsteuer &amp; Sozialversicherung)</li>
+            </ul>
+          </div>
+          <div class="svc-block">
+            <h4>Prüfungsbegleitung</h4>
+            <ul>
+              <li>Unterstützung bei Prüfungen (Zoll / DRV)</li>
+            </ul>
+          </div>
         </div>
-        <div class="bf-qr">
-          <img src="assets/img/qr-start.svg" alt="QR-Code: schroeer-office.de/start"/>
-          <span class="bf-qr-cap">Scan: Sofort-Kontakt</span>
+
+        <!-- Kontakt rechts -->
+        <div class="contact-col">
+          <span class="col-eyebrow">Kontakt</span>
+          <div class="c-line"><span class="lbl">Adresse</span><span class="val">Bretonischer Ring 18<br/>85630 Grasbrunn</span></div>
+          <div class="c-line"><span class="lbl">Telefon</span><span class="val">+49 89 666 822 01</span></div>
+          <div class="c-line"><span class="lbl">Mobil</span><span class="val">+49 179 104 42 92</span></div>
+          <div class="c-line"><span class="lbl">E-Mail</span><span class="val">info@schroeer-office.de</span></div>
+          <div class="c-line"><span class="lbl">Web</span><span class="val">schroeer-office.de</span></div>
+          <div class="c-qr">
+            <img src="assets/img/qr-start.svg" alt="QR-Code: schroeer-office.de/start"/>
+            <span class="cap">Scan:<br/>Sofort-Kontakt</span>
+          </div>
         </div>
+
       </div>
     </div>
     <div class="card-label">Rückseite</div>
@@ -617,40 +207,11 @@ body{
 </div>
 
 <div class="specs">
-  <div class="spec">
-    <span class="lbl">Format</span>
-    <span class="val">85 × 55 mm<small>EU-Standard · 91 × 61 mm Druck (mit Beschnitt)</small></span>
-  </div>
-  <div class="spec">
-    <span class="lbl">Design-System</span>
-    <div class="ci-block">
-      <div class="ci-fonts">Cormorant Garamond <em>+</em> Inter</div>
-      <div class="ci-sizes">Headlines 13–25 pt · Body 6.5–14 pt · Labels 5.5–9.5 pt</div>
-      <div class="ci-colors" aria-label="Farbpalette">
-        <span class="ci-swatch" style="background:#4a7a55" data-hex="#4a7a55 Grün"></span>
-        <span class="ci-swatch" style="background:#2f5638" data-hex="#2f5638 Dunkelgrün"></span>
-        <span class="ci-swatch" style="background:#8db092" data-hex="#8db092 Hellgrün"></span>
-        <span class="ci-swatch" style="background:#14202a" data-hex="#14202a Anthrazit"></span>
-        <span class="ci-swatch" style="background:#3a4854" data-hex="#3a4854 Grau"></span>
-        <span class="ci-swatch" style="background:#ffffff;border-color:#d3dae0" data-hex="#ffffff Weiß"></span>
-      </div>
-    </div>
-  </div>
-  <div class="spec">
-    <span class="lbl">Druck</span>
-    <span class="val">4/4 farbig<small>CMYK · 350 g matt/Naturpapier · Vistaprint</small></span>
-  </div>
-  <div class="spec">
-    <span class="lbl">Sprachen</span>
-    <span class="val">DE · EN · PL · HR<small>Vorderseite mehrsprachig</small></span>
-  </div>
-  <div class="spec">
-    <span class="lbl">Version</span>
-    <span class="val">v3.2.0<small>2026-06-14 · QR-Code ergänzt · Grundke IT-Service</small></span>
-  </div>
+  <div><span class="lbl">Format</span><span class="val">85 × 55 mm<small>EU-Standard · 91 × 61 mm Druck (mit Beschnitt)</small></span></div>
+  <div><span class="lbl">Aufteilung</span><span class="val">Identität / Leistungen<small>Vorne Person · hinten Leistungen + Kontakt</small></span></div>
+  <div><span class="lbl">Sprachen</span><span class="val">DE · EN · PL · HR<small>Mehrsprachige Begrüßung vorne</small></span></div>
+  <div><span class="lbl">Version</span><span class="val">v3.3.0<small>2026-06-15 · Kundin-Mail eingearbeitet · Grundke IT-Service</small></span></div>
 </div>
 
-<script src="assets/js/lenis.min.js" defer></script>
-<script src="assets/js/enhance.js" defer></script>
 </body>
 </html>
