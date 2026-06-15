@@ -47,15 +47,15 @@ body{ margin:0; font-family:var(--sans); background:#eceae3; color:var(--ink); p
 
 /* ===== Logo ===== */
 .logo-svg{ display:inline-flex; align-items:center; gap:10px; }
-.logo-svg .circle-mark{ width:42px; height:42px; flex-shrink:0; }
+.logo-svg .circle-mark{ width:50px; height:50px; flex-shrink:0; }
 .logo-svg .word{ display:flex; flex-direction:column; line-height:1; }
-.logo-svg .word .name{ font-weight:500; font-size:24px; color:var(--green); letter-spacing:-.005em; }
+.logo-svg .word .name{ font-weight:500; font-size:27px; color:var(--green); letter-spacing:-.005em; }
 .logo-svg .word .sub{ font-weight:400; font-size:9.5px; letter-spacing:.04em; color:var(--green); margin-top:3px; }
 
 /* ============== VORDERSEITE – Identität ============== */
-.card.front{ display:grid; grid-template-rows:auto 1fr auto; padding:30px 34px 28px; }
-.card.front .top-row{ display:flex; justify-content:flex-end; }
-.front-body{ align-self:center; margin-top:6px; }
+.card.front{ display:grid; grid-template-rows:auto 1fr auto; padding:24px 34px 28px; }
+.card.front .top-row{ display:flex; justify-content:flex-start; }
+.front-body{ align-self:center; display:grid; grid-template-columns:1fr auto; gap:30px; align-items:center; }
 .front-person .name{ font-family:var(--serif); font-size:30px; font-weight:500; color:var(--ink); line-height:1.04; }
 .front-person .role{ font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--green); margin-top:9px; }
 .front-person .qual{ font-family:var(--serif); font-style:italic; font-size:15px; color:var(--ink-md); margin-top:7px; }
@@ -64,6 +64,9 @@ body{ margin:0; font-family:var(--sans); background:#eceae3; color:var(--ink); p
 .front-person .lang-pill.act{ background:var(--green-dk); color:#fff; border-color:var(--green-dk); }
 .front-person .tagline{ font-family:var(--serif); font-style:italic; font-size:16px; color:var(--green-dk); margin-top:18px; }
 .front-person .tagline em{ color:var(--green); }
+.front-qr{ display:flex; flex-direction:column; align-items:center; gap:9px; }
+.front-qr img{ width:108px; height:108px; display:block; }
+.front-qr span{ font-size:9.5px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--green); }
 
 .front-hello{ display:flex; align-items:center; gap:8px; padding-top:14px; border-top:1px solid var(--line); flex-wrap:wrap; }
 .front-hello .hi{ font-family:var(--serif); font-style:italic; font-size:14px; color:var(--ink-md); white-space:nowrap; }
@@ -73,22 +76,22 @@ body{ margin:0; font-family:var(--sans); background:#eceae3; color:var(--ink); p
 /* ============== RÜCKSEITE – Leistungen links · Kontakt rechts ============== */
 .card.back{ padding:24px 28px 26px; }
 .back-grid{ display:grid; grid-template-columns:1.32fr 1fr; gap:24px; height:100%; }
-.col-eyebrow{ font-size:9.5px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--green); display:inline-flex; align-items:center; gap:8px; margin-bottom:3px; }
+.col-eyebrow{ font-size:10px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--green); display:inline-flex; align-items:center; gap:8px; margin-bottom:3px; }
 .col-eyebrow::before{ content:""; width:18px; height:1px; background:var(--green); }
 
 /* Leistungen */
-.svc-note{ font-size:8.5px; color:var(--ink-lt); font-style:italic; margin-bottom:9px; }
+.svc-note{ font-size:9.3px; color:var(--ink-lt); font-style:italic; margin-bottom:9px; }
 .svc-block{ margin-bottom:7px; }
-.svc-block h4{ font-size:10.5px; font-weight:600; color:var(--green-dk); margin:0 0 2px; }
+.svc-block h4{ font-size:11.5px; font-weight:600; color:var(--green-dk); margin:0 0 2px; }
 .svc-block ul{ list-style:none; margin:0; padding:0; }
-.svc-block li{ font-size:8.4px; line-height:1.32; color:var(--ink-md); padding-left:8px; position:relative; }
+.svc-block li{ font-size:9.4px; line-height:1.32; color:var(--ink-md); padding-left:8px; position:relative; }
 .svc-block li::before{ content:""; position:absolute; left:0; top:5px; width:4px; height:1px; background:var(--green-lt); }
 
 /* Kontakt */
 .contact-col{ display:flex; flex-direction:column; }
 .c-line{ margin-bottom:6px; }
-.c-line .lbl{ font-size:8px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--green); display:block; }
-.c-line .val{ font-family:var(--serif); font-size:12.5px; color:var(--ink); font-weight:500; line-height:1.25; }
+.c-line .lbl{ font-size:8.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--green); display:block; }
+.c-line .val{ font-family:var(--serif); font-size:13.5px; color:var(--ink); font-weight:500; line-height:1.25; }
 .c-qr{ margin-top:auto; display:flex; align-items:center; gap:10px; padding-top:8px; }
 .c-qr img{ width:58px; height:58px; display:block; }
 .c-qr .cap{ font-size:8px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--green); line-height:1.3; }
@@ -137,6 +140,9 @@ body{ margin:0; font-family:var(--sans); background:#eceae3; color:var(--ink); p
             <span class="lang-pill act">DE</span><span class="lang-pill">EN</span><span class="lang-pill">PL</span><span class="lang-pill">HR</span>
           </div>
           <div class="tagline">Ihre Zahlen. <em>Meine Stärke.</em></div>
+        </div>
+        <div class="front-qr">
+          <img src="assets/img/qr-start.svg" alt="QR-Code: schroeer-office.de/start"/>
         </div>
       </div>
       <div class="front-hello" aria-hidden="true">
@@ -193,10 +199,6 @@ body{ margin:0; font-family:var(--sans); background:#eceae3; color:var(--ink); p
           <div class="c-line"><span class="lbl">Mobil</span><span class="val">+49 179 104 42 92</span></div>
           <div class="c-line"><span class="lbl">E-Mail</span><span class="val">info@schroeer-office.de</span></div>
           <div class="c-line"><span class="lbl">Web</span><span class="val">schroeer-office.de</span></div>
-          <div class="c-qr">
-            <img src="assets/img/qr-start.svg" alt="QR-Code: schroeer-office.de/start"/>
-            <span class="cap">Scan:<br/>Sofort-Kontakt</span>
-          </div>
         </div>
 
       </div>
@@ -210,7 +212,7 @@ body{ margin:0; font-family:var(--sans); background:#eceae3; color:var(--ink); p
   <div><span class="lbl">Format</span><span class="val">85 × 55 mm<small>EU-Standard · 91 × 61 mm Druck (mit Beschnitt)</small></span></div>
   <div><span class="lbl">Aufteilung</span><span class="val">Identität / Leistungen<small>Vorne Person · hinten Leistungen + Kontakt</small></span></div>
   <div><span class="lbl">Sprachen</span><span class="val">DE · EN · PL · HR<small>Mehrsprachige Begrüßung vorne</small></span></div>
-  <div><span class="lbl">Version</span><span class="val">v3.3.0<small>2026-06-15 · Kundin-Mail eingearbeitet · Grundke IT-Service</small></span></div>
+  <div><span class="lbl">Version</span><span class="val">v3.5.0<small>2026-06-15 · QR vorne · Rückseite größer · Grundke IT-Service</small></span></div>
 </div>
 
 </body>
