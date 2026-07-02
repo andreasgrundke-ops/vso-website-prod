@@ -28,14 +28,14 @@ if (-not (Test-Path $src)) { Write-Host "FEHLER: $src nicht gefunden" -Foregroun
 
 # ---------- Title + Description pro Sprache (hardcoded) ----------
 $titleByLang = @{
-  en = "Violetta Schröer – Tax Specialist (IHK) Grasbrunn nr Munich · Accounting, Payroll, Construction Wages"
+  en = "Violetta Schröer – Tax Specialist Grasbrunn nr Munich · Accounting, Payroll, Construction Wages"
   pl = "Violetta Schröer – Specjalistka podatkowa Grasbrunn k. Monachium · Księgowość, płace, płace budowlane"
   hr = "Violetta Schröer – Porezna stručnjakinja Grasbrunn kraj Münchena · Knjigovodstvo, plaće, građevinske plaće"
 }
 $descByLang = @{
-  en = "Certified tax specialist (IHK) in Grasbrunn near Munich. Personal financial accounting, payroll, construction wages and office services. Over 20 years of experience. Multilingual DE/EN/PL/HR."
-  pl = "Certyfikowana specjalistka podatkowa (IHK) w Grasbrunn k. Monachium. Osobista księgowość finansowa, płace, płace budowlane i usługi biurowe. Ponad 20 lat doświadczenia. Wielojęzycznie DE/EN/PL/HR."
-  hr = "Ovlaštena porezna stručnjakinja (IHK) u Grasbrunnu kraj Münchena. Osobno financijsko knjigovodstvo, plaće, građevinske plaće i uredske usluge. Više od 20 godina iskustva. Višejezično DE/EN/PL/HR."
+  en = "Certified tax specialist in Grasbrunn near Munich. Personal financial accounting, payroll, construction wages and office services. Over 20 years of experience. Multilingual DE/EN/PL/HR."
+  pl = "Certyfikowana specjalistka podatkowa w Grasbrunn k. Monachium. Osobista księgowość finansowa, płace, płace budowlane i usługi biurowe. Ponad 20 lat doświadczenia. Wielojęzycznie DE/EN/PL/HR."
+  hr = "Ovlaštena porezna stručnjakinja u Grasbrunnu kraj Münchena. Osobno financijsko knjigovodstvo, plaće, građevinske plaće i uredske usluge. Više od 20 godina iskustva. Višejezično DE/EN/PL/HR."
 }
 $ogLocaleByLang = @{ en = 'en_US'; pl = 'pl_PL'; hr = 'hr_HR' }
 
