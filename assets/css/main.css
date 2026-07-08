@@ -821,7 +821,8 @@ footer.site{
   .menu-toggle{ display:inline-flex; }
 }
 @media (max-width:600px){
-  .topbar .meta .hide-sm{ display:none; }
+  /* Handy: Telefon + Oeffnungszeiten ausblenden, nur Sprachwahl zeigen (Platz fuer Sprachen) */
+  .topbar .meta{ display:none; }
   .svc-grid{ grid-template-columns:1fr; }
   .usp-grid{ grid-template-columns:1fr; gap:36px; }
   .foot-grid{ grid-template-columns:1fr; }
@@ -844,7 +845,7 @@ footer.site{
   .faq summary{ font-size:1.05rem; padding:18px 22px; }
   .faq .answer{ padding:0 22px 20px; font-size:14.5px; }
   .topbar .wrap{ flex-wrap:wrap; min-height:0; padding:8px 16px; }
-  .lang-wrap{ width:100%; justify-content:flex-end; padding-top:6px; }
+  .lang-wrap{ width:100%; justify-content:center; padding-top:0; }
   header.site .wrap{ padding:0 18px; min-height:72px; }
   .logo .name{ font-size:20px; }
 }
