@@ -120,6 +120,8 @@ foreach ($lang in 'en','pl','hr') {
 
   # 9) Relative Pfade absolut machen (wegen Subdir-Verschachtelung)
   $c = $c -replace '(\s)(src|href)="(assets/)', "`$1`$2=""/$3"
+  # Inline-Hintergrundbilder: url('assets/...') zeigt im Subdir sonst auf /en/assets/... (404)
+  $c = $c -replace "url\('assets/", "url('/assets/"
   $c = $c -replace '(href)="(impressum\.html|datenschutz\.html|visitenkarte\.html)"', "`$1=""/`$2"""
 
   # 10) Output schreiben

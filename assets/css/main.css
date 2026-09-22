@@ -802,7 +802,7 @@ footer.site{
   .usp-grid{ grid-template-columns:repeat(2,1fr); gap:40px 24px; }
   .svc-grid{ grid-template-columns:repeat(2,1fr); }
   .about-grid{ grid-template-columns:1fr; gap:60px; }
-  .about-photos{ max-width:460px; margin:0 auto; }
+  .about-photos{ width:100%; max-width:460px; margin:0 auto; }
   .process-grid{ grid-template-columns:repeat(2,1fr); gap:48px 24px; }
   .step{ border-left:0; padding-left:0; }
   .contact-grid{ grid-template-columns:1fr; gap:48px; }
